@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ description or 'Decisive reviews for movies and games. Why should you spend your time on this?' }}">
+  <meta name="theme-color" content="#0a0a0a">
+  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{{ title }} | Whyyoushould">
+  <meta property="og:description" content="{{ description or 'Decisive reviews for movies and games.' }}">
+  <meta property="og:image" content="{{ ogImage or '/images/og.jpg' }}">
+  {% if canonical %}<meta property="og:url" content="{{ canonical }}">{% endif %}
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title }} | Whyyoushould">
+  <meta name="twitter:description" content="{{ description or 'Why should you spend your time on this?' }}">
+  
+  <title>{{ title }}{% if title !== 'Whyyoushould' %} | Whyyoushould{% endif %}</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50' y='65' font-size='90' font-weight='900' text-anchor='middle' fill='%233b82f6'>W</text></svg>">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <a href="/" class="logo">WYS</a>
+      <nav class="nav">
+        <a href="/reviews/" class="nav-link">Reviews</a>
+        <a href="/movies/" class="nav-link">Movies</a>
+        <a href="/games/" class="nav-link">Games</a>
+        <a href="/about/" class="nav-link">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    {{ content | safe }}
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div>
+          <p class="footer-brand">Whyyoushould</p>
+          <p class="footer-tagline">Decisive reviews for movies and games</p>
+        </div>
+        <div class="footer-nav">
+          <a href="/about/">About</a>
+          <a href="/">Home</a>
+        </div>
+      </div>
+      <p class="footer-credit">Built with <a href="https://11ty.dev" target="_blank">Eleventy</a></p>
+    </div>
+  </footer>
+</body>
+</html>

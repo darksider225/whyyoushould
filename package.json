@@ -1,0 +1,21 @@
+{
+  "name": "whyyoushould",
+  "version": "1.0.0",
+  "description": "Decisive reviews for movies and games. Why should you spend your time on this?",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "keywords": [
+    "reviews",
+    "movies",
+    "games",
+    "eleventy",
+    "11ty"
+  ],
+  "author": "Whyyoushould",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  }
+}

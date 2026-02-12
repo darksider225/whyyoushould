@@ -1,0 +1,127 @@
+---
+layout: layouts/base.njk
+title: Whyyoushould
+description: Decisive reviews for movies and games. Why should you spend your time on this?
+---
+
+<section class="hero">
+  <h1>Why should you watch or play this?</h1>
+  <p class="hero-tagline">We don't waste your time with filler. Just decisive recommendations backed by solid reasoning.</p>
+  <p class="hero-subtext">Reviews of movies and games worth your attention.</p>
+</section>
+
+<section class="verdict-legend">
+  <div class="legend-item">
+    <div class="legend-badge must">MUST</div>
+    <div class="legend-text">
+      <h4>Must Play / Must Watch</h4>
+      <p>Essential. Clear recommendation. Stop reading and go enjoy it.</p>
+    </div>
+  </div>
+  <div class="legend-item">
+    <div class="legend-badge worth">WORTH</div>
+    <div class="legend-text">
+      <h4>Worth Your Time</h4>
+      <p>Good. Genuinely worthwhile if it aligns with your taste.</p>
+    </div>
+  </div>
+  <div class="legend-item">
+    <div class="legend-badge skip">SKIP</div>
+    <div class="legend-text">
+      <h4>Skip It</h4>
+      <p>Not recommended. Your time is better spent elsewhere.</p>
+    </div>
+  </div>
+</section>
+
+{% set featured = collections.reviews[0] %}
+{% if featured %}
+<section class="featured">
+  <p class="featured-label">This Week's Definitive Verdict</p>
+  <h2>{{ featured.data.title }}</h2>
+  <p class="featured-excerpt">{{ featured.data.why }}</p>
+  <a href="{{ featured.url }}" class="btn-secondary">Read the full review →</a>
+</section>
+{% endif %}
+
+<section class="reviews-container">
+  <div class="reviews-section">
+    <h2>Latest Reviews</h2>
+    <div class="reviews-grid">
+      {% for review in collections.reviews | slice(0, 6) %}
+      <a href="{{ review.url }}" class="review-card">
+        <div class="review-card-header">
+          <h3 class="review-card-title">{{ review.data.title }}</h3>
+          <div class="verdict-badge {{ review.data.verdict | verdictClass }}">{{ review.data.verdict }}</div>
+        </div>
+        <div class="review-card-rating">{{ review.data.rating }}<span style="font-size: 0.7em; color: var(--text-secondary);">/10</span></div>
+        <p class="review-card-why">{{ review.data.why }}</p>
+        <div class="review-card-meta">
+          <span>
+            <strong>{{ review.data.type }}</strong>
+            {{ review.data.releaseYear }}
+          </span>
+          <span>
+            <strong>Released</strong>
+            {{ review.data.reviewDate | readableDate }}
+          </span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="reviews-section">
+    <h2>Movies</h2>
+    <div class="reviews-grid">
+      {% for review in collections.movies | slice(0, 4) %}
+      <a href="{{ review.url }}" class="review-card">
+        <div class="review-card-header">
+          <h3 class="review-card-title">{{ review.data.title }}</h3>
+          <div class="verdict-badge {{ review.data.verdict | verdictClass }}">{{ review.data.verdict }}</div>
+        </div>
+        <div class="review-card-rating">{{ review.data.rating }}<span style="font-size: 0.7em; color: var(--text-secondary);">/10</span></div>
+        <p class="review-card-why">{{ review.data.why }}</p>
+        <div class="review-card-meta">
+          <span>
+            <strong>Runtime</strong>
+            {{ review.data.timeInvestment }}
+          </span>
+          <span>
+            <strong>Director</strong>
+            {{ review.data.creator }}
+          </span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    <a href="/movies/" class="btn-secondary">View all movies →</a>
+  </div>
+
+  <div class="reviews-section">
+    <h2>Games</h2>
+    <div class="reviews-grid">
+      {% for review in collections.games | slice(0, 4) %}
+      <a href="{{ review.url }}" class="review-card">
+        <div class="review-card-header">
+          <h3 class="review-card-title">{{ review.data.title }}</h3>
+          <div class="verdict-badge {{ review.data.verdict | verdictClass }}">{{ review.data.verdict }}</div>
+        </div>
+        <div class="review-card-rating">{{ review.data.rating }}<span style="font-size: 0.7em; color: var(--text-secondary);">/10</span></div>
+        <p class="review-card-why">{{ review.data.why }}</p>
+        <div class="review-card-meta">
+          <span>
+            <strong>Developer</strong>
+            {{ review.data.creator }}
+          </span>
+          <span>
+            <strong>Playtime</strong>
+            {{ review.data.timeInvestment }}
+          </span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    <a href="/games/" class="btn-secondary">View all games →</a>
+  </div>
+</section>

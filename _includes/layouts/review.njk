@@ -1,0 +1,81 @@
+---
+layout: layouts/base.njk
+---
+
+<article class="review-page">
+  <div class="review-header">
+    <div class="review-title-section">
+      <h1 class="review-title">{{ title }}</h1>
+      <p class="review-verdict-tagline">{{ why }}</p>
+    </div>
+    
+    <div class="review-verdict-box verdict-{{ verdict | verdictClass }}">
+      <div class="verdict-badge">{{ verdict }}</div>
+      <div class="verdict-rating">{{ rating }}<span class="rating-max">/10</span></div>
+    </div>
+  </div>
+
+  <div class="review-meta">
+    <div class="meta-item">
+      <span class="meta-label">Released</span>
+      <span class="meta-value">{{ releaseYear }}</span>
+    </div>
+    
+    <div class="meta-item">
+      <span class="meta-label">{% if type === 'movie' %}Director{% else %}Creator{% endif %}</span>
+      <span class="meta-value">{{ creator }}</span>
+    </div>
+    
+    <div class="meta-item">
+      <span class="meta-label">{{ 'Streaming On' if type === 'movie' else 'Platform' }}</span>
+      <span class="meta-value">{% if type === 'movie' %}{{ platform | join(', ') }}{% else %}{{ platform | join(', ') }}{% endif %}</span>
+    </div>
+    
+    <div class="meta-item">
+      <span class="meta-label">{{ 'Runtime' if type === 'movie' else 'Time Investment' }}</span>
+      <span class="meta-value">{{ timeInvestment }}</span>
+    </div>
+
+    {% if genre %}
+    <div class="meta-item">
+      <span class="meta-label">Genre</span>
+      <span class="meta-value">{{ genre | join(', ') }}</span>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="review-content">
+    {{ content | safe }}
+  </div>
+
+  <div class="review-footer">
+    <div class="verdict-final verdict-{{ verdict | verdictClass }}">
+      <h3>Final Verdict</h3>
+      <p>
+        <strong class="verdict-action">{{ verdict }}</strong>
+        {% if verdict === 'Must Play' or verdict === 'Must Watch' %}
+          This is essential. Stop reading and go enjoy it.
+        {% elseif verdict === 'Worth Your Time' %}
+          If it matches your taste, it's worthwhile.
+        {% else %}
+          Your time is better spent elsewhere.
+        {% endif %}
+      </p>
+    </div>
+
+    {% if similarTitles and similarTitles.length > 0 %}
+    <div class="similar-titles">
+      <h3>Similar Titles</h3>
+      <ul>
+        {% for title in similarTitles %}
+        <li>{{ title }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="review-nav">
+    <a href="/reviews/" class="btn-secondary">← Back to Reviews</a>
+  </div>
+</article>

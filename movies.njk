@@ -1,0 +1,39 @@
+---
+layout: layouts/base.njk
+title: Movies
+description: Movie reviews on Whyyoushould. Streaming and theatrical recommendations from critics who respect your time.
+pagination:
+  data: collections.movies
+  size: 100
+---
+
+<div style="margin-bottom: 3rem;">
+  <h1>Movies</h1>
+  <p style="color: var(--text-secondary); font-size: 1.125rem;">{{ collections.movies.length }} definitive film recommendations</p>
+</div>
+
+<div class="reviews-grid">
+  {% for review in pagination.items %}
+  <a href="{{ review.url }}" class="review-card">
+    <div class="review-card-header">
+      <div>
+        <h3 class="review-card-title">{{ review.data.title }}</h3>
+        <p style="margin-bottom: 0; color: var(--text-tertiary); font-size: 0.875rem;">{{ review.data.releaseYear }} • {{ review.data.genre[0] }}</p>
+      </div>
+      <div class="verdict-badge {{ review.data.verdict | verdictClass }}">{{ review.data.verdict }}</div>
+    </div>
+    <div class="review-card-rating">{{ review.data.rating }}<span style="font-size: 0.7em; color: var(--text-secondary);">/10</span></div>
+    <p class="review-card-why">{{ review.data.why }}</p>
+    <div class="review-card-meta">
+      <span>
+        <strong>Director</strong>
+        {{ review.data.creator }}
+      </span>
+      <span>
+        <strong>Runtime</strong>
+        {{ review.data.timeInvestment }}
+      </span>
+    </div>
+  </a>
+  {% endfor %}
+</div>
