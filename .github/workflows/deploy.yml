@@ -34,6 +34,8 @@ jobs:
       - name: Build site
         env:
           ELEVENTY_PATH_PREFIX: ${{ vars.ELEVENTY_PATH_PREFIX || '/' }}
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          RAWG_API_KEY: ${{ secrets.RAWG_API_KEY }}
         run: npm run build
 
       - name: Upload Pages artifact
