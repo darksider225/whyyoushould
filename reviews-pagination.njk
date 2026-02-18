@@ -1,0 +1,219 @@
+---
+pagination:
+  data: reviews
+  size: 1
+  alias: review
+permalink: "/reviews/{{ review.slug }}/"
+layout: layouts/base.njk
+---
+
+<article class="review-page">
+  <div class="review-hero">
+    {% if review.poster_path %}
+    <aside class="review-aside">
+      <div class="review-poster">
+        <img
+          src="{{ review.poster_path }}"
+          alt="Poster for {{ review.title }}"
+          class="poster-image"
+        />
+      </div>
+    </aside>
+    {% endif %}
+
+    <div class="review-main-intro">
+      <div class="review-header">
+        <div class="review-title-section">
+          <h1 class="review-title">{{ review.title }}</h1>
+          <p class="review-verdict-tagline">{{ review.why }}</p>
+        </div>
+
+        <div class="review-verdict-box verdict-{{ review.verdict | verdictClass }}">
+          <div class="verdict-badge">{{ review.verdict }}</div>
+          <div class="verdict-rating">{{ review.rating }}<span class="rating-max">/10</span></div>
+        </div>
+      </div>
+
+      <div class="review-meta">
+        <div class="meta-item">
+          <span class="meta-label">Released</span>
+          <span class="meta-value">{{ review.releaseYear }}</span>
+        </div>
+
+        <div class="meta-item">
+          <span class="meta-label">{% if review.type === 'movie' %}Director{% else %}Creator{% endif %}</span>
+          <span class="meta-value">{{ review.creator }}</span>
+        </div>
+
+        <div class="meta-item">
+          <span class="meta-label">{{ 'Streaming On' if review.type === 'movie' else 'Platform' }}</span>
+          <span class="meta-value">{{ review.platform | join(', ') }}</span>
+        </div>
+
+        <div class="meta-item">
+          <span class="meta-label">{{ 'Runtime' if review.type === 'movie' else 'Time Investment' }}</span>
+          <span class="meta-value">{{ review.timeInvestment }}</span>
+        </div>
+
+        {% if review.genre %}
+        <div class="meta-item">
+          <span class="meta-label">Genre</span>
+          <span class="meta-value">{{ review.genre | join(', ') }}</span>
+        </div>
+        {% endif %}
+
+        {% if review.type === 'movie' and review.tmdb_rating %}
+        <div class="meta-item">
+          <span class="meta-label">TMDB Score</span>
+          <span class="meta-value">{{ review.tmdb_rating | round(1) }}/10</span>
+        </div>
+        {% endif %}
+
+        {% if review.type === 'game' and review.metacritic_score %}
+        <div class="meta-item">
+          <span class="meta-label">Metacritic Score</span>
+          <span class="meta-value">{{ review.metacritic_score }}/100</span>
+        </div>
+        {% endif %}
+      </div>
+
+      {% if review.official_description %}
+      <div class="official-description">
+        <p class="description-intro">
+          <em>{{ 'From TMDB:' if review.type === 'movie' else 'From RAWG:' }}</em>
+        </p>
+        <p>{{ review.official_description }}</p>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="review-content">
+    {% if review.hook %}
+    <section class="review-section">
+      <h2>Hook</h2>
+      <p>{{ review.hook }}</p>
+    </section>
+    {% endif %}
+
+    {% set gistText = review.playGist or review.quickGist %}
+    {% if gistText %}
+    <section class="review-section">
+      <h2>{{ 'Play Gist' if review.playGist else 'Quick Gist' }}</h2>
+      <p>{{ gistText }}</p>
+    </section>
+    {% endif %}
+
+    {% set standoutItems = review.whatStandsOut or review.whatStoodOut or review.whatHitMe %}
+    {% if standoutItems and standoutItems.length > 0 %}
+    <section class="review-section">
+      <h2>{{ 'What Stands Out' if review.whatStandsOut or review.whatStoodOut else 'What Hit Me' }}</h2>
+      <ul class="review-bullet-list">
+        {% for item in standoutItems %}
+        <li><strong>{{ item.label }}:</strong> {{ item.text }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+
+    {% if review.ratingsSnapshot and review.ratingsSnapshot.length > 0 %}
+    <section class="review-section">
+      <h2>Ratings Snapshot</h2>
+      <ul class="review-bullet-list">
+        {% for item in review.ratingsSnapshot %}
+        <li><strong>{{ item.label }}:</strong> {{ item.value }}</li>
+        {% endfor %}
+      </ul>
+      {% if review.ratingsSummary %}
+      <p>{{ review.ratingsSummary }}</p>
+      {% endif %}
+    </section>
+    {% endif %}
+
+    {% if review.criticsVoice %}
+    <section class="review-section">
+      <h2>Critics Voice</h2>
+      <p>{{ review.criticsVoice }}</p>
+    </section>
+    {% endif %}
+
+    {% if review.audienceVoice %}
+    <section class="review-section">
+      <h2>Audience Voice</h2>
+      <p>{{ review.audienceVoice }}</p>
+    </section>
+    {% endif %}
+
+    {% set reasonsList = review.whyYouShouldWatch or review.whyYouShouldPlay %}
+    {% if reasonsList and reasonsList.length > 0 %}
+    <section class="review-section">
+      <h2>{{ 'Why You Should Play' if review.whyYouShouldPlay else 'Why You Should Watch' }}</h2>
+      <ol class="review-number-list">
+        {% for item in reasonsList %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ol>
+    </section>
+    {% endif %}
+
+    {% if review.miniAnecdote %}
+    <section class="review-section">
+      <h2>Mini Anecdote</h2>
+      <p>{{ review.miniAnecdote }}</p>
+    </section>
+    {% endif %}
+
+    {% if review.practicalTips %}
+    <section class="review-section">
+      <h2>Practical Tips</h2>
+      <p>{{ review.practicalTips }}</p>
+    </section>
+    {% endif %}
+
+    {% if review.finalNudge %}
+    <section class="review-section">
+      <h2>Final Nudge</h2>
+      <p>{{ review.finalNudge }}</p>
+    </section>
+    {% endif %}
+
+    {% if review.content %}
+    <section class="review-section">
+      <p>{{ review.content }}</p>
+    </section>
+    {% endif %}
+  </div>
+
+  <div class="review-footer">
+    <div class="verdict-final verdict-{{ review.verdict | verdictClass }}">
+      <h3>Final Verdict</h3>
+      <p>
+        <strong class="verdict-action">{{ review.verdict }}</strong>
+        {% if review.verdict === 'Must Watch' %}
+          This is essential. Stop reading and go enjoy it.
+        {% elseif review.verdict === 'Worth Your Time' %}
+          If it matches your taste, it's worthwhile.
+        {% elseif review.verdict === 'Average' %}
+          Decent, but not a priority unless you're already curious.
+        {% else %}
+          Your time is better spent elsewhere.
+        {% endif %}
+      </p>
+    </div>
+
+    {% if review.similarTitles and review.similarTitles.length > 0 %}
+    <div class="similar-titles">
+      <h3>Similar Titles</h3>
+      <ul>
+        {% for title in review.similarTitles %}
+        <li>{{ title }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="review-nav">
+    <a href="/reviews/" class="btn-secondary">← Back to Reviews</a>
+  </div>
+</article>

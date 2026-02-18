@@ -53,10 +53,12 @@ layout: layouts/base.njk
       <h3>Final Verdict</h3>
       <p>
         <strong class="verdict-action">{{ verdict }}</strong>
-        {% if verdict === 'Must Play' or verdict === 'Must Watch' %}
+        {% if verdict === 'Must Watch' %}
           This is essential. Stop reading and go enjoy it.
         {% elseif verdict === 'Worth Your Time' %}
           If it matches your taste, it's worthwhile.
+        {% elseif verdict === 'Average' %}
+          Decent, but not a priority unless you're already curious.
         {% else %}
           Your time is better spent elsewhere.
         {% endif %}

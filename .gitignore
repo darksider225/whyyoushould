@@ -15,9 +15,13 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Env (none yet but future)
+# Env (API keys, secrets)
 .env
 .env.local
+
+# API Cache
+_data/.cache/
+_data/.cache/*
 
 # IDE
 .vscode/

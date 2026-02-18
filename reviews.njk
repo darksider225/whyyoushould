@@ -2,36 +2,33 @@
 layout: layouts/base.njk
 title: All Reviews
 description: Browse all movie and game reviews on Whyyoushould. Filter by type and sort by rating or release date.
-pagination:
-  data: collections.reviews
-  size: 100
 ---
 
 <div style="margin-bottom: 3rem;">
   <h1>All Reviews</h1>
-  <p style="color: var(--text-secondary); font-size: 1.125rem;">{{ collections.reviews.length }} definitive recommendations</p>
+  <p style="color: var(--text-secondary); font-size: 1.125rem;">{{ reviews.length }} definitive recommendations</p>
 </div>
 
 <div class="reviews-grid">
-  {% for review in pagination.items %}
-  <a href="{{ review.url }}" class="review-card">
+  {% for review in reviews %}
+  <a href="/reviews/{{ review.slug }}/" class="review-card">
     <div class="review-card-header">
       <div>
-        <h3 class="review-card-title">{{ review.data.title }}</h3>
-        <p style="margin-bottom: 0; color: var(--text-tertiary); font-size: 0.875rem;">{{ review.data.type | capitalize }} â€¢ {{ review.data.releaseYear }}</p>
+        <h3 class="review-card-title">{{ review.title }}</h3>
+        <p style="margin-bottom: 0; color: var(--text-tertiary); font-size: 0.875rem;">{{ review.type | capitalize }} • {{ review.releaseYear }}</p>
       </div>
-      <div class="verdict-badge {{ review.data.verdict | verdictClass }}">{{ review.data.verdict }}</div>
+      <div class="verdict-badge {{ review.verdict | verdictClass }}">{{ review.verdict }}</div>
     </div>
-    <div class="review-card-rating">{{ review.data.rating }}<span style="font-size: 0.7em; color: var(--text-secondary);">/10</span></div>
-    <p class="review-card-why">{{ review.data.why }}</p>
+    <div class="review-card-rating">{{ review.rating }}<span style="font-size: 0.7em; color: var(--text-secondary);">/10</span></div>
+    <p class="review-card-why">{{ review.why }}</p>
     <div class="review-card-meta">
       <span>
-        <strong>{% if review.data.type === 'movie' %}Director{% else %}Creator{% endif %}</strong>
-        {{ review.data.creator }}
+        <strong>{% if review.type === 'movie' %}Director{% else %}Creator{% endif %}</strong>
+        {{ review.creator }}
       </span>
       <span>
         <strong>Released</strong>
-        {{ review.data.releaseYear }}
+        {{ review.releaseYear }}
       </span>
     </div>
   </a>

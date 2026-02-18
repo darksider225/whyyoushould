@@ -1,0 +1,38 @@
+---
+layout: layouts/base.njk
+title: TV Shows | Whyyoushould
+description: Decisive reviews for the best TV shows
+---
+
+<div class="collection-header">
+  <h1>TV Shows</h1>
+  <p>Binge-worthy television that respects your time and intelligence.</p>
+</div>
+
+<section class="collection-grid">
+  {% for show in reviews %}
+  {% if show.type === "tv" %}
+  <a href="/reviews/{{ show.slug }}/" class="collection-card">
+    {% if show.poster_path %}
+    <div class="collection-card-poster">
+      <img src="{{ show.poster_path }}" alt="{{ show.title }}" />
+      <div class="collection-card-verdict verdict-{{ show.verdict | verdictClass }}">
+        <span class="verdict-text">{{ show.verdict }}</span>
+      </div>
+    </div>
+    {% else %}
+    <div class="collection-card-poster-placeholder">📺</div>
+    {% endif %}
+    <div class="collection-card-info">
+      <h2>{{ show.title }}</h2>
+      <p class="collection-card-creator">{{ show.creator }}</p>
+      <div class="collection-card-meta">
+        <span class="collection-card-rating">{{ show.rating }}/10</span>
+        <span class="collection-card-year">{{ show.releaseYear }}</span>
+      </div>
+      <p class="collection-card-excerpt">{{ show.why }}</p>
+    </div>
+  </a>
+  {% endif %}
+  {% endfor %}
+</section>

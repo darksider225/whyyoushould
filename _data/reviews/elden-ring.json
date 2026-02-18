@@ -1,0 +1,83 @@
+{
+  "slug": "elden-ring",
+  "title": "Elden Ring",
+  "type": "game",
+  "verdict": "Must Play",
+  "why": "An open-world action RPG that rewards curiosity, patience, and creativity with some of the most memorable victories modern games can offer.",
+  "rating": 9.9,
+  "releaseYear": 2022,
+  "genre": [
+    "Action RPG",
+    "Open World",
+    "Dark Fantasy"
+  ],
+  "creator": "FromSoftware",
+  "platform": [
+    "PC",
+    "PS4",
+    "PS5",
+    "Xbox One",
+    "Xbox Series X|S"
+  ],
+  "reviewDate": "2026-02-18",
+  "timeInvestment": "Main path about 55-70 hours, completionist runs 120+ hours",
+  "moodTags": [
+    "challenging",
+    "atmospheric",
+    "rewarding"
+  ],
+  "excerpt": "Elden Ring turns exploration into tension and discovery, making every detour feel like it could change your entire run.",
+  "similarTitles": [
+    "Dark Souls III",
+    "Bloodborne",
+    "Lies of P"
+  ],
+  "content": "Elden Ring feels like a culmination of FromSoftware's design philosophy and one of the strongest open-world reinterpretations in the genre. It keeps the studio's demanding combat DNA but places it in a vast map that constantly invites detours, risk, and self-directed progression. The game trusts players to set goals, fail repeatedly, and return smarter, which makes eventual success deeply personal. Build variety is enormous, bosses are high-pressure set pieces with distinct identities, and environmental storytelling gives the world emotional weight beyond stat progression. It is harsh, often humbling, and consistently rewarding if you enjoy games that treat mastery as an evolving conversation rather than a checklist.",
+  "hook": "The first few hours made me feel lost, underpowered, and mildly offended, and then suddenly I was completely locked in. Elden Ring has that dangerous pull where every defeat feels like an invitation to return better. When victories finally land, they are not just wins, they feel earned in your hands.",
+  "playGist": "You play as a Tarnished exploring the Lands Between, fighting brutal enemies, collecting gear, leveling through runes, and piecing together a fractured mythological world while deciding where to go and what to challenge next. The core loop blends exploration, high-stakes combat, build experimentation, and boss progression, with the tone staying mysterious and oppressive in the best way, so even optional areas and side encounters feel like meaningful chapters in your personal journey.",
+  "whatStoodOut": [
+    {
+      "label": "World Design",
+      "text": "Exploration is where Elden Ring separates itself from most open-world peers. The map is huge, but scale is not the point; density of meaningful discovery is. You ride toward what looks like a ruin and find a dungeon, which leads to a hidden elevator, which opens into an underground region so massive it feels like another game. Weather, lighting, architecture, and enemy placement create mood that shifts from awe to dread quickly. The world rewards attention, not icons, and that makes discovery feel personal rather than prepackaged."
+    },
+    {
+      "label": "Combat",
+      "text": "Combat is demanding but expressive. Timing, spacing, stamina management, and pattern recognition matter, yet the game offers many viable approaches: melee precision, heavy weapons, spells, status builds, spirit summons, and hybrid setups. Weapon arts add tactical depth, and respec options let you adapt without restarting. Boss design is varied enough that one strategy never solves everything, forcing real learning instead of autopilot habits. The result is tension that stays fresh deep into long play sessions."
+    },
+    {
+      "label": "Freedom",
+      "text": "Player agency is the secret engine. If a main path wallblocks you, the game rarely says stop; it says go elsewhere, grow stronger, and return on your terms. You can follow lore threads, chase optional demigods, help NPC arcs, or simply roam for gear and levels. That flexibility turns failure into route planning instead of dead ends. The narrative style is minimal on exposition but rich in implication, which lets players build personal interpretation rather than consume one fixed reading."
+    }
+  ],
+  "ratingsSnapshot": [
+    {
+      "label": "Metacritic",
+      "value": "96/100"
+    },
+    {
+      "label": "IGN",
+      "value": "10/10"
+    },
+    {
+      "label": "GameSpot",
+      "value": "10/10"
+    },
+    {
+      "label": "Steam Reviews",
+      "value": "Very Positive"
+    }
+  ],
+  "ratingsSummary": "The score alignment is unusually strong across major outlets, with critics and players agreeing that this is a landmark release. Averaging Metacritic, IGN, and GameSpot gives 9.9/10, which firmly lands in Must Play territory and reflects both technical execution and long-term genre impact.",
+  "criticsVoice": "Critical consensus framed Elden Ring as a major genre benchmark. Outlets such as IGN, GameSpot, and Eurogamer praised how it merged open-world exploration with Souls-style combat without diluting either identity. Reviewers repeatedly highlighted world design density, boss quality, and build diversity. Common criticisms focused on performance inconsistencies on some platforms at launch, occasional camera friction in tight fights, and quest tracking opacity that can frustrate newcomers. Even with those issues, most critics described it as a defining achievement in modern action RPG design.",
+  "audienceVoice": "Player response has been intense and durable. Community discussion ranges from build theorycrafting and speedrun routes to lore interpretation and challenge-run stories, which speaks to both mechanical depth and narrative intrigue. Difficulty remains a frequent debate, but many players who initially bounced off eventually returned with different strategies and found the game transformative. Co-op summons, message systems, and shared discovery culture kept conversation active long after release. The broad sentiment is that Elden Ring creates unforgettable moments that feel authored by the player, not scripted for them.",
+  "whyYouShouldPlay": [
+    "The emotional payoff is exceptional because success is tied directly to your learning process. When you finally beat a boss that crushed you for an hour, relief and excitement come from real adaptation, not inflated stats alone. The game makes improvement visible. You feel yourself getting calmer, reading moves better, and making cleaner choices under pressure, and that progression is genuinely satisfying in a way few games replicate.",
+    "Replayability is massive thanks to build diversity and route flexibility. A first run might lean on heavy strength weapons, while a second run can pivot to intelligence spellcasting or status-heavy dexterity setups that change pacing entirely. Optional regions, branching NPC arcs, and alternate endings mean you can revisit the world without repeating the same exact journey. The game supports experimentation instead of forcing linear repetition.",
+    "Creativity is constantly rewarded. You can solve encounters through positioning, status effects, summons, weapon arts, terrain use, and timing rather than one prescribed tactic. Some fights become easier with smart preparation, others demand precision execution, and many allow hybrid approaches. That design keeps combat from feeling solved too quickly and gives players ownership over how they overcome obstacles.",
+    "Player agency is meaningful at macro and micro levels. At the macro level, you decide where to go, what to prioritize, and when to retreat. At the micro level, every dodge, heal window, and stamina tradeoff matters. This combination creates a rare feeling of control and consequence. Even when you fail, the game usually makes clear why it happened, which turns frustration into problem-solving instead of pure randomness.",
+    "It has lasting genre significance. Elden Ring proved that open-world design does not need constant UI hand-holding to remain compelling. Its trust in player curiosity influenced design conversations across the industry and raised expectations for environmental storytelling and discovery pacing. Whether or not it becomes your favorite game, it is important enough that playing it gives useful context for where action RPG design is heading."
+  ],
+  "miniAnecdote": "I spent forty minutes losing to one late-game boss, switched one talisman, changed my weapon art, and tried again expecting another wipe. Instead, everything clicked, and I won with almost no healing left. I literally stood up from my chair after the final hit.",
+  "practicalTips": "If you are new to Souls-style games, start by exploring broadly instead of forcing early boss fights. Level vigor earlier than you think and do not hesitate to use spirit summons while learning patterns. On PC, tweak settings for stable frame pacing before long sessions; smooth performance helps timing-heavy combat. Keep a notebook or simple notes app for NPC quest clues because tracking is intentionally minimal. Play with headphones if possible, since audio cues are helpful for enemy tells and ambient mood.",
+  "finalNudge": "If you enjoy games that respect your intelligence and make victory feel deeply earned, Elden Ring is an easy recommendation. It can be punishing, but it is never empty, and the stories you create through failure and adaptation are the kind you remember for years."
+}

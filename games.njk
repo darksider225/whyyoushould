@@ -2,38 +2,37 @@
 layout: layouts/base.njk
 title: Games
 description: Video game reviews on Whyyoushould. From indie gems to AAA masterpieces. Honest recommendations for your gaming time.
-pagination:
-  data: collections.games
-  size: 100
 ---
 
-<div style="margin-bottom: 3rem;">
+<div class="collection-header">
   <h1>Games</h1>
-  <p style="color: var(--text-secondary); font-size: 1.125rem;">{{ collections.games.length }} definitive gaming recommendations</p>
+  <p>Definitive gaming recommendations</p>
 </div>
 
-<div class="reviews-grid">
-  {% for review in pagination.items %}
-  <a href="{{ review.url }}" class="review-card">
-    <div class="review-card-header">
-      <div>
-        <h3 class="review-card-title">{{ review.data.title }}</h3>
-        <p style="margin-bottom: 0; color: var(--text-tertiary); font-size: 0.875rem;">{{ review.data.releaseYear }} • {{ review.data.genre[0] }}</p>
+<section class="collection-grid">
+  {% for review in reviews %}
+  {% if review.type === "game" %}
+  <a href="/reviews/{{ review.slug }}/" class="collection-card">
+    {% if review.poster_path %}
+    <div class="collection-card-poster">
+      <img src="{{ review.poster_path }}" alt="{{ review.title }}" />
+      <div class="collection-card-verdict verdict-{{ review.verdict | verdictClass }}">
+        <span class="verdict-text">{{ review.verdict }}</span>
       </div>
-      <div class="verdict-badge {{ review.data.verdict | verdictClass }}">{{ review.data.verdict }}</div>
     </div>
-    <div class="review-card-rating">{{ review.data.rating }}<span style="font-size: 0.7em; color: var(--text-secondary);">/10</span></div>
-    <p class="review-card-why">{{ review.data.why }}</p>
-    <div class="review-card-meta">
-      <span>
-        <strong>Developer</strong>
-        {{ review.data.creator }}
-      </span>
-      <span>
-        <strong>Playtime</strong>
-        {{ review.data.timeInvestment }}
-      </span>
+    {% else %}
+    <div class="collection-card-poster-placeholder">??</div>
+    {% endif %}
+    <div class="collection-card-info">
+      <h2>{{ review.title }}</h2>
+      <p class="collection-card-creator">{{ review.creator }}</p>
+      <div class="collection-card-meta">
+        <span class="collection-card-rating">{{ review.rating }}/10</span>
+        <span class="collection-card-year">{{ review.releaseYear }}</span>
+      </div>
+      <p class="collection-card-excerpt">{{ review.why }}</p>
     </div>
   </a>
+  {% endif %}
   {% endfor %}
-</div>
+</section>

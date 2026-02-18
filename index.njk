@@ -7,14 +7,14 @@ description: Decisive reviews for movies and games. Why should you spend your ti
 <section class="hero">
   <h1>Why should you watch or play this?</h1>
   <p class="hero-tagline">We don't waste your time with filler. Just decisive recommendations backed by solid reasoning.</p>
-  <p class="hero-subtext">Reviews of movies and games worth your attention.</p>
+  <p class="hero-subtext">Reviews of movies, games, and TV shows worth your attention.</p>
 </section>
 
 <section class="verdict-legend">
   <div class="legend-item">
     <div class="legend-badge must">MUST</div>
     <div class="legend-text">
-      <h4>Must Play / Must Watch</h4>
+      <h4>Must Watch</h4>
       <p>Essential. Clear recommendation. Stop reading and go enjoy it.</p>
     </div>
   </div>
@@ -26,102 +26,300 @@ description: Decisive reviews for movies and games. Why should you spend your ti
     </div>
   </div>
   <div class="legend-item">
+    <div class="legend-badge average">AVERAGE</div>
+    <div class="legend-text">
+      <h4>Average</h4>
+      <p>Fine, but not a priority unless you're already interested.</p>
+    </div>
+  </div>
+  <div class="legend-item">
     <div class="legend-badge skip">SKIP</div>
     <div class="legend-text">
-      <h4>Skip It</h4>
+      <h4>Skip</h4>
       <p>Not recommended. Your time is better spent elsewhere.</p>
     </div>
   </div>
 </section>
 
-{% set featured = collections.reviews[0] %}
+{% set featured = reviews[0] %}
 {% if featured %}
-<section class="featured">
-  <p class="featured-label">This Week's Definitive Verdict</p>
-  <h2>{{ featured.data.title }}</h2>
-  <p class="featured-excerpt">{{ featured.data.why }}</p>
-  <a href="{{ featured.url }}" class="btn-secondary">Read the full review →</a>
+<section class="featured-hero">
+  <div class="featured-content">
+    <div class="featured-info">
+      <p class="featured-label">Latest Review</p>
+      <h2>{{ featured.title }}</h2>
+      <p class="featured-excerpt">{{ featured.why }}</p>
+      <div class="featured-meta">
+        <span class="featured-type">{{ featured.type | capitalize }}</span>
+        <span class="featured-year">{{ featured.releaseYear }}</span>
+        <span class="featured-rating verdict-{{ featured.verdict | verdictClass }}">{{ featured.verdict }}</span>
+      </div>
+      <a href="/reviews/{{ featured.slug }}/" class="btn-primary">Read the full review ?</a>
+    </div>
+    {% if featured.card_image or featured.poster_path %}
+    <div class="featured-poster">
+      <img src="{{ featured.card_image or featured.poster_path }}" alt="Image for {{ featured.title }}" />
+    </div>
+    {% endif %}
+  </div>
 </section>
 {% endif %}
 
-<section class="reviews-container">
-  <div class="reviews-section">
+<!-- Latest Reviews Carousel -->
+<section class="carousel-section">
+  <div class="carousel-header">
     <h2>Latest Reviews</h2>
-    <div class="reviews-grid">
-      {% for review in collections.reviews | slice(0, 6) %}
-      <a href="{{ review.url }}" class="review-card">
-        <div class="review-card-header">
-          <h3 class="review-card-title">{{ review.data.title }}</h3>
-          <div class="verdict-badge {{ review.data.verdict | verdictClass }}">{{ review.data.verdict }}</div>
-        </div>
-        <div class="review-card-rating">{{ review.data.rating }}<span style="font-size: 0.7em; color: var(--text-secondary);">/10</span></div>
-        <p class="review-card-why">{{ review.data.why }}</p>
-        <div class="review-card-meta">
-          <span>
-            <strong>{{ review.data.type }}</strong>
-            {{ review.data.releaseYear }}
-          </span>
-          <span>
-            <strong>Released</strong>
-            {{ review.data.reviewDate | readableDate }}
-          </span>
-        </div>
-      </a>
-      {% endfor %}
-    </div>
   </div>
-
-  <div class="reviews-section">
-    <h2>Movies</h2>
-    <div class="reviews-grid">
-      {% for review in collections.movies | slice(0, 4) %}
-      <a href="{{ review.url }}" class="review-card">
-        <div class="review-card-header">
-          <h3 class="review-card-title">{{ review.data.title }}</h3>
-          <div class="verdict-badge {{ review.data.verdict | verdictClass }}">{{ review.data.verdict }}</div>
-        </div>
-        <div class="review-card-rating">{{ review.data.rating }}<span style="font-size: 0.7em; color: var(--text-secondary);">/10</span></div>
-        <p class="review-card-why">{{ review.data.why }}</p>
-        <div class="review-card-meta">
-          <span>
-            <strong>Runtime</strong>
-            {{ review.data.timeInvestment }}
-          </span>
-          <span>
-            <strong>Director</strong>
-            {{ review.data.creator }}
-          </span>
-        </div>
-      </a>
+  <div class="carousel" id="latest-carousel">
+    <div class="carousel-track">
+      {% for review in reviews %}
+      <div class="carousel-item">
+        <a href="/reviews/{{ review.slug }}/" class="carousel-card">
+          {% if review.card_image or review.poster_path %}
+          <div class="carousel-poster">
+            <img src="{{ review.card_image or review.poster_path }}" alt="{{ review.title }}" />
+            <div class="carousel-verdict verdict-{{ review.verdict | verdictClass }}">
+              {{ review.verdict }}
+            </div>
+          </div>
+          {% else %}
+          <div class="carousel-poster-placeholder">
+            <span>{{ review.type | capitalize }}</span>
+          </div>
+          {% endif %}
+          <div class="carousel-info">
+            <h3>{{ review.title }}</h3>
+            <p class="carousel-rating">{{ review.rating }}/10</p>
+            <p class="carousel-creator">{{ review.creator }}</p>
+            <p class="carousel-highlight">{{ review.excerpt or review.why }}</p>
+          </div>
+        </a>
+      </div>
       {% endfor %}
     </div>
-    <a href="/movies/" class="btn-secondary">View all movies →</a>
-  </div>
-
-  <div class="reviews-section">
-    <h2>Games</h2>
-    <div class="reviews-grid">
-      {% for review in collections.games | slice(0, 4) %}
-      <a href="{{ review.url }}" class="review-card">
-        <div class="review-card-header">
-          <h3 class="review-card-title">{{ review.data.title }}</h3>
-          <div class="verdict-badge {{ review.data.verdict | verdictClass }}">{{ review.data.verdict }}</div>
-        </div>
-        <div class="review-card-rating">{{ review.data.rating }}<span style="font-size: 0.7em; color: var(--text-secondary);">/10</span></div>
-        <p class="review-card-why">{{ review.data.why }}</p>
-        <div class="review-card-meta">
-          <span>
-            <strong>Developer</strong>
-            {{ review.data.creator }}
-          </span>
-          <span>
-            <strong>Playtime</strong>
-            {{ review.data.timeInvestment }}
-          </span>
-        </div>
-      </a>
-      {% endfor %}
-    </div>
-    <a href="/games/" class="btn-secondary">View all games →</a>
+    <button class="carousel-nav carousel-nav-prev" aria-label="Previous"><span aria-hidden="true">&#8249;</span></button>
+    <button class="carousel-nav carousel-nav-next" aria-label="Next"><span aria-hidden="true">&#8250;</span></button>
   </div>
 </section>
+
+<!-- Movies Carousel -->
+<section class="carousel-section">
+  <div class="carousel-header">
+    <h2>Movies</h2>
+    <a href="/movies/" class="view-all-link">View All ?</a>
+  </div>
+  <div class="carousel" id="movies-carousel">
+    <div class="carousel-track">
+      {% for movie in reviews %}
+      {% if movie.type === "movie" %}
+      <div class="carousel-item">
+        <a href="/reviews/{{ movie.slug }}/" class="carousel-card">
+          {% if movie.card_image or movie.poster_path %}
+          <div class="carousel-poster">
+            <img src="{{ movie.card_image or movie.poster_path }}" alt="{{ movie.title }}" />
+            <div class="carousel-verdict verdict-{{ movie.verdict | verdictClass }}">
+              {{ movie.verdict }}
+            </div>
+          </div>
+          {% else %}
+          <div class="carousel-poster-placeholder">??</div>
+          {% endif %}
+          <div class="carousel-info">
+            <h3>{{ movie.title }}</h3>
+            <p class="carousel-rating">{{ movie.rating }}/10</p>
+            <p class="carousel-creator">{{ movie.creator }}</p>
+            <p class="carousel-highlight">{{ movie.excerpt or movie.why }}</p>
+          </div>
+        </a>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <button class="carousel-nav carousel-nav-prev" aria-label="Previous"><span aria-hidden="true">&#8249;</span></button>
+    <button class="carousel-nav carousel-nav-next" aria-label="Next"><span aria-hidden="true">&#8250;</span></button>
+  </div>
+</section>
+
+<!-- TV Shows Carousel -->
+<section class="carousel-section">
+  <div class="carousel-header">
+    <h2>TV Shows</h2>
+    <a href="/tvshows/" class="view-all-link">View All ?</a>
+  </div>
+  <div class="carousel" id="tvshows-carousel">
+    <div class="carousel-track">
+      {% for show in reviews %}
+      {% if show.type === "tv" %}
+      <div class="carousel-item">
+        <a href="/reviews/{{ show.slug }}/" class="carousel-card">
+          {% if show.card_image or show.poster_path %}
+          <div class="carousel-poster">
+            <img src="{{ show.card_image or show.poster_path }}" alt="{{ show.title }}" />
+            <div class="carousel-verdict verdict-{{ show.verdict | verdictClass }}">
+              {{ show.verdict }}
+            </div>
+          </div>
+          {% else %}
+          <div class="carousel-poster-placeholder">??</div>
+          {% endif %}
+          <div class="carousel-info">
+            <h3>{{ show.title }}</h3>
+            <p class="carousel-rating">{{ show.rating }}/10</p>
+            <p class="carousel-creator">{{ show.creator }}</p>
+            <p class="carousel-highlight">{{ show.excerpt or show.why }}</p>
+          </div>
+        </a>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <button class="carousel-nav carousel-nav-prev" aria-label="Previous"><span aria-hidden="true">&#8249;</span></button>
+    <button class="carousel-nav carousel-nav-next" aria-label="Next"><span aria-hidden="true">&#8250;</span></button>
+  </div>
+</section>
+
+<!-- Games Carousel -->
+<section class="carousel-section">
+  <div class="carousel-header">
+    <h2>Games</h2>
+    <a href="/games/" class="view-all-link">View All ?</a>
+  </div>
+  <div class="carousel" id="games-carousel">
+    <div class="carousel-track">
+      {% for game in reviews %}
+      {% if game.type === "game" %}
+      <div class="carousel-item">
+        <a href="/reviews/{{ game.slug }}/" class="carousel-card">
+          {% if game.card_image or game.poster_path %}
+          <div class="carousel-poster">
+            <img src="{{ game.card_image or game.poster_path }}" alt="{{ game.title }}" />
+            <div class="carousel-verdict verdict-{{ game.verdict | verdictClass }}">
+              {{ game.verdict }}
+            </div>
+          </div>
+          {% else %}
+          <div class="carousel-poster-placeholder">??</div>
+          {% endif %}
+          <div class="carousel-info">
+            <h3>{{ game.title }}</h3>
+            <p class="carousel-rating">{{ game.rating }}/10</p>
+            <p class="carousel-creator">{{ game.creator }}</p>
+            <p class="carousel-highlight">{{ game.excerpt or game.why }}</p>
+          </div>
+        </a>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+    <button class="carousel-nav carousel-nav-prev" aria-label="Previous"><span aria-hidden="true">&#8249;</span></button>
+    <button class="carousel-nav carousel-nav-next" aria-label="Next"><span aria-hidden="true">&#8250;</span></button>
+  </div>
+</section>
+
+<script>
+  // Carousel functionality: native touch scrolling + nav buttons + autoplay
+  function setupCarousels() {
+    document.querySelectorAll('.carousel').forEach((carousel) => {
+      const track = carousel.querySelector('.carousel-track');
+      const prevBtn = carousel.querySelector('.carousel-nav-prev');
+      const nextBtn = carousel.querySelector('.carousel-nav-next');
+
+      if (!track || !prevBtn || !nextBtn) {
+        return;
+      }
+
+      let userInteracting = false;
+      let interactionTimeout = null;
+      let autoTimer = null;
+
+      const getStep = () => {
+        const firstItem = track.querySelector('.carousel-item');
+        if (!firstItem) {
+          return 320;
+        }
+
+        const gap = parseFloat(getComputedStyle(track).gap || '0');
+        return firstItem.getBoundingClientRect().width + gap;
+      };
+
+      const updateButtons = () => {
+        const maxLeft = track.scrollWidth - track.clientWidth;
+        const atStart = track.scrollLeft <= 2;
+        const atEnd = track.scrollLeft >= maxLeft - 2;
+
+        prevBtn.disabled = atStart;
+        nextBtn.disabled = atEnd;
+        prevBtn.style.opacity = atStart ? '0.35' : '1';
+        nextBtn.style.opacity = atEnd ? '0.35' : '1';
+      };
+
+      const scrollByStep = (direction) => {
+        track.scrollBy({
+          left: direction * getStep(),
+          behavior: 'smooth',
+        });
+      };
+
+      const setInteracting = () => {
+        userInteracting = true;
+        clearTimeout(interactionTimeout);
+        interactionTimeout = setTimeout(() => {
+          userInteracting = false;
+        }, 2500);
+      };
+
+      const stopAutoPlay = () => {
+        if (autoTimer) {
+          clearInterval(autoTimer);
+          autoTimer = null;
+        }
+      };
+
+      const startAutoPlay = () => {
+        stopAutoPlay();
+        autoTimer = setInterval(() => {
+          if (userInteracting) {
+            return;
+          }
+
+          const maxLeft = track.scrollWidth - track.clientWidth;
+          const nearEnd = track.scrollLeft >= maxLeft - 4;
+
+          if (nearEnd) {
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            scrollByStep(1);
+          }
+        }, 4200);
+      };
+
+      prevBtn.addEventListener('click', () => {
+        setInteracting();
+        scrollByStep(-1);
+      });
+
+      nextBtn.addEventListener('click', () => {
+        setInteracting();
+        scrollByStep(1);
+      });
+
+      track.addEventListener('scroll', updateButtons, { passive: true });
+      track.addEventListener('touchstart', setInteracting, { passive: true });
+      track.addEventListener('pointerdown', setInteracting, { passive: true });
+
+      carousel.addEventListener('mouseenter', stopAutoPlay);
+      carousel.addEventListener('mouseleave', startAutoPlay);
+      carousel.addEventListener('focusin', stopAutoPlay);
+      carousel.addEventListener('focusout', startAutoPlay);
+
+      updateButtons();
+      startAutoPlay();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupCarousels);
+  } else {
+    setupCarousels();
+  }
+</script>
