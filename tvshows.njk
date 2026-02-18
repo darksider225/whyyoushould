@@ -15,7 +15,11 @@ description: Decisive reviews for the best TV shows
   <a href="{{ ('/reviews/' ~ show.slug ~ '/') | url }}" class="collection-card">
     {% if show.poster_path %}
     <div class="collection-card-poster">
-      <img src="{{ show.poster_path }}" alt="{{ show.title }}" />
+      <img
+        src="{{ show.poster_path }}"
+        alt="{{ show.title }}"
+        onerror="this.onerror=null;this.src='{{ '/images/placeholders/poster.svg' | url }}';"
+      />
       <div class="collection-card-verdict verdict-{{ show.verdict | verdictClass }}">
         <span class="verdict-text">{{ show.verdict }}</span>
       </div>

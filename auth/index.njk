@@ -1,0 +1,50 @@
+---
+layout: layouts/base.njk
+title: Account Access
+description: Create your account, sign in, or recover access.
+authPage: true
+authView: auth
+---
+
+<section class="auth-shell">
+  <div class="auth-header">
+    <h1>Account Access</h1>
+    <p>Create an account, sign in, or recover your password.</p>
+  </div>
+
+  <div id="auth-status" class="auth-status" aria-live="polite"></div>
+
+  <div class="auth-grid">
+    <section class="auth-card">
+      <h2>Create Account</h2>
+      <form id="signup-form" class="auth-form">
+        <label for="signup-email">Email</label>
+        <input id="signup-email" name="email" type="email" autocomplete="email" required>
+        <label for="signup-password">Password</label>
+        <input id="signup-password" name="password" type="password" autocomplete="new-password" required minlength="8">
+        <button type="submit" class="btn-primary">Sign Up</button>
+      </form>
+    </section>
+
+    <section class="auth-card">
+      <h2>Sign In</h2>
+      <form id="login-form" class="auth-form">
+        <label for="login-email">Email</label>
+        <input id="login-email" name="email" type="email" autocomplete="email" required>
+        <label for="login-password">Password</label>
+        <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+        <button type="submit" class="btn-primary">Sign In</button>
+      </form>
+      <button id="google-signin-btn" type="button" class="btn-secondary auth-google-btn">Continue with Google</button>
+    </section>
+
+    <section class="auth-card">
+      <h2>Password Recovery</h2>
+      <form id="forgot-form" class="auth-form">
+        <label for="forgot-email">Email</label>
+        <input id="forgot-email" name="email" type="email" autocomplete="email" required>
+        <button type="submit" class="btn-primary">Send Reset Link</button>
+      </form>
+    </section>
+  </div>
+</section>

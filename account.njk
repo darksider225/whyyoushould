@@ -1,0 +1,32 @@
+---
+layout: layouts/base.njk
+title: Account
+description: Manage your account session.
+authPage: true
+authView: account
+---
+
+<section class="auth-shell">
+  <div class="auth-header">
+    <h1>Your Account</h1>
+    <p>Session status and account access.</p>
+  </div>
+
+  <div id="account-status" class="auth-status" aria-live="polite"></div>
+
+  <section id="account-loading" class="auth-card auth-card-single">
+    <p>Loading your account session...</p>
+  </section>
+
+  <section id="account-guest" class="auth-card auth-card-single" hidden>
+    <h2>Not Signed In</h2>
+    <p>You need to sign in to access account features.</p>
+    <a class="btn-primary" href="{{ '/auth/' | url }}">Go to Sign In</a>
+  </section>
+
+  <section id="account-user" class="auth-card auth-card-single" hidden>
+    <h2>Signed In</h2>
+    <p><strong>Email:</strong> <span id="account-email"></span></p>
+    <button id="signout-btn" type="button" class="btn-secondary">Sign Out</button>
+  </section>
+</section>

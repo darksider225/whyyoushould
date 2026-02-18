@@ -134,6 +134,7 @@ module.exports = function(eleventyConfig) {
   // Passthrough copies
   eleventyConfig.addPassthroughCopy("css");
   eleventyConfig.addPassthroughCopy("images");
+  eleventyConfig.addPassthroughCopy("js");
 
   eleventyConfig.addCollection("reviewsData", function() {
     return getEnrichedReviews();

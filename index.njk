@@ -58,7 +58,11 @@ description: Decisive reviews for movies and games. Why should you spend your ti
     </div>
     {% if featured.card_image or featured.poster_path %}
     <div class="featured-poster">
-      <img src="{{ featured.card_image or featured.poster_path }}" alt="Image for {{ featured.title }}" />
+      <img
+        src="{{ featured.card_image or featured.poster_path }}"
+        alt="Image for {{ featured.title }}"
+        onerror="this.onerror=null;this.src='{{ '/images/placeholders/landscape.svg' | url }}';"
+      />
     </div>
     {% endif %}
   </div>
@@ -77,7 +81,11 @@ description: Decisive reviews for movies and games. Why should you spend your ti
         <a href="{{ ('/reviews/' ~ review.slug ~ '/') | url }}" class="carousel-card">
           {% if review.card_image or review.poster_path %}
           <div class="carousel-poster">
-            <img src="{{ review.card_image or review.poster_path }}" alt="{{ review.title }}" />
+            <img
+              src="{{ review.card_image or review.poster_path }}"
+              alt="{{ review.title }}"
+              onerror="this.onerror=null;this.src='{{ '/images/placeholders/landscape.svg' | url }}';"
+            />
             <div class="carousel-verdict verdict-{{ review.verdict | verdictClass }}">
               {{ review.verdict }}
             </div>
@@ -116,7 +124,11 @@ description: Decisive reviews for movies and games. Why should you spend your ti
         <a href="{{ ('/reviews/' ~ movie.slug ~ '/') | url }}" class="carousel-card">
           {% if movie.card_image or movie.poster_path %}
           <div class="carousel-poster">
-            <img src="{{ movie.card_image or movie.poster_path }}" alt="{{ movie.title }}" />
+            <img
+              src="{{ movie.card_image or movie.poster_path }}"
+              alt="{{ movie.title }}"
+              onerror="this.onerror=null;this.src='{{ '/images/placeholders/landscape.svg' | url }}';"
+            />
             <div class="carousel-verdict verdict-{{ movie.verdict | verdictClass }}">
               {{ movie.verdict }}
             </div>
@@ -154,7 +166,11 @@ description: Decisive reviews for movies and games. Why should you spend your ti
         <a href="{{ ('/reviews/' ~ show.slug ~ '/') | url }}" class="carousel-card">
           {% if show.card_image or show.poster_path %}
           <div class="carousel-poster">
-            <img src="{{ show.card_image or show.poster_path }}" alt="{{ show.title }}" />
+            <img
+              src="{{ show.card_image or show.poster_path }}"
+              alt="{{ show.title }}"
+              onerror="this.onerror=null;this.src='{{ '/images/placeholders/landscape.svg' | url }}';"
+            />
             <div class="carousel-verdict verdict-{{ show.verdict | verdictClass }}">
               {{ show.verdict }}
             </div>
@@ -192,7 +208,11 @@ description: Decisive reviews for movies and games. Why should you spend your ti
         <a href="{{ ('/reviews/' ~ game.slug ~ '/') | url }}" class="carousel-card">
           {% if game.card_image or game.poster_path %}
           <div class="carousel-poster">
-            <img src="{{ game.card_image or game.poster_path }}" alt="{{ game.title }}" />
+            <img
+              src="{{ game.card_image or game.poster_path }}"
+              alt="{{ game.title }}"
+              onerror="this.onerror=null;this.src='{{ '/images/placeholders/landscape.svg' | url }}';"
+            />
             <div class="carousel-verdict verdict-{{ game.verdict | verdictClass }}">
               {{ game.verdict }}
             </div>

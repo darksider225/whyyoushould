@@ -1,0 +1,28 @@
+---
+layout: layouts/base.njk
+title: Reset Password
+description: Set a new password for your account.
+authPage: true
+authView: reset
+---
+
+<section class="auth-shell">
+  <div class="auth-header">
+    <h1>Reset Password</h1>
+    <p>Enter your new password below.</p>
+  </div>
+
+  <div id="reset-status" class="auth-status" aria-live="polite"></div>
+
+  <section class="auth-card auth-card-single">
+    <form id="reset-form" class="auth-form">
+      <label for="new-password">New Password</label>
+      <input id="new-password" name="password" type="password" autocomplete="new-password" required minlength="8">
+
+      <label for="confirm-password">Confirm Password</label>
+      <input id="confirm-password" name="confirmPassword" type="password" autocomplete="new-password" required minlength="8">
+
+      <button type="submit" class="btn-primary">Update Password</button>
+    </form>
+  </section>
+</section>

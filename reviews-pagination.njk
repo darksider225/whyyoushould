@@ -16,6 +16,7 @@ layout: layouts/base.njk
           src="{{ review.poster_path }}"
           alt="Poster for {{ review.title }}"
           class="poster-image"
+          onerror="this.onerror=null;this.src='{{ '/images/placeholders/poster.svg' | url }}';"
         />
       </div>
     </aside>
