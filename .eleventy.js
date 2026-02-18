@@ -1,6 +1,7 @@
 module.exports = function(eleventyConfig) {
   // Load environment variables
   require("dotenv").config();
+  const configuredPathPrefix = process.env.ELEVENTY_PATH_PREFIX || "/";
 
   const fs = require("fs");
   const path = require("path");
@@ -168,6 +169,7 @@ module.exports = function(eleventyConfig) {
   });
 
   return {
+    pathPrefix: configuredPathPrefix,
     dir: {
       input: ".",
       includes: "_includes",

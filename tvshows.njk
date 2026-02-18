@@ -12,7 +12,7 @@ description: Decisive reviews for the best TV shows
 <section class="collection-grid">
   {% for show in reviews %}
   {% if show.type === "tv" %}
-  <a href="/reviews/{{ show.slug }}/" class="collection-card">
+  <a href="{{ ('/reviews/' ~ show.slug ~ '/') | url }}" class="collection-card">
     {% if show.poster_path %}
     <div class="collection-card-poster">
       <img src="{{ show.poster_path }}" alt="{{ show.title }}" />

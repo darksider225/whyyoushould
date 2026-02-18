@@ -1,4 +1,4 @@
----
+﻿---
 layout: layouts/base.njk
 title: All Reviews
 description: Browse all movie and game reviews on Whyyoushould. Filter by type and sort by rating or release date.
@@ -11,11 +11,11 @@ description: Browse all movie and game reviews on Whyyoushould. Filter by type a
 
 <div class="reviews-grid">
   {% for review in reviews %}
-  <a href="/reviews/{{ review.slug }}/" class="review-card">
+  <a href="{{ ('/reviews/' ~ review.slug ~ '/') | url }}" class="review-card">
     <div class="review-card-header">
       <div>
         <h3 class="review-card-title">{{ review.title }}</h3>
-        <p style="margin-bottom: 0; color: var(--text-tertiary); font-size: 0.875rem;">{{ review.type | capitalize }} � {{ review.releaseYear }}</p>
+        <p style="margin-bottom: 0; color: var(--text-tertiary); font-size: 0.875rem;">{{ review.type | capitalize }} • {{ review.releaseYear }}</p>
       </div>
       <div class="verdict-badge {{ review.verdict | verdictClass }}">{{ review.verdict }}</div>
     </div>
@@ -34,3 +34,4 @@ description: Browse all movie and game reviews on Whyyoushould. Filter by type a
   </a>
   {% endfor %}
 </div>
+

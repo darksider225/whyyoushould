@@ -54,7 +54,7 @@ description: Decisive reviews for movies and games. Why should you spend your ti
         <span class="featured-year">{{ featured.releaseYear }}</span>
         <span class="featured-rating verdict-{{ featured.verdict | verdictClass }}">{{ featured.verdict }}</span>
       </div>
-      <a href="/reviews/{{ featured.slug }}/" class="btn-primary">Read the full review ?</a>
+      <a href="{{ ('/reviews/' ~ featured.slug ~ '/') | url }}" class="btn-primary">Read the full review ?</a>
     </div>
     {% if featured.card_image or featured.poster_path %}
     <div class="featured-poster">
@@ -74,7 +74,7 @@ description: Decisive reviews for movies and games. Why should you spend your ti
     <div class="carousel-track">
       {% for review in reviews %}
       <div class="carousel-item">
-        <a href="/reviews/{{ review.slug }}/" class="carousel-card">
+        <a href="{{ ('/reviews/' ~ review.slug ~ '/') | url }}" class="carousel-card">
           {% if review.card_image or review.poster_path %}
           <div class="carousel-poster">
             <img src="{{ review.card_image or review.poster_path }}" alt="{{ review.title }}" />
@@ -106,14 +106,14 @@ description: Decisive reviews for movies and games. Why should you spend your ti
 <section class="carousel-section">
   <div class="carousel-header">
     <h2>Movies</h2>
-    <a href="/movies/" class="view-all-link">View All ?</a>
+    <a href="{{ '/movies/' | url }}" class="view-all-link">View All ?</a>
   </div>
   <div class="carousel" id="movies-carousel">
     <div class="carousel-track">
       {% for movie in reviews %}
       {% if movie.type === "movie" %}
       <div class="carousel-item">
-        <a href="/reviews/{{ movie.slug }}/" class="carousel-card">
+        <a href="{{ ('/reviews/' ~ movie.slug ~ '/') | url }}" class="carousel-card">
           {% if movie.card_image or movie.poster_path %}
           <div class="carousel-poster">
             <img src="{{ movie.card_image or movie.poster_path }}" alt="{{ movie.title }}" />
@@ -144,14 +144,14 @@ description: Decisive reviews for movies and games. Why should you spend your ti
 <section class="carousel-section">
   <div class="carousel-header">
     <h2>TV Shows</h2>
-    <a href="/tvshows/" class="view-all-link">View All ?</a>
+    <a href="{{ '/tvshows/' | url }}" class="view-all-link">View All ?</a>
   </div>
   <div class="carousel" id="tvshows-carousel">
     <div class="carousel-track">
       {% for show in reviews %}
       {% if show.type === "tv" %}
       <div class="carousel-item">
-        <a href="/reviews/{{ show.slug }}/" class="carousel-card">
+        <a href="{{ ('/reviews/' ~ show.slug ~ '/') | url }}" class="carousel-card">
           {% if show.card_image or show.poster_path %}
           <div class="carousel-poster">
             <img src="{{ show.card_image or show.poster_path }}" alt="{{ show.title }}" />
@@ -182,14 +182,14 @@ description: Decisive reviews for movies and games. Why should you spend your ti
 <section class="carousel-section">
   <div class="carousel-header">
     <h2>Games</h2>
-    <a href="/games/" class="view-all-link">View All ?</a>
+    <a href="{{ '/games/' | url }}" class="view-all-link">View All ?</a>
   </div>
   <div class="carousel" id="games-carousel">
     <div class="carousel-track">
       {% for game in reviews %}
       {% if game.type === "game" %}
       <div class="carousel-item">
-        <a href="/reviews/{{ game.slug }}/" class="carousel-card">
+        <a href="{{ ('/reviews/' ~ game.slug ~ '/') | url }}" class="carousel-card">
           {% if game.card_image or game.poster_path %}
           <div class="carousel-poster">
             <img src="{{ game.card_image or game.poster_path }}" alt="{{ game.title }}" />

@@ -12,7 +12,7 @@ description: Movie reviews on Whyyoushould. Streaming and theatrical recommendat
 <section class="collection-grid">
   {% for review in reviews %}
   {% if review.type === "movie" %}
-  <a href="/reviews/{{ review.slug }}/" class="collection-card">
+  <a href="{{ ('/reviews/' ~ review.slug ~ '/') | url }}" class="collection-card">
     {% if review.poster_path %}
     <div class="collection-card-poster">
       <img src="{{ review.poster_path }}" alt="{{ review.title }}" />
