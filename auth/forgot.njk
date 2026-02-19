@@ -1,0 +1,28 @@
+---
+layout: layouts/base.njk
+title: Recover Account
+description: Send a password recovery email.
+authPage: true
+authView: forgot
+---
+
+<section class="auth-shell">
+  <div class="auth-header">
+    <h1>Recover Account</h1>
+    <p>We’ll send you a reset link by email.</p>
+  </div>
+
+  <div class="auth-page-links">
+    <a href="{{ '/auth/login/' | url }}">Back to sign in</a>
+  </div>
+
+  <div id="auth-status" class="auth-status" aria-live="polite"></div>
+
+  <section class="auth-card auth-card-single">
+    <form id="forgot-form" class="auth-form">
+      <label for="forgot-email">Email</label>
+      <input id="forgot-email" name="email" type="email" autocomplete="email" required>
+      <button type="submit" class="btn-primary">Send Reset Link</button>
+    </form>
+  </section>
+</section>

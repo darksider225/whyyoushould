@@ -1450,7 +1450,7 @@ a:hover {
 
 /* Auth */
 .auth-shell {
-  max-width: 1100px;
+  max-width: 760px;
   margin: 0 auto;
 }
 
@@ -1492,8 +1492,8 @@ a:hover {
 
 .auth-card {
   border: 1px solid var(--border);
-  background: var(--surface);
-  padding: 1rem;
+  background: linear-gradient(180deg, #17171c 0%, #121216 100%);
+  padding: 1.25rem;
 }
 
 .auth-card h2 {
@@ -1504,7 +1504,31 @@ a:hover {
 }
 
 .auth-card-single {
-  max-width: 520px;
+  max-width: 560px;
+}
+
+.auth-home-card {
+  margin-top: 0.75rem;
+}
+
+.auth-link-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.auth-page-links {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.9rem;
+}
+
+.auth-page-links a {
+  color: var(--accent);
+  font-size: 0.95rem;
+}
+
+.auth-page-links a:hover {
+  color: var(--accent-light);
 }
 
 .auth-form {
@@ -1522,7 +1546,7 @@ a:hover {
 .auth-form input {
   width: 100%;
   border: 1px solid var(--border);
-  background: var(--bg);
+  background: #0d0d11;
   color: var(--text);
   padding: 0.65rem 0.75rem;
 }
@@ -1538,7 +1562,7 @@ a:hover {
 }
 
 @media (max-width: 900px) {
-  .auth-grid {
-    grid-template-columns: 1fr;
+  .auth-shell {
+    max-width: 100%;
   }
 }

@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+title: Create Account
+description: Create your account with email and password.
+authPage: true
+authView: signup
+---
+
+<section class="auth-shell">
+  <div class="auth-header">
+    <h1>Create Account</h1>
+    <p>Sign up to save your place for upcoming member features.</p>
+  </div>
+
+  <div class="auth-page-links">
+    <a href="{{ '/auth/login/' | url }}">Already have an account?</a>
+  </div>
+
+  <div id="auth-status" class="auth-status" aria-live="polite"></div>
+
+  <section class="auth-card auth-card-single">
+    <form id="signup-form" class="auth-form">
+      <label for="signup-email">Email</label>
+      <input id="signup-email" name="email" type="email" autocomplete="email" required>
+      <label for="signup-password">Password</label>
+      <input id="signup-password" name="password" type="password" autocomplete="new-password" required minlength="8">
+      <button type="submit" class="btn-primary">Sign Up</button>
+    </form>
+  </section>
+</section>

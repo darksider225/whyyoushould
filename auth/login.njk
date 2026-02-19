@@ -1,0 +1,32 @@
+---
+layout: layouts/base.njk
+title: Sign In
+description: Sign in to your account.
+authPage: true
+authView: login
+---
+
+<section class="auth-shell">
+  <div class="auth-header">
+    <h1>Sign In</h1>
+    <p>Access your account and continue.</p>
+  </div>
+
+  <div class="auth-page-links">
+    <a href="{{ '/auth/signup/' | url }}">Create Account</a>
+    <a href="{{ '/auth/forgot/' | url }}">Forgot Password?</a>
+  </div>
+
+  <div id="auth-status" class="auth-status" aria-live="polite"></div>
+
+  <section class="auth-card auth-card-single">
+    <form id="login-form" class="auth-form">
+      <label for="login-email">Email</label>
+      <input id="login-email" name="email" type="email" autocomplete="email" required>
+      <label for="login-password">Password</label>
+      <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+      <button type="submit" class="btn-primary">Sign In</button>
+    </form>
+    <button id="google-signin-btn" type="button" class="btn-secondary auth-google-btn">Continue with Google</button>
+  </section>
+</section>

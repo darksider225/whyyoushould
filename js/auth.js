@@ -38,7 +38,7 @@
       link.href = withBase("/account/");
     } else {
       link.textContent = "Sign In";
-      link.href = withBase("/auth/");
+      link.href = withBase("/auth/login/");
     }
   }
 
@@ -171,7 +171,7 @@
     signOutBtn?.addEventListener("click", async () => {
       setStatus("account-status", "Signing out...", "info");
       await client.auth.signOut();
-      window.location.href = withBase("/auth/");
+      window.location.href = withBase("/auth/login/");
     });
   }
 
@@ -235,7 +235,9 @@
     });
   }
 
-  if (authView === "auth") initAuthPage();
+  if (authView === "auth" || authView === "login" || authView === "signup" || authView === "forgot") {
+    initAuthPage();
+  }
   if (authView === "account") initAccountPage();
   if (authView === "callback") initCallbackPage();
   if (authView === "reset") initResetPage();
