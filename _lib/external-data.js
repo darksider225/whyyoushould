@@ -177,6 +177,17 @@ function stripCacheMeta(record) {
   return rest;
 }
 
+function mergeExternalWithLocalPriority(review, external) {
+  const merged = { ...review, ...external };
+  const localPriorityKeys = ["card_image", "poster_path", "official_description"];
+  for (const key of localPriorityKeys) {
+    if (review[key]) {
+      merged[key] = review[key];
+    }
+  }
+  return merged;
+}
+
 async function fetchTMDBMovie(title, year) {
   if (!TMDB_API_KEY) {
     console.warn(`TMDB_API_KEY not set. Skipping TMDB data for \"${title}\"`);
@@ -330,7 +341,7 @@ async function enrichReview(review) {
 
   if (validCachedRecord && !REFRESH) {
     console.log(`Using cached data for \"${review.title}\"`);
-    return { ...review, ...stripCacheMeta(cached) };
+    return mergeExternalWithLocalPriority(review, stripCacheMeta(cached));
   }
 
   if (cached && !REFRESH) {
@@ -361,15 +372,15 @@ async function enrichReview(review) {
       query_type: review.type,
     };
     saveCache(cache);
-    return { ...review, ...external };
+    return mergeExternalWithLocalPriority(review, external);
   }
 
   if (cached && typeof cached === "object") {
     console.warn(`Using stale cache fallback for "${review.title}"`);
-    return { ...review, ...stripCacheMeta(cached) };
+    return mergeExternalWithLocalPriority(review, stripCacheMeta(cached));
   }
 
-  return { ...review, ...external };
+  return mergeExternalWithLocalPriority(review, external);
 }
 
 async function enrichAllReviews(reviews) {

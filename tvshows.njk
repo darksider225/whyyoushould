@@ -31,7 +31,7 @@ description: Decisive reviews for the best TV shows
       <h2>{{ show.title }}</h2>
       <p class="collection-card-creator">{{ show.creator }}</p>
       <div class="collection-card-meta">
-        <span class="collection-card-rating">{{ show.rating }}/10</span>
+        <span class="collection-card-rating verdict-{{ show.verdict | verdictClass }}">{{ show.rating }}/10</span>
         <span class="collection-card-year">{{ show.releaseYear }}</span>
       </div>
       <p class="collection-card-excerpt">{{ show.why }}</p>

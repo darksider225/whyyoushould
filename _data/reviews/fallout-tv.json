@@ -1,75 +1,76 @@
 {
-  "slug": "fallout-tv",
-  "title": "Fallout",
-  "type": "tv",
-  "verdict": "Worth Your Time",
-  "why": "A sharp, stylish adaptation that balances brutal world-building, dark comedy, and character-driven emotion better than almost any game-to-TV project so far.",
-  "rating": 8.3,
-  "releaseYear": 2024,
-  "genre": [
-    "Sci-Fi",
-    "Action",
-    "Dark Comedy"
-  ],
-  "creator": "Geneva Robertson-Dworet, Graham Wagner",
-  "platform": [
-    "Prime Video"
-  ],
-  "reviewDate": "2026-02-18",
-  "timeInvestment": "8 episodes, about 45-60 minutes each",
-  "moodTags": [
-    "witty",
-    "violent",
-    "adventurous"
-  ],
-  "excerpt": "Fallout understands that the franchise works best when absurd humor and human tragedy share the same scene.",
-  "similarTitles": [
-    "The Last of Us",
-    "Silo",
-    "Westworld"
-  ],
-  "content": "Fallout feels like one of the first major game adaptations that truly understands the texture of its source without being trapped by it. It embraces retro-futurist satire, grotesque violence, and sincere character beats in a way that feels playful and grounded at the same time. The show follows multiple perspectives through the wasteland and keeps shifting tone from weirdly funny to unexpectedly moving, which mirrors the games at their best. What makes it work is not just production scale or fan references, but commitment to character psychology, moral ambiguity, and world rules that stay consistent even when the story gets wild.",
-  "hook": "I expected Fallout to be fun, but I did not expect it to feel this alive. By the time I finished the season, I had that rare mix of satisfaction and curiosity where you want more immediately, not because of a cliffhanger trick, but because the world actually feels worth returning to.",
-  "quickGist": "Set in a post-nuclear America split between idealized vault life and savage surface survival, Fallout follows three very different people whose paths slowly collide as secrets about power, control, and identity start surfacing. The show blends wasteland adventure, political satire, and moral gray-zone storytelling, so each episode feels like both a quest and a character study, with shifting alliances and consequences that make the world feel larger than any single plotline.",
-  "whatStandsOut": [
-    {
-      "label": "Characters",
-      "text": "Lucy, Maximus, and The Ghoul are a smart character triangle because each one represents a different belief system colliding with reality. Lucy starts as idealism in human form and gets forced to renegotiate what morality means in a world built on scarcity and propaganda. Maximus carries insecurity under armor and keeps making choices that reveal how institutions can shape personality before someone even realizes it. The Ghoul is the standout wildcard: cynical, brutal, and often hilarious, but never one-note. Their conflicting values give the show emotional traction far beyond simple good-versus-evil dynamics."
-    },
-    {
-      "label": "Writing",
-      "text": "The writing nails tonal contrast. One scene can be absurdly funny, and the next can pivot into cruelty or grief without feeling random. Dialogue has personality, especially in moments where characters pretend to be in control while clearly improvising under pressure. The pacing also helps: episodes move fast enough to stay bingeable, but they pause for fallout (personal and political) after major events. That rhythm keeps the season from feeling like pure action montage and gives choices real weight."
-    },
-    {
-      "label": "Episodes",
-      "text": "The best episodes are the ones that reveal hidden layers of the world while pushing character identity to a breaking point. Mid-season chapters that explore vault mythology and corporate-era backstory are especially strong, because they show that the wasteland did not appear from nowhere, it was manufactured by choices, ideology, and profit. The show is most effective when action and revelation arrive together: a fight, a joke, then a hard truth that reframes what you thought you understood."
-    }
-  ],
-  "ratingsSnapshot": [
-    {
-      "label": "IMDb",
-      "value": "8.3/10"
-    },
-    {
-      "label": "Rotten Tomatoes",
-      "value": "94% critics, 90% audience"
-    },
-    {
-      "label": "Metacritic",
-      "value": "73/100"
-    }
-  ],
-  "ratingsSummary": "Those numbers show strong momentum from both critics and viewers, with critics especially positive on tone and adaptation quality. Averaging IMDb, Rotten Tomatoes critics, and Metacritic yields about 8.3/10, which places it in Worth Your Time and reflects a show that is widely liked even if not universally hailed as flawless.",
-  "criticsVoice": "Critical consensus has been that Fallout is one of the better modern adaptations of game material because it captures franchise identity without becoming fan-service-only television. Reviewers from outlets like Variety, The Hollywood Reporter, and IGN praised production design, Walton Goggins' performance, and the confidence of the world-building. The most common criticism is unevenness in pacing and emotional depth between storylines, especially when one arc gets more momentum than another. Even then, most critics agree the season is smart, entertaining, and a promising long-term series foundation.",
-  "audienceVoice": "Audience reaction has been heavily positive, especially among people who feared another shallow game adaptation. Fans talk a lot about tone consistency: the show feels like Fallout because it balances comedy, violence, and melancholy in one universe. Online discussion also highlights bingeability and character chemistry, with The Ghoul becoming an instant favorite for many viewers. Some fans of specific game eras debate lore details, but overall sentiment trends toward relief and excitement, with many people calling it a show that works for both longtime players and newcomers.",
-  "whyYouShouldWatch": [
-    "The emotional payoff across the season is stronger than expected for a franchise known mostly for world flavor. You start with characters who seem easy to categorize, then watch those assumptions erode episode by episode. Lucy's optimism, for example, is not simply rewarded or punished; it is reshaped. That ongoing internal shift creates a satisfying long-arc experience where growth feels earned instead of scripted to hit obvious beats.",
-    "It is highly bingeable without being empty calories. Episodes usually end with enough new information, risk, or moral complication to pull you into the next one, but they are structured around character consequence rather than just cliffhanger mechanics. You get momentum and substance together, which is rare. The show understands that binge pacing works best when each chapter has its own identity while still feeding a bigger thematic engine.",
-    "Culturally, it is a useful case study in adaptation done right. Instead of copying game missions scene by scene, it translates tone, satire, and atmosphere into television grammar. That makes it a conversation piece even outside fandom circles. If you care about media adaptation quality, this show offers concrete examples of what to preserve, what to reinvent, and how to keep newcomers engaged without flattening source complexity.",
-    "The world-building has depth beyond production aesthetics. Yes, the props, signage, costumes, and retro-futurist design are excellent, but the stronger achievement is systems thinking. The show keeps asking who benefits from fear, who controls information, and how institutions survive after catastrophe by rewriting history. That social and political subtext gives the wasteland more weight than a generic post-apocalyptic playground.",
-    "It has strong rewatch value because tonal and thematic clues are seeded early. On first watch, you track survival and mystery. On second watch, you notice how character posture, tiny dialogue choices, and background details foreshadow bigger reveals. The show rewards attention without becoming homework, which is exactly the balance this genre needs."
-  ],
-  "miniAnecdote": "I watched two episodes planning to stop, then suddenly it was past midnight and I was still going because every time I thought I understood a character, the next scene shifted my perspective. That pull was not hype-driven; it was story confidence.",
-  "practicalTips": "This works best in short binge clusters, like two episodes at a time, so tonal shifts have space to land without feeling rushed. Subtitles help because the show mixes accents, fast dialogue, and occasional background exposition. Watch when you can focus, since visual details and throwaway lines often matter later. If you are new to Fallout, do not worry about game lore homework; the season is built to onboard first-time viewers. Good sound setup helps because atmosphere and score cues do a lot of heavy lifting.",
-  "finalNudge": "If you want a series that is entertaining on the surface but still has real thematic bite, Fallout is a solid pick. It is funny, strange, violent, and surprisingly human, and it leaves you with enough questions to care about what comes next."
+    "slug":  "fallout-tv",
+    "title":  "Fallout",
+    "type":  "tv",
+    "verdict":  "Worth Your Time",
+    "why":  "A sharp, stylish adaptation that balances brutal world-building, dark comedy, and character-driven emotion better than almost any game-to-TV project so far.",
+    "rating":  8.3,
+    "releaseYear":  2024,
+    "genre":  [
+                  "Sci-Fi",
+                  "Action",
+                  "Dark Comedy"
+              ],
+    "creator":  "Geneva Robertson-Dworet, Graham Wagner",
+    "platform":  [
+                     "Prime Video"
+                 ],
+    "reviewDate":  "2026-02-18",
+    "timeInvestment":  "8 episodes, about 45-60 minutes each",
+    "moodTags":  [
+                     "witty",
+                     "violent",
+                     "adventurous"
+                 ],
+    "excerpt":  "Fallout understands that the franchise works best when absurd humor and human tragedy share the same scene.",
+    "similarTitles":  [
+                          "The Last of Us",
+                          "Silo",
+                          "Westworld"
+                      ],
+    "content":  "Fallout feels like one of the first major game adaptations that truly understands the texture of its source without being trapped by it. It embraces retro-futurist satire, grotesque violence, and sincere character beats in a way that feels playful and grounded at the same time. The show follows multiple perspectives through the wasteland and keeps shifting tone from weirdly funny to unexpectedly moving, which mirrors the games at their best. What makes it work is not just production scale or fan references, but commitment to character psychology, moral ambiguity, and world rules that stay consistent even when the story gets wild.",
+    "hook":  "I expected Fallout to be fun, but I did not expect it to feel this alive. By the time I finished the season, I had that rare mix of satisfaction and curiosity where you want more immediately, not because of a cliffhanger trick, but because the world actually feels worth returning to.",
+    "quickGist":  "Set in a post-nuclear America split between idealized vault life and savage surface survival, Fallout follows three very different people whose paths slowly collide as secrets about power, control, and identity start surfacing. The show blends wasteland adventure, political satire, and moral gray-zone storytelling, so each episode feels like both a quest and a character study, with shifting alliances and consequences that make the world feel larger than any single plotline.",
+    "whatStandsOut":  [
+                          {
+                              "label":  "Characters",
+                              "text":  "Lucy, Maximus, and The Ghoul are a smart character triangle because each one represents a different belief system colliding with reality. Lucy starts as idealism in human form and gets forced to renegotiate what morality means in a world built on scarcity and propaganda. Maximus carries insecurity under armor and keeps making choices that reveal how institutions can shape personality before someone even realizes it. The Ghoul is the standout wildcard: cynical, brutal, and often hilarious, but never one-note. Their conflicting values give the show emotional traction far beyond simple good-versus-evil dynamics."
+                          },
+                          {
+                              "label":  "Writing",
+                              "text":  "The writing nails tonal contrast. One scene can be absurdly funny, and the next can pivot into cruelty or grief without feeling random. Dialogue has personality, especially in moments where characters pretend to be in control while clearly improvising under pressure. The pacing also helps: episodes move fast enough to stay bingeable, but they pause for fallout (personal and political) after major events. That rhythm keeps the season from feeling like pure action montage and gives choices real weight."
+                          },
+                          {
+                              "label":  "Episodes",
+                              "text":  "The best episodes are the ones that reveal hidden layers of the world while pushing character identity to a breaking point. Mid-season chapters that explore vault mythology and corporate-era backstory are especially strong, because they show that the wasteland did not appear from nowhere, it was manufactured by choices, ideology, and profit. The show is most effective when action and revelation arrive together: a fight, a joke, then a hard truth that reframes what you thought you understood."
+                          }
+                      ],
+    "ratingsSnapshot":  [
+                            {
+                                "label":  "IMDb",
+                                "value":  "8.3/10"
+                            },
+                            {
+                                "label":  "Rotten Tomatoes",
+                                "value":  "94% critics, 90% audience"
+                            },
+                            {
+                                "label":  "Metacritic",
+                                "value":  "73/100"
+                            }
+                        ],
+    "ratingsSummary":  "Those numbers show strong momentum from both critics and viewers, with critics especially positive on tone and adaptation quality. Averaging IMDb, Rotten Tomatoes critics, and Metacritic yields about 8.3/10, which places it in Worth Your Time and reflects a show that is widely liked even if not universally hailed as flawless.",
+    "criticsVoice":  "Critical consensus has been that Fallout is one of the better modern adaptations of game material because it captures franchise identity without becoming fan-service-only television. Reviewers from outlets like Variety, The Hollywood Reporter, and IGN praised production design, Walton Goggins\u0027 performance, and the confidence of the world-building. The most common criticism is unevenness in pacing and emotional depth between storylines, especially when one arc gets more momentum than another. Even then, most critics agree the season is smart, entertaining, and a promising long-term series foundation.",
+    "audienceVoice":  "Audience reaction has been heavily positive, especially among people who feared another shallow game adaptation. Fans talk a lot about tone consistency: the show feels like Fallout because it balances comedy, violence, and melancholy in one universe. Online discussion also highlights bingeability and character chemistry, with The Ghoul becoming an instant favorite for many viewers. Some fans of specific game eras debate lore details, but overall sentiment trends toward relief and excitement, with many people calling it a show that works for both longtime players and newcomers.",
+    "whyYouShouldWatch":  [
+                              "The emotional payoff across the season is stronger than expected for a franchise known mostly for world flavor. You start with characters who seem easy to categorize, then watch those assumptions erode episode by episode. Lucy\u0027s optimism, for example, is not simply rewarded or punished; it is reshaped. That ongoing internal shift creates a satisfying long-arc experience where growth feels earned instead of scripted to hit obvious beats.",
+                              "It is highly bingeable without being empty calories. Episodes usually end with enough new information, risk, or moral complication to pull you into the next one, but they are structured around character consequence rather than just cliffhanger mechanics. You get momentum and substance together, which is rare. The show understands that binge pacing works best when each chapter has its own identity while still feeding a bigger thematic engine.",
+                              "Culturally, it is a useful case study in adaptation done right. Instead of copying game missions scene by scene, it translates tone, satire, and atmosphere into television grammar. That makes it a conversation piece even outside fandom circles. If you care about media adaptation quality, this show offers concrete examples of what to preserve, what to reinvent, and how to keep newcomers engaged without flattening source complexity.",
+                              "The world-building has depth beyond production aesthetics. Yes, the props, signage, costumes, and retro-futurist design are excellent, but the stronger achievement is systems thinking. The show keeps asking who benefits from fear, who controls information, and how institutions survive after catastrophe by rewriting history. That social and political subtext gives the wasteland more weight than a generic post-apocalyptic playground.",
+                              "It has strong rewatch value because tonal and thematic clues are seeded early. On first watch, you track survival and mystery. On second watch, you notice how character posture, tiny dialogue choices, and background details foreshadow bigger reveals. The show rewards attention without becoming homework, which is exactly the balance this genre needs."
+                          ],
+    "miniAnecdote":  "I watched two episodes planning to stop, then suddenly it was past midnight and I was still going because every time I thought I understood a character, the next scene shifted my perspective. That pull was not hype-driven; it was story confidence.",
+    "practicalTips":  "This works best in short binge clusters, like two episodes at a time, so tonal shifts have space to land without feeling rushed. Subtitles help because the show mixes accents, fast dialogue, and occasional background exposition. Watch when you can focus, since visual details and throwaway lines often matter later. If you are new to Fallout, do not worry about game lore homework; the season is built to onboard first-time viewers. Good sound setup helps because atmosphere and score cues do a lot of heavy lifting.",
+    "finalNudge":  "If you want a series that is entertaining on the surface but still has real thematic bite, Fallout is a solid pick. It is funny, strange, violent, and surprisingly human, and it leaves you with enough questions to care about what comes next.",
+    "ageRating":  "TV-MA"
 }

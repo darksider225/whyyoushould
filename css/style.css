@@ -221,6 +221,19 @@ a:hover {
   gap: 1rem;
 }
 
+.legend-link {
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid transparent;
+  padding: 0.4rem;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.legend-link:hover {
+  border-color: var(--border);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
 .legend-badge {
   flex-shrink: 0;
   padding: 0.5rem 1rem;
@@ -446,6 +459,110 @@ a:hover {
 .review-page {
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+}
+
+.review-page-tools {
+  position: sticky;
+  top: 5.25rem;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  margin-left: auto;
+  width: fit-content;
+  z-index: 40;
+}
+
+.favorite-pin-btn {
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+
+.favorite-pin-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.favorite-pin-btn.is-active {
+  border-color: var(--accent);
+  background: rgba(59, 130, 246, 0.18);
+  color: var(--accent);
+}
+
+.favorite-pin-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.favorite-pin-icon path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.favorite-status-inline {
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 10px);
+  transform: translateY(-50%) translateX(8px);
+  opacity: 0;
+  pointer-events: none;
+  margin: 0;
+  min-height: 0;
+  white-space: nowrap;
+  max-width: none;
+  font-size: 0.82rem;
+  line-height: 1.2;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--border);
+  background: rgba(12, 12, 16, 0.95);
+  color: var(--text-secondary);
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.favorite-status-inline::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -6px;
+  width: 10px;
+  height: 10px;
+  background: rgba(12, 12, 16, 0.95);
+  border-right: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.favorite-status-inline.is-visible {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.favorite-status-inline.status-success {
+  color: #a7f3d0;
+  border-color: rgba(34, 197, 94, 0.7);
+}
+
+.favorite-status-inline.status-error {
+  color: #fecaca;
+  border-color: rgba(239, 68, 68, 0.7);
+}
+
+.favorite-status-inline.status-info {
+  color: #bfdbfe;
+  border-color: rgba(59, 130, 246, 0.7);
 }
 
 .review-hero {
@@ -514,27 +631,47 @@ a:hover {
 }
 
 .review-verdict-box.verdict-must {
-  background-color: rgba(34, 197, 94, 0.1);
+  background: linear-gradient(180deg, rgba(34, 197, 94, 0.16), rgba(34, 197, 94, 0.06));
   border-color: var(--must);
 }
 
 .review-verdict-box.verdict-worth {
-  background-color: rgba(234, 179, 8, 0.1);
+  background: linear-gradient(180deg, rgba(234, 179, 8, 0.18), rgba(234, 179, 8, 0.06));
   border-color: var(--worth);
 }
 
 .review-verdict-box.verdict-average {
-  background-color: rgba(249, 115, 22, 0.12);
+  background: linear-gradient(180deg, rgba(249, 115, 22, 0.18), rgba(249, 115, 22, 0.06));
   border-color: var(--average);
 }
 
 .review-verdict-box.verdict-skip {
-  background-color: rgba(239, 68, 68, 0.1);
+  background: linear-gradient(180deg, rgba(239, 68, 68, 0.18), rgba(239, 68, 68, 0.06));
   border-color: var(--skip);
 }
 
 .verdict-badge {
   display: inline-block;
+}
+
+.review-verdict-box.verdict-must .verdict-badge {
+  background: var(--must);
+  color: #000;
+}
+
+.review-verdict-box.verdict-worth .verdict-badge {
+  background: var(--worth);
+  color: #000;
+}
+
+.review-verdict-box.verdict-average .verdict-badge {
+  background: var(--average);
+  color: #000;
+}
+
+.review-verdict-box.verdict-skip .verdict-badge {
+  background: var(--skip);
+  color: #fff;
 }
 
 .verdict-badge.must {
@@ -561,6 +698,22 @@ a:hover {
   font-size: 3rem;
   font-weight: 900;
   margin-top: 1rem;
+}
+
+.review-verdict-box.verdict-must .verdict-rating {
+  color: var(--must);
+}
+
+.review-verdict-box.verdict-worth .verdict-rating {
+  color: var(--worth);
+}
+
+.review-verdict-box.verdict-average .verdict-rating {
+  color: var(--average);
+}
+
+.review-verdict-box.verdict-skip .verdict-rating {
+  color: var(--skip);
 }
 
 .rating-max {
@@ -1251,6 +1404,7 @@ a:hover {
 .btn-primary:hover {
   background-color: var(--accent-light);
   transform: translateX(4px);
+  color: #fff;
 }
 
 /* Collection Styles */
@@ -1321,11 +1475,31 @@ a:hover {
   position: absolute;
   bottom: 0;
   right: 0;
-  padding: 0.75rem 1rem;
-  font-size: 0.75rem;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.6rem;
   font-weight: 700;
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(4px);
+}
+
+.collection-card-verdict.verdict-must {
+  background: var(--must);
+  color: #000;
+}
+
+.collection-card-verdict.verdict-worth {
+  background: var(--worth);
+  color: #000;
+}
+
+.collection-card-verdict.verdict-average {
+  background: var(--average);
+  color: #000;
+}
+
+.collection-card-verdict.verdict-skip {
+  background: var(--skip);
+  color: #fff;
 }
 
 .verdict-text {
@@ -1361,6 +1535,22 @@ a:hover {
 .collection-card-rating {
   font-weight: 700;
   color: var(--accent);
+}
+
+.collection-card-rating.verdict-must {
+  color: var(--must);
+}
+
+.collection-card-rating.verdict-worth {
+  color: var(--worth);
+}
+
+.collection-card-rating.verdict-average {
+  color: var(--average);
+}
+
+.collection-card-rating.verdict-skip {
+  color: var(--skip);
 }
 
 .collection-card-year {
@@ -1632,36 +1822,71 @@ a:hover {
   padding: 1.25rem;
 }
 
-.review-panel-head h2 {
-  margin-bottom: 0.4rem;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.review-panel-head p {
-  margin-bottom: 1rem;
-  color: var(--text-secondary);
-}
-
-.review-actions-grid {
+.audience-score-layout {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: minmax(210px, 250px) minmax(0, 1fr);
   gap: 1rem;
 }
 
-.action-card {
+.audience-score-box {
+  border: 1px solid var(--must);
+  background-color: rgba(34, 197, 94, 0.1);
+  padding: 1rem;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.audience-score-label {
+  margin: 0;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  font-weight: 700;
+}
+
+.audience-score-value {
+  margin: 0.65rem 0 0.15rem;
+  line-height: 1;
+  color: var(--text);
+}
+
+.audience-score-value strong {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.audience-score-value span {
+  font-size: 1.2rem;
+  margin-left: 0.2rem;
+  color: var(--text-secondary);
+}
+
+.audience-score-meta {
+  margin: 0.35rem 0 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.audience-rating-panel {
   border: 1px solid var(--border);
   background: rgba(0, 0, 0, 0.2);
   padding: 1rem;
+  text-align: center;
 }
 
-.action-card h3 {
+.audience-rating-panel h3 {
   margin-bottom: 0.35rem;
   font-size: 1rem;
 }
 
-.action-card p {
+.audience-rating-hint {
   margin-bottom: 0.75rem;
   color: var(--text-secondary);
 }
@@ -1669,31 +1894,49 @@ a:hover {
 .inline-form {
   display: grid;
   gap: 0.5rem;
-}
-
-.inline-form label {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-tertiary);
+  justify-items: center;
 }
 
 .inline-form-row {
   display: flex;
   gap: 0.6rem;
+  justify-content: center;
 }
 
-.inline-form-row input {
-  flex: 1;
+.rating-picker {
+  display: grid;
+  grid-template-columns: repeat(10, 52px);
+  gap: 0.45rem;
+  justify-content: center;
+}
+
+.rating-choice {
+  width: 52px;
+  height: 52px;
   border: 1px solid var(--border);
   background: #0d0d11;
-  color: var(--text);
-  padding: 0.65rem 0.75rem;
+  color: var(--text-secondary);
+  padding: 0;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s, color 0.2s;
 }
 
-.rating-aggregate {
-  margin-top: 0.75rem;
-  margin-bottom: 0;
+.rating-choice:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.rating-choice.is-active {
+  background: var(--accent-light);
+  border-color: var(--accent-light);
+  color: #fff;
+}
+
+.rating-choice.is-filled {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
 }
 
 .review-mode-tabs {
@@ -1922,12 +2165,58 @@ a:hover {
 }
 
 @media (max-width: 900px) {
-  .review-actions-grid {
+  .audience-score-layout {
     grid-template-columns: 1fr;
+  }
+
+  .audience-score-box {
+    min-height: 0;
+    align-items: center;
+  }
+
+  .rating-picker {
+    grid-template-columns: repeat(5, 52px);
+    justify-content: center;
+  }
+
+  .inline-form-row {
+    justify-content: center;
+  }
+
+  .review-page-tools {
+    top: 5rem;
+  }
+
+  .favorite-pin-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .favorite-pin-icon {
+    width: 24px;
+    height: 24px;
   }
 }
 
 @media (max-width: 640px) {
+  .favorite-status-inline {
+    right: 0;
+    top: calc(100% + 8px);
+    transform: translateY(0) translateY(-4px);
+    white-space: normal;
+    width: min(240px, 70vw);
+  }
+
+  .favorite-status-inline::after {
+    top: -6px;
+    right: 18px;
+    transform: rotate(-45deg);
+  }
+
+  .favorite-status-inline.is-visible {
+    transform: translateY(0) translateY(0);
+  }
+
   .review-mode-tabs {
     flex-direction: column;
     border-bottom: 0;
@@ -1939,6 +2228,11 @@ a:hover {
 
   .inline-form-row {
     flex-direction: column;
+  }
+
+  .rating-picker {
+    grid-template-columns: repeat(5, 52px);
+    justify-content: center;
   }
 
   .favorite-item {

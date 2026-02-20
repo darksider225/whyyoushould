@@ -6,6 +6,7 @@
 const fs = require("fs");
 const path = require("path");
 const { enrichAllReviews } = require("../_lib/external-data");
+const { verdictFromRating, defaultAgeRating } = require("../_lib/review-utils");
 
 const REVIEWS_DIR = path.join(__dirname, "reviews");
 const LEGACY_FILE = path.join(__dirname, "_reviews-raw.json");
@@ -39,19 +40,11 @@ function hasRequiredFields(review) {
   return required.every((key) => review && review[key] !== undefined && review[key] !== null);
 }
 
-function verdictFromRating(rating) {
-  const score = Number(rating);
-  if (!Number.isFinite(score)) return "Average";
-  if (score > 8.4 && score <= 10) return "Must Watch";
-  if (score > 6.9) return "Worth Your Time";
-  if (score > 5.5) return "Average";
-  return "Skip";
-}
-
 function applyRatingVerdictRule(review) {
   return {
     ...review,
-    verdict: verdictFromRating(review.rating),
+    verdict: verdictFromRating(review.rating, review.type),
+    ageRating: review.ageRating || defaultAgeRating(review.type),
   };
 }
 

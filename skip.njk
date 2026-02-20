@@ -1,0 +1,38 @@
+---
+layout: layouts/base.njk
+title: Skip
+description: Skip-level recommendations on Whyyoushould.
+---
+
+<div style="margin-bottom: 3rem;">
+  <h1>Skip</h1>
+  <p style="color: var(--text-secondary); font-size: 1.125rem;">Not recommended right now</p>
+</div>
+
+<div class="reviews-grid">
+  {% for review in reviews %}
+  {% if (review.verdict | verdictClass) === "skip" %}
+  <a href="{{ ('/reviews/' ~ review.slug ~ '/') | url }}" class="review-card">
+    <div class="review-card-header">
+      <div>
+        <h3 class="review-card-title">{{ review.title }}</h3>
+        <p style="margin-bottom: 0; color: var(--text-tertiary); font-size: 0.875rem;">{{ review.type | capitalize }} • {{ review.releaseYear }}</p>
+      </div>
+      <div class="verdict-badge {{ review.verdict | verdictClass }}">{{ review.verdict }}</div>
+    </div>
+    <div class="review-card-rating">{{ review.rating }}<span style="font-size: 0.7em; color: var(--text-secondary);">/10</span></div>
+    <p class="review-card-why">{{ review.why }}</p>
+    <div class="review-card-meta">
+      <span>
+        <strong>{% if review.type === 'movie' %}Director{% else %}Creator{% endif %}</strong>
+        {{ review.creator }}
+      </span>
+      <span>
+        <strong>Released</strong>
+        {{ review.releaseYear }}
+      </span>
+    </div>
+  </a>
+  {% endif %}
+  {% endfor %}
+</div>

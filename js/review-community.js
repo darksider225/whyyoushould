@@ -30,6 +30,22 @@
     if (kind) el.classList.add(`status-${kind}`);
   }
 
+  let favoriteToastTimer = null;
+  function showFavoriteToast(message, kind) {
+    const el = document.getElementById("favorite-status");
+    if (!el) return;
+    el.textContent = message || "";
+    el.classList.remove("status-success", "status-error", "status-info", "is-visible");
+    if (kind) el.classList.add(`status-${kind}`);
+    if (!message) return;
+    void el.offsetWidth;
+    el.classList.add("is-visible");
+    if (favoriteToastTimer) window.clearTimeout(favoriteToastTimer);
+    favoriteToastTimer = window.setTimeout(() => {
+      el.classList.remove("is-visible");
+    }, 2600);
+  }
+
   function setNav(user) {
     const link = document.getElementById("nav-auth-link");
     if (!link) return;
@@ -65,6 +81,51 @@
     }
   }
 
+  function normalizeRatingValue(value) {
+    const n = Number(value);
+    if (!Number.isFinite(n)) return null;
+    const rounded = Math.round(n);
+    if (rounded < 1 || rounded > 10) return null;
+    return rounded;
+  }
+
+  function paintRatingChoice(value) {
+    const normalized = normalizeRatingValue(value);
+    const input = document.getElementById("user-rating-input");
+    const choices = Array.from(document.querySelectorAll(".rating-choice"));
+    if (!input || choices.length === 0) return;
+
+    if (!normalized) {
+      input.value = "";
+      choices.forEach((choice) => {
+        choice.classList.remove("is-filled");
+        choice.classList.remove("is-active");
+        choice.setAttribute("aria-checked", "false");
+      });
+      return;
+    }
+
+    input.value = String(normalized);
+    choices.forEach((choice) => {
+      const value = Number(choice.dataset.value);
+      const isActive = value === normalized;
+      const isFilled = value <= normalized;
+      choice.classList.toggle("is-active", isActive);
+      choice.classList.toggle("is-filled", isFilled);
+      choice.setAttribute("aria-checked", isActive ? "true" : "false");
+    });
+  }
+
+  function bindRatingPicker() {
+    const choices = Array.from(document.querySelectorAll(".rating-choice"));
+    if (choices.length === 0) return;
+    choices.forEach((choice) => {
+      choice.addEventListener("click", () => {
+        paintRatingChoice(choice.dataset.value);
+      });
+    });
+  }
+
   function userLabel(userId) {
     if (!userId) return "User";
     if (currentUser && currentUser.id === userId) return "You";
@@ -72,11 +133,11 @@
   }
 
   if (!supabaseUrl || !supabaseAnonKey || !window.supabase) {
-    setStatus("favorite-status", "Community features are not configured yet.", "error");
-    setStatus("user-rating-status", "Community features are not configured yet.", "error");
-    setStatus("review-comment-status", "Community features are not configured yet.", "error");
-    setStatus("community-post-status", "Community features are not configured yet.", "error");
-    setStatus("favorites-status", "Community features are not configured yet.", "error");
+    setStatus("favorite-status", "Audience features are not configured yet.", "error");
+    setStatus("user-rating-status", "Audience features are not configured yet.", "error");
+    setStatus("review-comment-status", "Audience features are not configured yet.", "error");
+    setStatus("community-post-status", "Audience features are not configured yet.", "error");
+    setStatus("favorites-status", "Audience features are not configured yet.", "error");
     return;
   }
 
@@ -209,6 +270,7 @@
     if (!reviewSlug) return;
 
     bindTabs();
+    bindRatingPicker();
     await loadFavoriteState(reviewSlug);
     await loadCommunityRating(reviewSlug);
     await loadUserRating(reviewSlug);
@@ -218,24 +280,24 @@
     const favoriteBtn = document.getElementById("favorite-toggle-btn");
     favoriteBtn?.addEventListener("click", async () => {
       if (!currentUser) {
-        setStatus("favorite-status", "Sign in to add favorites.", "info");
+        showFavoriteToast("Please sign in to add this review to your favorites.", "info");
         return;
       }
       const isFavorite = favoriteBtn.dataset.favorite === "true";
       if (isFavorite) {
         const { error } = await client.from("favorites").delete().eq("user_id", currentUser.id).eq("review_slug", reviewSlug);
         if (error) {
-          setStatus("favorite-status", error.message, "error");
+          showFavoriteToast(error.message, "error");
           return;
         }
-        setStatus("favorite-status", "Removed from favorites.", "success");
+        showFavoriteToast("Removed from favorites.", "success");
       } else {
         const { error } = await client.from("favorites").insert({ user_id: currentUser.id, review_slug: reviewSlug });
         if (error) {
-          setStatus("favorite-status", error.message, "error");
+          showFavoriteToast(error.message, "error");
           return;
         }
-        setStatus("favorite-status", "Added to favorites.", "success");
+        showFavoriteToast("Added to favorites.", "success");
       }
       await loadFavoriteState(reviewSlug);
     });
@@ -248,8 +310,8 @@
         return;
       }
       const input = document.getElementById("user-rating-input");
-      const rating = Number(input?.value || "0");
-      if (!Number.isFinite(rating) || rating < 1 || rating > 10) {
+      const rating = normalizeRatingValue(input?.value || "");
+      if (!rating) {
         setStatus("user-rating-status", "Rating must be between 1 and 10.", "error");
         return;
       }
@@ -302,7 +364,7 @@
     postForm?.addEventListener("submit", async (event) => {
       event.preventDefault();
       if (!currentUser) {
-        setStatus("community-post-status", "Sign in to post in Community.", "info");
+        setStatus("community-post-status", "Sign in to post your audience take.", "info");
         return;
       }
       const input = document.getElementById("community-post-input");
@@ -324,7 +386,7 @@
         setStatus("community-post-status", error.message, "error");
         return;
       }
-      setStatus("community-post-status", "Community post saved.", "success");
+      setStatus("community-post-status", "Audience take saved.", "success");
       await loadCommunity(reviewSlug);
     });
 
@@ -337,7 +399,7 @@
       }
       const input = document.getElementById("community-post-input");
       if (input) input.value = "";
-      setStatus("community-post-status", "Community post deleted.", "success");
+      setStatus("community-post-status", "Audience take deleted.", "success");
       await loadCommunity(reviewSlug);
     });
   }
@@ -348,7 +410,8 @@
 
     if (!currentUser) {
       btn.dataset.favorite = "false";
-      btn.textContent = "Sign In to Favorite";
+      btn.classList.remove("is-active");
+      btn.setAttribute("aria-label", "Sign in to add this review to favorites");
       return;
     }
     const { data, error } = await client
@@ -358,12 +421,13 @@
       .eq("review_slug", reviewSlug)
       .maybeSingle();
     if (error) {
-      setStatus("favorite-status", error.message, "error");
+      showFavoriteToast(error.message, "error");
       return;
     }
     const isFavorite = !!data;
     btn.dataset.favorite = isFavorite ? "true" : "false";
-    btn.textContent = isFavorite ? "Remove Favorite" : "Add to Favorites";
+    btn.classList.toggle("is-active", isFavorite);
+    btn.setAttribute("aria-label", isFavorite ? "Remove this review from favorites" : "Add this review to favorites");
   }
 
   async function loadUserRating(reviewSlug) {
@@ -377,7 +441,9 @@
       .eq("review_slug", reviewSlug)
       .maybeSingle();
     if (!error && data?.rating) {
-      input.value = Number(data.rating).toFixed(1);
+      paintRatingChoice(data.rating);
+    } else {
+      paintRatingChoice(null);
     }
   }
 
@@ -478,7 +544,7 @@
 
   async function setReaction(postId, reaction) {
     if (!currentUser) {
-      setStatus("community-post-status", "Sign in to react to community posts.", "info");
+      setStatus("community-post-status", "Sign in to react to audience takes.", "info");
       return;
     }
     const { data: existing } = await client

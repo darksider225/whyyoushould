@@ -7,38 +7,38 @@ description: Decisive reviews for movies and games. Why should you spend your ti
 <section class="hero">
   <h1>Why should you watch or play this?</h1>
   <p class="hero-tagline">We don't waste your time with filler. Just decisive recommendations backed by solid reasoning.</p>
-  <p class="hero-subtext">Reviews of movies, games, and TV shows worth your attention.</p>
+  <p class="hero-subtext">Reviews of movies, TV shows, and games worth your attention.</p>
 </section>
 
 <section class="verdict-legend">
-  <div class="legend-item">
+  <a href="{{ '/must/' | url }}" class="legend-item legend-link">
     <div class="legend-badge must">MUST</div>
     <div class="legend-text">
-      <h4>Must Watch</h4>
+      <h4>Must Watch / Must Play</h4>
       <p>Essential. Clear recommendation. Stop reading and go enjoy it.</p>
     </div>
-  </div>
-  <div class="legend-item">
+  </a>
+  <a href="{{ '/worth/' | url }}" class="legend-item legend-link">
     <div class="legend-badge worth">WORTH</div>
     <div class="legend-text">
       <h4>Worth Your Time</h4>
       <p>Good. Genuinely worthwhile if it aligns with your taste.</p>
     </div>
-  </div>
-  <div class="legend-item">
+  </a>
+  <a href="{{ '/average/' | url }}" class="legend-item legend-link">
     <div class="legend-badge average">AVERAGE</div>
     <div class="legend-text">
       <h4>Average</h4>
       <p>Fine, but not a priority unless you're already interested.</p>
     </div>
-  </div>
-  <div class="legend-item">
+  </a>
+  <a href="{{ '/skip/' | url }}" class="legend-item legend-link">
     <div class="legend-badge skip">SKIP</div>
     <div class="legend-text">
       <h4>Skip</h4>
       <p>Not recommended. Your time is better spent elsewhere.</p>
     </div>
-  </div>
+  </a>
 </section>
 
 {% set featured = reviews[0] %}
@@ -114,7 +114,7 @@ description: Decisive reviews for movies and games. Why should you spend your ti
 <section class="carousel-section">
   <div class="carousel-header">
     <h2>Movies</h2>
-    <a href="{{ '/movies/' | url }}" class="view-all-link">View All ?</a>
+    <a href="{{ '/movies/' | url }}" class="view-all-link">View All</a>
   </div>
   <div class="carousel" id="movies-carousel">
     <div class="carousel-track">
@@ -156,7 +156,7 @@ description: Decisive reviews for movies and games. Why should you spend your ti
 <section class="carousel-section">
   <div class="carousel-header">
     <h2>TV Shows</h2>
-    <a href="{{ '/tvshows/' | url }}" class="view-all-link">View All ?</a>
+    <a href="{{ '/tvshows/' | url }}" class="view-all-link">View All</a>
   </div>
   <div class="carousel" id="tvshows-carousel">
     <div class="carousel-track">
@@ -198,7 +198,7 @@ description: Decisive reviews for movies and games. Why should you spend your ti
 <section class="carousel-section">
   <div class="carousel-header">
     <h2>Games</h2>
-    <a href="{{ '/games/' | url }}" class="view-all-link">View All ?</a>
+    <a href="{{ '/games/' | url }}" class="view-all-link">View All</a>
   </div>
   <div class="carousel" id="games-carousel">
     <div class="carousel-track">

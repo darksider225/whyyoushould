@@ -31,7 +31,7 @@ description: Movie reviews on Whyyoushould. Streaming and theatrical recommendat
       <h2>{{ review.title }}</h2>
       <p class="collection-card-creator">{{ review.creator }}</p>
       <div class="collection-card-meta">
-        <span class="collection-card-rating">{{ review.rating }}/10</span>
+        <span class="collection-card-rating verdict-{{ review.verdict | verdictClass }}">{{ review.rating }}/10</span>
         <span class="collection-card-year">{{ review.releaseYear }}</span>
       </div>
       <p class="collection-card-excerpt">{{ review.why }}</p>

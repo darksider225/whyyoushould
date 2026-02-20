@@ -1,79 +1,80 @@
 {
-  "slug": "hades-ii",
-  "title": "Hades II",
-  "type": "game",
-  "verdict": "Must Play",
-  "why": "A brilliant roguelike sequel that sharpens combat, deepens build craft, and keeps each run emotionally meaningful through character-rich progression.",
-  "rating": 9.1,
-  "releaseYear": 2024,
-  "genre": [
-    "Roguelike",
-    "Action",
-    "Mythology"
-  ],
-  "creator": "Supergiant Games",
-  "platform": [
-    "PC"
-  ],
-  "reviewDate": "2026-02-18",
-  "timeInvestment": "Early goals around 25-40 hours, long-term mastery 80+ hours",
-  "moodTags": [
-    "stylish",
-    "addictive",
-    "strategic"
-  ],
-  "excerpt": "Hades II keeps the one-more-run magic of the original while making combat and progression feel more deliberate and expressive.",
-  "similarTitles": [
-    "Hades",
-    "Dead Cells",
-    "Returnal"
-  ],
-  "content": "Hades II is one of the few sequels that feels both immediately familiar and meaningfully evolved. It retains the signature speed, art direction, and narrative-forward roguelike structure of the first game while introducing systems that encourage more tactical planning and build experimentation. Playing as Melinoe shifts the tone toward ritual, strategy, and persistence, and the loop of failed runs feeding character progression remains deeply compelling. Combat is responsive, boons and arcana create rich combinations, and narrative beats continue to unlock naturally through play rather than forcing grind walls. Even in early-access form, the game feels confident, dense, and highly replayable.",
-  "hook": "I told myself I would do one run to test changes and then stop. Two hours later I was still playing, not because of mindless addiction, but because each loss gave me one more idea to try. Hades II has that dangerous, satisfying momentum where experimentation feels irresistible.",
-  "playGist": "You control Melinoe, Princess of the Underworld, battling through shifting regions in repeated escape-style runs while collecting resources, unlocking upgrades, and building synergies through boons, weapons, arcana, and incantations. The loop blends fast action combat, tactical pre-run planning, and character-driven progression, so each attempt feels like a mix of execution and strategy, with the tone balancing mythic urgency, sharp writing, and that signature Supergiant charm.",
-  "whatStoodOut": [
-    {
-      "label": "World Design",
-      "text": "The world is compact per run but rich in identity. Biomes have distinct visual language, enemy behavior profiles, and pacing pressure, so moving between regions feels like shifting tactical contexts, not palette swaps. Supergiant's art direction remains elite: silhouettes are readable during chaos, effects are stylish without obscuring information, and environments carry narrative atmosphere. The hub-space progression also contributes to world coherence by making your base feel alive, reactive, and emotionally connected to your repeated attempts."
-    },
-    {
-      "label": "Combat",
-      "text": "Combat feels slightly more deliberate than the first game while remaining fast and fluid. Weapon kits encourage varied tempos, from aggressive burst windows to safer spacing and curse setups. Arcana and boon interactions create strong build identities, and omega abilities add a satisfying layer of resource timing and positional decision-making. Controls are tight, hit feedback is clear, and difficulty scales in ways that promote learning. Crucially, losses usually feel diagnostic rather than arbitrary, which keeps retries motivating."
-    },
-    {
-      "label": "Freedom",
-      "text": "Player agency is excellent for a run-based game. You shape runs through pre-run loadout choices, boon prioritization, path decisions, and risk-reward tradeoffs, while long-term progression gives multiple vectors for improvement beyond raw mechanics. Narrative immersion is also deeply personalized because character dialogue reacts to your failures, weapon use, and milestone events. That reactivity turns repeated runs into evolving story context, making the game feel less like repetition and more like iterative mastery."
-    }
-  ],
-  "ratingsSnapshot": [
-    {
-      "label": "Metacritic",
-      "value": "94/100"
-    },
-    {
-      "label": "IGN",
-      "value": "9/10"
-    },
-    {
-      "label": "GameSpot",
-      "value": "9/10"
-    },
-    {
-      "label": "Steam Reviews",
-      "value": "Overwhelmingly Positive"
-    }
-  ],
-  "ratingsSummary": "The critical pattern is clear: even in early access, reviewers see a standout sequel with excellent systems and style. Averaging Metacritic, IGN, and GameSpot yields roughly 9.1/10, which places it in Must Play territory and reflects strong confidence in both present quality and future ceiling.",
-  "criticsVoice": "Critics generally agree that Hades II avoids sequel stagnation by deepening systems instead of simply expanding content volume. Coverage has praised combat readability, build variety, and the way narrative progression remains tightly integrated with repeated runs. IGN and other outlets highlighted the confidence of early-access launch quality, while GameSpot and similar reviews noted that some balancing and content cadence are still evolving. Recurring criticisms are mostly about unfinished edges rather than core design flaws, and overall sentiment remains strongly favorable.",
-  "audienceVoice": "Community response has been enthusiastic, especially among players who feared a safe retread of the first game. Discussions focus heavily on boon synergies, arcana loadouts, weapon preference debates, and speed-clear strategies, which signals healthy mechanical depth. Players also praise character writing and voice performance continuity, saying the sequel keeps emotional texture during repetition. Some feedback targets balance spikes and preferred weapon tuning, but the general player mood is excitement and trust, with many already logging triple-digit hours in early access.",
-  "whyYouShouldPlay": [
-    "The emotional payoff is surprisingly strong for a run-based structure because progress is not measured only in wins. Dialogue evolution, relationship moments, and hub-state changes make each attempt matter even when you fail. That narrative elasticity keeps motivation high. You are not grinding disconnected runs; you are participating in an unfolding story where defeat still moves the world and characters forward.",
-    "Replayability is one of the game's biggest strengths. Different weapon aspects, arcana configurations, and boon paths can radically alter pacing and risk profile, so runs stay fresh far longer than typical roguelike cycles. You can chase high-damage aggression, safer control-focused approaches, or hybrid builds depending on mood and skill comfort. This variety encourages experimentation instead of rote optimization.",
-    "The game rewards creativity in both combat and planning. Smart route choices, synergistic boon pickups, and timing discipline can overcome runs that initially feel doomed. You are constantly making micro and macro decisions: which resource to prioritize now, which enemy to burst first, when to spend omega, when to save for survivability. That decision density keeps engagement high and makes success feel authored by your judgment.",
-    "Player agency is meaningful because the game gives you tools to shape your own learning curve. If one approach stalls, you can adjust arcana, weapon selection, keepsakes, and upgrade priorities rather than waiting for random luck. This flexibility turns frustration into problem-solving and makes the game welcoming to both execution-heavy players and strategy-focused players who prefer planning over reflex dominance.",
-    "Hades II already feels important within the roguelike conversation. It demonstrates that a sequel can preserve a beloved formula while still introducing enough systemic novelty to justify itself creatively. For players who care about genre evolution, this is a valuable case study in iterative design done right. It is not just more content; it is better structured play."
-  ],
-  "miniAnecdote": "I entered a run with a build I thought was mediocre, then hit an unexpected boon combo that turned my entire strategy into rapid curse detonation chains. A room that had wrecked me earlier suddenly became controlled chaos, and I started laughing mid-fight at how quickly momentum flipped.",
-  "practicalTips": "If you are new to roguelikes, start by learning one weapon deeply instead of switching every run. Prioritize survivability and resource economy early, then branch into high-risk damage builds once fundamentals are comfortable. Controller input feels great, but keyboard and mouse can work well with sensitivity tuning. Do not rush endgame goals; progression systems are designed for steady accumulation. Because this is still evolving content, expect occasional balance shifts between updates and treat adaptation as part of the experience.",
-  "finalNudge": "If you enjoyed the first Hades, this is an easy yes. If you did not, but you like action games with smart progression and build experimentation, it is still worth trying. Hades II is stylish, rewarding, and already one of the strongest games in its genre."
+    "slug":  "hades-ii",
+    "title":  "Hades II",
+    "type":  "game",
+    "verdict":  "Must Play",
+    "why":  "A brilliant roguelike sequel that sharpens combat, deepens build craft, and keeps each run emotionally meaningful through character-rich progression.",
+    "rating":  9.1,
+    "releaseYear":  2024,
+    "genre":  [
+                  "Roguelike",
+                  "Action",
+                  "Mythology"
+              ],
+    "creator":  "Supergiant Games",
+    "platform":  [
+                     "PC"
+                 ],
+    "reviewDate":  "2026-02-18",
+    "timeInvestment":  "Early goals around 25-40 hours, long-term mastery 80+ hours",
+    "moodTags":  [
+                     "stylish",
+                     "addictive",
+                     "strategic"
+                 ],
+    "excerpt":  "Hades II keeps the one-more-run magic of the original while making combat and progression feel more deliberate and expressive.",
+    "similarTitles":  [
+                          "Hades",
+                          "Dead Cells",
+                          "Returnal"
+                      ],
+    "content":  "Hades II is one of the few sequels that feels both immediately familiar and meaningfully evolved. It retains the signature speed, art direction, and narrative-forward roguelike structure of the first game while introducing systems that encourage more tactical planning and build experimentation. Playing as Melinoe shifts the tone toward ritual, strategy, and persistence, and the loop of failed runs feeding character progression remains deeply compelling. Combat is responsive, boons and arcana create rich combinations, and narrative beats continue to unlock naturally through play rather than forcing grind walls. Even in early-access form, the game feels confident, dense, and highly replayable.",
+    "hook":  "I told myself I would do one run to test changes and then stop. Two hours later I was still playing, not because of mindless addiction, but because each loss gave me one more idea to try. Hades II has that dangerous, satisfying momentum where experimentation feels irresistible.",
+    "playGist":  "You control Melinoe, Princess of the Underworld, battling through shifting regions in repeated escape-style runs while collecting resources, unlocking upgrades, and building synergies through boons, weapons, arcana, and incantations. The loop blends fast action combat, tactical pre-run planning, and character-driven progression, so each attempt feels like a mix of execution and strategy, with the tone balancing mythic urgency, sharp writing, and that signature Supergiant charm.",
+    "whatStoodOut":  [
+                         {
+                             "label":  "World Design",
+                             "text":  "The world is compact per run but rich in identity. Biomes have distinct visual language, enemy behavior profiles, and pacing pressure, so moving between regions feels like shifting tactical contexts, not palette swaps. Supergiant\u0027s art direction remains elite: silhouettes are readable during chaos, effects are stylish without obscuring information, and environments carry narrative atmosphere. The hub-space progression also contributes to world coherence by making your base feel alive, reactive, and emotionally connected to your repeated attempts."
+                         },
+                         {
+                             "label":  "Combat",
+                             "text":  "Combat feels slightly more deliberate than the first game while remaining fast and fluid. Weapon kits encourage varied tempos, from aggressive burst windows to safer spacing and curse setups. Arcana and boon interactions create strong build identities, and omega abilities add a satisfying layer of resource timing and positional decision-making. Controls are tight, hit feedback is clear, and difficulty scales in ways that promote learning. Crucially, losses usually feel diagnostic rather than arbitrary, which keeps retries motivating."
+                         },
+                         {
+                             "label":  "Freedom",
+                             "text":  "Player agency is excellent for a run-based game. You shape runs through pre-run loadout choices, boon prioritization, path decisions, and risk-reward tradeoffs, while long-term progression gives multiple vectors for improvement beyond raw mechanics. Narrative immersion is also deeply personalized because character dialogue reacts to your failures, weapon use, and milestone events. That reactivity turns repeated runs into evolving story context, making the game feel less like repetition and more like iterative mastery."
+                         }
+                     ],
+    "ratingsSnapshot":  [
+                            {
+                                "label":  "Metacritic",
+                                "value":  "94/100"
+                            },
+                            {
+                                "label":  "IGN",
+                                "value":  "9/10"
+                            },
+                            {
+                                "label":  "GameSpot",
+                                "value":  "9/10"
+                            },
+                            {
+                                "label":  "Steam Reviews",
+                                "value":  "Overwhelmingly Positive"
+                            }
+                        ],
+    "ratingsSummary":  "The critical pattern is clear: even in early access, reviewers see a standout sequel with excellent systems and style. Averaging Metacritic, IGN, and GameSpot yields roughly 9.1/10, which places it in Must Play territory and reflects strong confidence in both present quality and future ceiling.",
+    "criticsVoice":  "Critics generally agree that Hades II avoids sequel stagnation by deepening systems instead of simply expanding content volume. Coverage has praised combat readability, build variety, and the way narrative progression remains tightly integrated with repeated runs. IGN and other outlets highlighted the confidence of early-access launch quality, while GameSpot and similar reviews noted that some balancing and content cadence are still evolving. Recurring criticisms are mostly about unfinished edges rather than core design flaws, and overall sentiment remains strongly favorable.",
+    "audienceVoice":  "Community response has been enthusiastic, especially among players who feared a safe retread of the first game. Discussions focus heavily on boon synergies, arcana loadouts, weapon preference debates, and speed-clear strategies, which signals healthy mechanical depth. Players also praise character writing and voice performance continuity, saying the sequel keeps emotional texture during repetition. Some feedback targets balance spikes and preferred weapon tuning, but the general player mood is excitement and trust, with many already logging triple-digit hours in early access.",
+    "whyYouShouldPlay":  [
+                             "The emotional payoff is surprisingly strong for a run-based structure because progress is not measured only in wins. Dialogue evolution, relationship moments, and hub-state changes make each attempt matter even when you fail. That narrative elasticity keeps motivation high. You are not grinding disconnected runs; you are participating in an unfolding story where defeat still moves the world and characters forward.",
+                             "Replayability is one of the game\u0027s biggest strengths. Different weapon aspects, arcana configurations, and boon paths can radically alter pacing and risk profile, so runs stay fresh far longer than typical roguelike cycles. You can chase high-damage aggression, safer control-focused approaches, or hybrid builds depending on mood and skill comfort. This variety encourages experimentation instead of rote optimization.",
+                             "The game rewards creativity in both combat and planning. Smart route choices, synergistic boon pickups, and timing discipline can overcome runs that initially feel doomed. You are constantly making micro and macro decisions: which resource to prioritize now, which enemy to burst first, when to spend omega, when to save for survivability. That decision density keeps engagement high and makes success feel authored by your judgment.",
+                             "Player agency is meaningful because the game gives you tools to shape your own learning curve. If one approach stalls, you can adjust arcana, weapon selection, keepsakes, and upgrade priorities rather than waiting for random luck. This flexibility turns frustration into problem-solving and makes the game welcoming to both execution-heavy players and strategy-focused players who prefer planning over reflex dominance.",
+                             "Hades II already feels important within the roguelike conversation. It demonstrates that a sequel can preserve a beloved formula while still introducing enough systemic novelty to justify itself creatively. For players who care about genre evolution, this is a valuable case study in iterative design done right. It is not just more content; it is better structured play."
+                         ],
+    "miniAnecdote":  "I entered a run with a build I thought was mediocre, then hit an unexpected boon combo that turned my entire strategy into rapid curse detonation chains. A room that had wrecked me earlier suddenly became controlled chaos, and I started laughing mid-fight at how quickly momentum flipped.",
+    "practicalTips":  "If you are new to roguelikes, start by learning one weapon deeply instead of switching every run. Prioritize survivability and resource economy early, then branch into high-risk damage builds once fundamentals are comfortable. Controller input feels great, but keyboard and mouse can work well with sensitivity tuning. Do not rush endgame goals; progression systems are designed for steady accumulation. Because this is still evolving content, expect occasional balance shifts between updates and treat adaptation as part of the experience.",
+    "finalNudge":  "If you enjoyed the first Hades, this is an easy yes. If you did not, but you like action games with smart progression and build experimentation, it is still worth trying. Hades II is stylish, rewarding, and already one of the strongest games in its genre.",
+    "ageRating":  "T (Teen)"
 }

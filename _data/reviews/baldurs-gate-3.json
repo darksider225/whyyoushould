@@ -1,82 +1,83 @@
 {
-  "slug": "baldurs-gate-3",
-  "title": "Baldur's Gate 3",
-  "type": "game",
-  "verdict": "Must Play",
-  "why": "A landmark RPG where choice, consequence, and character depth create a world that truly reacts to you.",
-  "rating": 10,
-  "releaseYear": 2023,
-  "genre": [
-    "RPG",
-    "Fantasy",
-    "Adventure"
-  ],
-  "creator": "Larian Studios",
-  "platform": [
-    "PC",
-    "PS5",
-    "Xbox Series X|S"
-  ],
-  "reviewDate": "2024-01-22",
-  "timeInvestment": "80-150 hours",
-  "moodTags": [
-    "immersive",
-    "choice-driven",
-    "complex"
-  ],
-  "excerpt": "If you want freedom that actually matters, this is the modern gold standard.",
-  "similarTitles": [
-    "Elden Ring",
-    "The Witcher 3",
-    "Dragon's Dogma 2"
-  ],
-  "content": "A deeply reactive RPG with unmatched player freedom, tactical combat depth, and standout companion storytelling.",
-  "hook": "Every choice I made in Baldur's Gate 3 felt like it mattered-like the game was listening to me and weaving my story in real time. That's the magic here: it doesn't just give you a world to explore, it gives you a world that reacts to you. And when a game makes you feel like your decisions carry weight, you stop playing it like a checklist and start living inside it.",
-  "quickGist": "You lead a party of adventurers through a sprawling fantasy world, making choices that shape the story, combat, and relationships. It's part strategy, part storytelling, and all immersion. Based on the Dungeons & Dragons ruleset, it blends dice rolls, tactical combat, and branching dialogue into something that feels alive. You're not just following a script-you're writing one with every decision.",
-  "whatHitMe": [
-    {
-      "label": "World Design",
-      "text": "Every corner hides secrets, from goblin camps to mystical ruins. Exploration feels rewarding because the game constantly surprises you. One ruined chapel led me to a hidden boss, and that discovery felt earned, not scripted."
-    },
-    {
-      "label": "Combat",
-      "text": "Turn-based battles are punishing but fair. Learning a boss pattern turns panic into triumph. The dice rolls add unpredictability, but strategy and creativity always matter more than luck."
-    },
-    {
-      "label": "Freedom",
-      "text": "Dialogue choices and exploration make every playthrough unique. You can talk your way out of fights, charm enemies into allies, or stumble into chaos by accident. The game doesn't punish experimentation-it celebrates it."
-    }
-  ],
-  "ratingsSnapshot": [
-    {
-      "label": "Metacritic",
-      "value": "96/100"
-    },
-    {
-      "label": "IGN",
-      "value": "10/10"
-    },
-    {
-      "label": "GameSpot",
-      "value": "10/10"
-    },
-    {
-      "label": "Steam Reviews",
-      "value": "Overwhelmingly Positive"
-    }
-  ],
-  "ratingsSummary": "That's not just good-it's historic. Few modern RPGs have achieved this level of universal acclaim.",
-  "criticsVoice": "Critics praise its depth, freedom, and storytelling. PC Gamer called it \"a new gold standard for RPGs,\" while The Verge highlighted its ability to make every choice feel meaningful. Some note that it can be overwhelming for newcomers, but even those voices admit that once you settle in, it's unforgettable.",
-  "audienceVoice": "Players celebrate the replayability and emotional connections with companions. On forums, people share stories of romances gone wrong, battles won by clever tricks, and hilarious failures when dice rolls betrayed them. Many say it's the most immersive game they've ever played, with some admitting they've sunk hundreds of hours into multiple playthroughs. The community consensus is clear: this isn't just a game, it's a world you live in.",
-  "whyYouShouldWatch": [
-    "It's the closest thing to living inside a fantasy novel. Every choice shapes your story. You're not just reading about heroes-you're becoming one, flaws and all.",
-    "It rewards creativity. Problems have multiple solutions, and experimentation pays off. Want to sneak past enemies by turning invisible? Go for it. Want to stack barrels and blow up a boss? That works too.",
-    "It's endlessly replayable. No two journeys are the same. Your choices ripple through the world, changing outcomes in ways you won't expect.",
-    "It makes relationships matter. Companions aren't just sidekicks-they're complex characters with their own goals, personalities, and secrets. How you treat them changes everything.",
-    "It respects your time. Even small quests feel meaningful. You're never just grinding; you're always uncovering something new.",
-    "It's a landmark in gaming. Few titles redefine a genre. Baldur's Gate 3 does, setting a new bar for what RPGs can be."
-  ],
-  "miniAnecdote": "I accidentally charmed a goblin into helping me, and it changed the entire fight. Instead of a brutal battle, I had an unlikely ally who turned the tide. That's the kind of story you can't script-it's the kind of story you tell afterward, laughing at how the dice rolled in your favor.",
-  "practicalTips": "Play with friends for co-op chaos-it's hilarious when someone's dice roll ruins the plan. Save often to explore different paths; the game rewards curiosity. If you're new to RPGs, start on a lower difficulty to ease into the mechanics. And don't rush-this is a game meant to be savored, not speedrun.",
-  "finalNudge": "If you want a game that feels alive and personal, this is the one. Baldur's Gate 3 isn't just play-it's storytelling. It's the kind of game that gives you stories to tell, memories to share, and reasons to come back. Trust me, once you dive in, you'll lose track of time-and you won't mind at all."
+    "slug":  "baldurs-gate-3",
+    "title":  "Baldur\u0027s Gate 3",
+    "type":  "game",
+    "verdict":  "Must Play",
+    "why":  "A landmark RPG where choice, consequence, and character depth create a world that truly reacts to you.",
+    "rating":  10,
+    "releaseYear":  2023,
+    "genre":  [
+                  "RPG",
+                  "Fantasy",
+                  "Adventure"
+              ],
+    "creator":  "Larian Studios",
+    "platform":  [
+                     "PC",
+                     "PS5",
+                     "Xbox Series X|S"
+                 ],
+    "reviewDate":  "2024-01-22",
+    "timeInvestment":  "80-150 hours",
+    "moodTags":  [
+                     "immersive",
+                     "choice-driven",
+                     "complex"
+                 ],
+    "excerpt":  "If you want freedom that actually matters, this is the modern gold standard.",
+    "similarTitles":  [
+                          "Elden Ring",
+                          "The Witcher 3",
+                          "Dragon\u0027s Dogma 2"
+                      ],
+    "content":  "A deeply reactive RPG with unmatched player freedom, tactical combat depth, and standout companion storytelling.",
+    "hook":  "Every choice I made in Baldur\u0027s Gate 3 felt like it mattered-like the game was listening to me and weaving my story in real time. That\u0027s the magic here: it doesn\u0027t just give you a world to explore, it gives you a world that reacts to you. And when a game makes you feel like your decisions carry weight, you stop playing it like a checklist and start living inside it.",
+    "quickGist":  "You lead a party of adventurers through a sprawling fantasy world, making choices that shape the story, combat, and relationships. It\u0027s part strategy, part storytelling, and all immersion. Based on the Dungeons \u0026 Dragons ruleset, it blends dice rolls, tactical combat, and branching dialogue into something that feels alive. You\u0027re not just following a script-you\u0027re writing one with every decision.",
+    "whatHitMe":  [
+                      {
+                          "label":  "World Design",
+                          "text":  "Every corner hides secrets, from goblin camps to mystical ruins. Exploration feels rewarding because the game constantly surprises you. One ruined chapel led me to a hidden boss, and that discovery felt earned, not scripted."
+                      },
+                      {
+                          "label":  "Combat",
+                          "text":  "Turn-based battles are punishing but fair. Learning a boss pattern turns panic into triumph. The dice rolls add unpredictability, but strategy and creativity always matter more than luck."
+                      },
+                      {
+                          "label":  "Freedom",
+                          "text":  "Dialogue choices and exploration make every playthrough unique. You can talk your way out of fights, charm enemies into allies, or stumble into chaos by accident. The game doesn\u0027t punish experimentation-it celebrates it."
+                      }
+                  ],
+    "ratingsSnapshot":  [
+                            {
+                                "label":  "Metacritic",
+                                "value":  "96/100"
+                            },
+                            {
+                                "label":  "IGN",
+                                "value":  "10/10"
+                            },
+                            {
+                                "label":  "GameSpot",
+                                "value":  "10/10"
+                            },
+                            {
+                                "label":  "Steam Reviews",
+                                "value":  "Overwhelmingly Positive"
+                            }
+                        ],
+    "ratingsSummary":  "That\u0027s not just good-it\u0027s historic. Few modern RPGs have achieved this level of universal acclaim.",
+    "criticsVoice":  "Critics praise its depth, freedom, and storytelling. PC Gamer called it \"a new gold standard for RPGs,\" while The Verge highlighted its ability to make every choice feel meaningful. Some note that it can be overwhelming for newcomers, but even those voices admit that once you settle in, it\u0027s unforgettable.",
+    "audienceVoice":  "Players celebrate the replayability and emotional connections with companions. On forums, people share stories of romances gone wrong, battles won by clever tricks, and hilarious failures when dice rolls betrayed them. Many say it\u0027s the most immersive game they\u0027ve ever played, with some admitting they\u0027ve sunk hundreds of hours into multiple playthroughs. The community consensus is clear: this isn\u0027t just a game, it\u0027s a world you live in.",
+    "whyYouShouldWatch":  [
+                              "It\u0027s the closest thing to living inside a fantasy novel. Every choice shapes your story. You\u0027re not just reading about heroes-you\u0027re becoming one, flaws and all.",
+                              "It rewards creativity. Problems have multiple solutions, and experimentation pays off. Want to sneak past enemies by turning invisible? Go for it. Want to stack barrels and blow up a boss? That works too.",
+                              "It\u0027s endlessly replayable. No two journeys are the same. Your choices ripple through the world, changing outcomes in ways you won\u0027t expect.",
+                              "It makes relationships matter. Companions aren\u0027t just sidekicks-they\u0027re complex characters with their own goals, personalities, and secrets. How you treat them changes everything.",
+                              "It respects your time. Even small quests feel meaningful. You\u0027re never just grinding; you\u0027re always uncovering something new.",
+                              "It\u0027s a landmark in gaming. Few titles redefine a genre. Baldur\u0027s Gate 3 does, setting a new bar for what RPGs can be."
+                          ],
+    "miniAnecdote":  "I accidentally charmed a goblin into helping me, and it changed the entire fight. Instead of a brutal battle, I had an unlikely ally who turned the tide. That\u0027s the kind of story you can\u0027t script-it\u0027s the kind of story you tell afterward, laughing at how the dice rolled in your favor.",
+    "practicalTips":  "Play with friends for co-op chaos-it\u0027s hilarious when someone\u0027s dice roll ruins the plan. Save often to explore different paths; the game rewards curiosity. If you\u0027re new to RPGs, start on a lower difficulty to ease into the mechanics. And don\u0027t rush-this is a game meant to be savored, not speedrun.",
+    "finalNudge":  "If you want a game that feels alive and personal, this is the one. Baldur\u0027s Gate 3 isn\u0027t just play-it\u0027s storytelling. It\u0027s the kind of game that gives you stories to tell, memories to share, and reasons to come back. Trust me, once you dive in, you\u0027ll lose track of time-and you won\u0027t mind at all.",
+    "ageRating":  "M (17+)"
 }

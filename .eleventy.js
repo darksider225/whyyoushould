@@ -5,6 +5,7 @@ module.exports = function(eleventyConfig) {
 
   const fs = require("fs");
   const path = require("path");
+  const { verdictFromRating, defaultAgeRating } = require("./_lib/review-utils");
 
   const CACHE_SCHEMA_VERSION = 5;
   const cacheFile = path.join(__dirname, "_data", ".cache", "external-data.json");
@@ -50,15 +51,6 @@ module.exports = function(eleventyConfig) {
     if (!record || typeof record !== "object") return {};
     const { cache_version, query_title_norm, query_year, query_type, ...data } = record;
     return data;
-  }
-
-  function verdictFromRating(rating) {
-    const score = Number(rating);
-    if (!Number.isFinite(score)) return "Average";
-    if (score > 8.4 && score <= 10) return "Must Watch";
-    if (score > 6.9) return "Worth Your Time";
-    if (score > 5.5) return "Average";
-    return "Skip";
   }
 
   function hasRequiredFields(review) {
@@ -120,7 +112,11 @@ module.exports = function(eleventyConfig) {
       cached.query_type === review.type;
 
     const merged = isValid ? { ...review, ...stripCacheMeta(cached) } : review;
-    return { ...merged, verdict: verdictFromRating(merged.rating) };
+    return {
+      ...merged,
+      verdict: verdictFromRating(merged.rating, merged.type),
+      ageRating: merged.ageRating || defaultAgeRating(merged.type),
+    };
   }
 
   function sortByReviewDateDesc(items) {
@@ -162,7 +158,7 @@ module.exports = function(eleventyConfig) {
   });
 
   eleventyConfig.addFilter("verdictClass", (verdict) => {
-    if (verdict === "Must Watch") return "must";
+    if (verdict === "Must Watch" || verdict === "Must Play") return "must";
     if (verdict === "Worth Your Time") return "worth";
     if (verdict === "Average") return "average";
     if (verdict === "Skip") return "skip";

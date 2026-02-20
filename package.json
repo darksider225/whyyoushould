@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "Decisive reviews for movies and games. Why should you spend your time on this?",
   "scripts": {
+    "review:new": "node scripts/new-review.js",
+    "validate:reviews": "node scripts/validate-reviews.js",
+    "qa:reviews": "node scripts/qa-reviews.js",
+    "content:check": "npm run validate:reviews && npm run qa:reviews",
     "start": "eleventy --serve",
-    "build": "eleventy"
+    "build": "npm run content:check && eleventy"
   },
   "keywords": [
     "reviews",

@@ -1,76 +1,77 @@
 {
-  "slug": "oppenheimer",
-  "title": "Oppenheimer",
-  "type": "movie",
-  "verdict": "Worth Your Time",
-  "why": "A haunting historical drama that turns scientific triumph into a moral reckoning you cannot shake.",
-  "rating": 8.5,
-  "releaseYear": 2023,
-  "genre": [
-    "Biography",
-    "Drama",
-    "Historical"
-  ],
-  "creator": "Christopher Nolan",
-  "platform": [
-    "Max"
-  ],
-  "reviewDate": "2024-02-08",
-  "timeInvestment": "180 minutes",
-  "moodTags": [
-    "intellectual",
-    "intense",
-    "complex"
-  ],
-  "excerpt": "Spectacle and substance collide in Nolan's intense portrait of genius, guilt, and consequence.",
-  "similarTitles": [
-    "The Prestige",
-    "Inception",
-    "Dune: Part Two"
-  ],
-  "content": "A dense and emotionally powerful historical drama about genius, consequence, and moral responsibility.",
-  "reviewHeader": "Oppenheimer - 2023 ? Christopher Nolan ? Historical Drama ? 180 min",
-  "hook": "I walked away from Oppenheimer with my chest tight, my mind buzzing, and a strange mix of awe and dread. It's rare for a film to make you feel like you've lived through history, but this one does exactly that. It's not just a movie-it's an experience that leaves you questioning the very idea of progress. Even days later, I found myself replaying scenes in my head, almost like echoes of history refusing to fade.",
-  "quickGist": "At its core, Oppenheimer is the story of J. Robert Oppenheimer, the brilliant physicist who led the Manhattan Project and created the atomic bomb. Nolan doesn't tell it as a simple biography. Instead, he frames it as a moral puzzle: genius colliding with guilt, ambition clashing with responsibility, and science being both a tool of wonder and destruction. The film moves between Oppenheimer's rise in academia, his leadership during the war, and the political fallout that followed. It's a story about invention, but also about the burden of living with what you've unleashed.\n\nWhat makes it gripping is the way Nolan structures the narrative-jumping between timelines, weaving courtroom drama with scientific breakthroughs, and constantly reminding us that history is never just about facts, but about people, choices, and consequences.",
-  "whatHitMe": [
-    {
-      "label": "Visuals",
-      "text": "The Trinity test sequence is jaw-dropping. You don't just see the explosion-you feel the silence before it, the tremor after it, and the eerie beauty of fire blooming in the desert. It's one of those rare cinematic moments where the audience collectively holds its breath."
-    },
-    {
-      "label": "Score",
-      "text": "Ludwig Goransson's music is relentless, like a ticking clock that never lets you relax. It builds tension in courtroom scenes as much as in scientific breakthroughs. The score doesn't just accompany the film-it drives it, making every moment feel urgent."
-    },
-    {
-      "label": "Emotion",
-      "text": "Beneath the science, it's about a man haunted by what he unleashed. Cillian Murphy's performance captures Oppenheimer's brilliance and torment. You see the pride in his eyes when the bomb works, and the horror when he realizes what that means. The film makes you ask: what does progress cost, and who pays the price?"
-    }
-  ],
-  "ratingsSnapshot": [
-    {
-      "label": "IMDb",
-      "value": "8.4/10"
-    },
-    {
-      "label": "Rotten Tomatoes",
-      "value": "93% critics, 91% audience"
-    },
-    {
-      "label": "Metacritic",
-      "value": "88/100"
-    }
-  ],
-  "ratingsSummary": "That's a rare alignment-critics and audiences both hail it as a masterpiece. The numbers tell you it's not just a niche film; it's resonating widely.",
-  "criticsVoice": "Reviewers praise its ambition, intensity, and Nolan's ability to make history feel urgent. The New York Times called it \"a staggering achievement in historical storytelling,\" while Variety noted its \"dense but rewarding narrative.\" Some critics admit it's demanding-three hours of dialogue-heavy drama isn't light viewing-but even those voices concede it's unforgettable. The consensus is clear: Nolan has crafted something that will be studied for years.",
-  "audienceVoice": "Viewers call it gripping and thought-provoking. Many say it lingers long after, sparking debates about morality, science, and responsibility. On social media, people share how they finished the film in silence, processing what they'd just seen. Others highlight the emotional weight of Murphy's performance, saying it's one of the most haunting portrayals they've ever watched. Some even compare the experience to reading a great novel-you finish it, but it stays with you.",
-  "whyYouShouldWatch": [
-    "It's a rare mix of spectacle and substance. You'll get breathtaking visuals-the Trinity test is worth the ticket alone-but you'll also get a story that challenges your mind. Few films manage to balance blockbuster scale with intellectual depth.",
-    "It sparks conversations. This isn't a film you watch and forget-it's one you'll want to debate with friends afterward. Was Oppenheimer a hero or a villain? Did he have a choice? What does it mean to create something that changes the world forever?",
-    "It humanizes history. Instead of treating Oppenheimer as a distant figure, the film makes him relatable-ambitious, flawed, conflicted. You don't just learn about him; you feel his struggle.",
-    "It's timely. In an age where technology is advancing faster than ever, the film's questions about responsibility and progress feel more relevant than ever.",
-    "It's unforgettable. Whether you watch it on streaming, Blu-ray, or digital, the impact doesn't fade. The format doesn't matter-the story and performances carry the weight."
-  ],
-  "miniAnecdote": "I found myself holding my breath during the Trinity test scene, even though I knew exactly what was coming. That's how powerful the build-up is. It wasn't about surprise-it was about tension, anticipation, and the weight of history pressing down on you. And when the silence hit, it was deafening. I glanced around the room and saw everyone frozen, eyes wide, waiting. That collective pause is something I'll never forget.",
-  "practicalTips": "Watch it when you can give it your full attention-this isn't background noise. The film is dense, but the emotional beats carry you through. If you're not a history buff, don't let that stop you-the film explains enough to keep you engaged, while leaving room for curiosity afterward. Subtitles can help catch the rapid-fire dialogue, especially in the political hearings. And if you're watching at home, dim the lights and turn up the sound-you'll want to feel the weight of it.",
-  "finalNudge": "Oppenheimer isn't just history-it's a mirror, reflecting our own struggles with progress, morality, and responsibility. It's the kind of movie that stays with you, echoing long after the credits roll. Trust me, this isn't just a film-it's a conversation starter, a thought-provoker, and an experience you'll carry with you no matter how you watch it."
+    "slug":  "oppenheimer",
+    "title":  "Oppenheimer",
+    "type":  "movie",
+    "verdict":  "Must Watch",
+    "why":  "A haunting historical drama that turns scientific triumph into a moral reckoning you cannot shake.",
+    "rating":  8.5,
+    "releaseYear":  2023,
+    "genre":  [
+                  "Biography",
+                  "Drama",
+                  "Historical"
+              ],
+    "creator":  "Christopher Nolan",
+    "platform":  [
+                     "Max"
+                 ],
+    "reviewDate":  "2024-02-08",
+    "timeInvestment":  "180 minutes",
+    "moodTags":  [
+                     "intellectual",
+                     "intense",
+                     "complex"
+                 ],
+    "excerpt":  "Spectacle and substance collide in Nolan\u0027s intense portrait of genius, guilt, and consequence.",
+    "similarTitles":  [
+                          "The Prestige",
+                          "Inception",
+                          "Dune: Part Two"
+                      ],
+    "content":  "A dense and emotionally powerful historical drama about genius, consequence, and moral responsibility.",
+    "reviewHeader":  "Oppenheimer - 2023 ? Christopher Nolan ? Historical Drama ? 180 min",
+    "hook":  "I walked away from Oppenheimer with my chest tight, my mind buzzing, and a strange mix of awe and dread. It\u0027s rare for a film to make you feel like you\u0027ve lived through history, but this one does exactly that. It\u0027s not just a movie-it\u0027s an experience that leaves you questioning the very idea of progress. Even days later, I found myself replaying scenes in my head, almost like echoes of history refusing to fade.",
+    "quickGist":  "At its core, Oppenheimer is the story of J. Robert Oppenheimer, the brilliant physicist who led the Manhattan Project and created the atomic bomb. Nolan doesn\u0027t tell it as a simple biography. Instead, he frames it as a moral puzzle: genius colliding with guilt, ambition clashing with responsibility, and science being both a tool of wonder and destruction. The film moves between Oppenheimer\u0027s rise in academia, his leadership during the war, and the political fallout that followed. It\u0027s a story about invention, but also about the burden of living with what you\u0027ve unleashed.\n\nWhat makes it gripping is the way Nolan structures the narrative-jumping between timelines, weaving courtroom drama with scientific breakthroughs, and constantly reminding us that history is never just about facts, but about people, choices, and consequences.",
+    "whatHitMe":  [
+                      {
+                          "label":  "Visuals",
+                          "text":  "The Trinity test sequence is jaw-dropping. You don\u0027t just see the explosion-you feel the silence before it, the tremor after it, and the eerie beauty of fire blooming in the desert. It\u0027s one of those rare cinematic moments where the audience collectively holds its breath."
+                      },
+                      {
+                          "label":  "Score",
+                          "text":  "Ludwig Goransson\u0027s music is relentless, like a ticking clock that never lets you relax. It builds tension in courtroom scenes as much as in scientific breakthroughs. The score doesn\u0027t just accompany the film-it drives it, making every moment feel urgent."
+                      },
+                      {
+                          "label":  "Emotion",
+                          "text":  "Beneath the science, it\u0027s about a man haunted by what he unleashed. Cillian Murphy\u0027s performance captures Oppenheimer\u0027s brilliance and torment. You see the pride in his eyes when the bomb works, and the horror when he realizes what that means. The film makes you ask: what does progress cost, and who pays the price?"
+                      }
+                  ],
+    "ratingsSnapshot":  [
+                            {
+                                "label":  "IMDb",
+                                "value":  "8.4/10"
+                            },
+                            {
+                                "label":  "Rotten Tomatoes",
+                                "value":  "93% critics, 91% audience"
+                            },
+                            {
+                                "label":  "Metacritic",
+                                "value":  "88/100"
+                            }
+                        ],
+    "ratingsSummary":  "That\u0027s a rare alignment-critics and audiences both hail it as a masterpiece. The numbers tell you it\u0027s not just a niche film; it\u0027s resonating widely.",
+    "criticsVoice":  "Reviewers praise its ambition, intensity, and Nolan\u0027s ability to make history feel urgent. The New York Times called it \"a staggering achievement in historical storytelling,\" while Variety noted its \"dense but rewarding narrative.\" Some critics admit it\u0027s demanding-three hours of dialogue-heavy drama isn\u0027t light viewing-but even those voices concede it\u0027s unforgettable. The consensus is clear: Nolan has crafted something that will be studied for years.",
+    "audienceVoice":  "Viewers call it gripping and thought-provoking. Many say it lingers long after, sparking debates about morality, science, and responsibility. On social media, people share how they finished the film in silence, processing what they\u0027d just seen. Others highlight the emotional weight of Murphy\u0027s performance, saying it\u0027s one of the most haunting portrayals they\u0027ve ever watched. Some even compare the experience to reading a great novel-you finish it, but it stays with you.",
+    "whyYouShouldWatch":  [
+                              "It\u0027s a rare mix of spectacle and substance. You\u0027ll get breathtaking visuals-the Trinity test is worth the ticket alone-but you\u0027ll also get a story that challenges your mind. Few films manage to balance blockbuster scale with intellectual depth.",
+                              "It sparks conversations. This isn\u0027t a film you watch and forget-it\u0027s one you\u0027ll want to debate with friends afterward. Was Oppenheimer a hero or a villain? Did he have a choice? What does it mean to create something that changes the world forever?",
+                              "It humanizes history. Instead of treating Oppenheimer as a distant figure, the film makes him relatable-ambitious, flawed, conflicted. You don\u0027t just learn about him; you feel his struggle.",
+                              "It\u0027s timely. In an age where technology is advancing faster than ever, the film\u0027s questions about responsibility and progress feel more relevant than ever.",
+                              "It\u0027s unforgettable. Whether you watch it on streaming, Blu-ray, or digital, the impact doesn\u0027t fade. The format doesn\u0027t matter-the story and performances carry the weight."
+                          ],
+    "miniAnecdote":  "I found myself holding my breath during the Trinity test scene, even though I knew exactly what was coming. That\u0027s how powerful the build-up is. It wasn\u0027t about surprise-it was about tension, anticipation, and the weight of history pressing down on you. And when the silence hit, it was deafening. I glanced around the room and saw everyone frozen, eyes wide, waiting. That collective pause is something I\u0027ll never forget.",
+    "practicalTips":  "Watch it when you can give it your full attention-this isn\u0027t background noise. The film is dense, but the emotional beats carry you through. If you\u0027re not a history buff, don\u0027t let that stop you-the film explains enough to keep you engaged, while leaving room for curiosity afterward. Subtitles can help catch the rapid-fire dialogue, especially in the political hearings. And if you\u0027re watching at home, dim the lights and turn up the sound-you\u0027ll want to feel the weight of it.",
+    "finalNudge":  "Oppenheimer isn\u0027t just history-it\u0027s a mirror, reflecting our own struggles with progress, morality, and responsibility. It\u0027s the kind of movie that stays with you, echoing long after the credits roll. Trust me, this isn\u0027t just a film-it\u0027s a conversation starter, a thought-provoker, and an experience you\u0027ll carry with you no matter how you watch it.",
+    "ageRating":  "R"
 }
