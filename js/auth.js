@@ -71,6 +71,12 @@
     const form = e.currentTarget;
     const email = form.email.value.trim();
     const password = form.password.value;
+    const consentChecked = !!form.consent?.checked;
+
+    if (!consentChecked) {
+      setStatus("auth-status", "You must confirm 13+ and accept Terms, Privacy, and Guidelines.", "error");
+      return;
+    }
 
     setStatus("auth-status", "Creating account...", "info");
     const { error } = await client.auth.signUp({
@@ -78,6 +84,10 @@
       password,
       options: {
         emailRedirectTo: absoluteUrl("/auth/callback/"),
+        data: {
+          consent_accepted: true,
+          consent_accepted_at: new Date().toISOString(),
+        },
       },
     });
 

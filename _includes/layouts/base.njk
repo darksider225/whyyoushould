@@ -6,10 +6,8 @@
   <meta name="description" content="{{ description or 'Decisive reviews for movies and games. Why should you spend your time on this?' }}">
   <meta name="theme-color" content="#0a0a0a">
   <meta name="wys-base-path" content="{{ '/' | url }}">
-  {% if authPage %}
   <meta name="supabase-url" content="{{ auth.supabaseUrl }}">
   <meta name="supabase-anon-key" content="{{ auth.supabaseAnonKey }}">
-  {% endif %}
   
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -53,14 +51,24 @@
           <p class="footer-brand">Whyyoushould</p>
           <p class="footer-tagline">Decisive reviews for movies, games, and TV shows</p>
           <a href="{{ '/' | url }}">Home</a>
+          <div class="footer-legal">
+            <a href="{{ '/terms/' | url }}">Terms</a>
+            <a href="{{ '/privacy/' | url }}">Privacy</a>
+            <a href="{{ '/guidelines/' | url }}">Guidelines</a>
+          </div>
         </div>
       </div>
       <p class="footer-credit">Built with <a href="https://11ty.dev" target="_blank">Eleventy</a></p>
     </div>
   </footer>
-  {% if authPage %}
+  {% if authPage or reviewPage %}
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  {% endif %}
+  {% if authPage %}
   <script defer src="{{ '/js/auth.js' | url }}"></script>
+  {% endif %}
+  {% if reviewPage %}
+  <script defer src="{{ '/js/review-community.js' | url }}"></script>
   {% endif %}
 </body>
 </html>

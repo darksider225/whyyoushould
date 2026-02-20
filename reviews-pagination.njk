@@ -5,6 +5,7 @@ pagination:
   alias: review
 permalink: "/reviews/{{ review.slug }}/"
 layout: layouts/base.njk
+reviewPage: true
 ---
 
 <article class="review-page">
@@ -89,133 +90,208 @@ layout: layouts/base.njk
     </div>
   </div>
 
-  <div class="review-content">
-    {% if review.hook %}
-    <section class="review-section">
-      <h2>Hook</h2>
-      <p>{{ review.hook }}</p>
+  <div class="review-interactions" data-review-slug="{{ review.slug }}" data-review-title="{{ review.title }}" data-review-type="{{ review.type }}">
+    <section class="review-actions-panel">
+      <div class="review-panel-head">
+        <h2>Your Actions</h2>
+        <p>Save this title, add your own score, and jump into discussion.</p>
+      </div>
+      <div class="review-actions-grid">
+        <div class="action-card">
+          <h3>Favorites</h3>
+          <p>Add this review to your private favorites list.</p>
+          <button id="favorite-toggle-btn" type="button" class="btn-secondary">Add to Favorites</button>
+          <p id="favorite-status" class="interaction-status" aria-live="polite"></p>
+        </div>
+        <div class="action-card">
+          <h3>Your Rating</h3>
+          <form id="user-rating-form" class="inline-form">
+            <label for="user-rating-input">Score (1 to 10)</label>
+            <div class="inline-form-row">
+              <input id="user-rating-input" type="number" min="1" max="10" step="0.1" required>
+              <button type="submit" class="btn-primary">Save</button>
+            </div>
+          </form>
+          <p id="user-rating-status" class="interaction-status" aria-live="polite"></p>
+          <p class="rating-aggregate">Community Score: <strong id="community-rating-value">-</strong> <span id="community-rating-count"></span></p>
+        </div>
+      </div>
     </section>
-    {% endif %}
 
-    {% set gistText = review.playGist or review.quickGist %}
-    {% if gistText %}
-    <section class="review-section">
-      <h2>{{ 'Play Gist' if review.playGist else 'Quick Gist' }}</h2>
-      <p>{{ gistText }}</p>
-    </section>
-    {% endif %}
+    <div class="review-mode-tabs" role="tablist" aria-label="Review and community tabs">
+      <button type="button" id="tab-original" class="review-mode-tab is-active" role="tab" aria-selected="true" aria-controls="panel-original">Original Review</button>
+      <button type="button" id="tab-community" class="review-mode-tab" role="tab" aria-selected="false" aria-controls="panel-community">Community</button>
+    </div>
 
-    {% set standoutItems = review.whatStandsOut or review.whatStoodOut or review.whatHitMe %}
-    {% if standoutItems and standoutItems.length > 0 %}
-    <section class="review-section">
-      <h2>{{ 'What Stands Out' if review.whatStandsOut or review.whatStoodOut else 'What Hit Me' }}</h2>
-      <ul class="review-bullet-list">
-        {% for item in standoutItems %}
-        <li><strong>{{ item.label }}:</strong> {{ item.text }}</li>
-        {% endfor %}
-      </ul>
-    </section>
-    {% endif %}
-
-    {% if review.ratingsSnapshot and review.ratingsSnapshot.length > 0 %}
-    <section class="review-section">
-      <h2>Ratings Snapshot</h2>
-      <ul class="review-bullet-list">
-        {% for item in review.ratingsSnapshot %}
-        <li><strong>{{ item.label }}:</strong> {{ item.value }}</li>
-        {% endfor %}
-      </ul>
-      {% if review.ratingsSummary %}
-      <p>{{ review.ratingsSummary }}</p>
-      {% endif %}
-    </section>
-    {% endif %}
-
-    {% if review.criticsVoice %}
-    <section class="review-section">
-      <h2>Critics Voice</h2>
-      <p>{{ review.criticsVoice }}</p>
-    </section>
-    {% endif %}
-
-    {% if review.audienceVoice %}
-    <section class="review-section">
-      <h2>Audience Voice</h2>
-      <p>{{ review.audienceVoice }}</p>
-    </section>
-    {% endif %}
-
-    {% set reasonsList = review.whyYouShouldWatch or review.whyYouShouldPlay %}
-    {% if reasonsList and reasonsList.length > 0 %}
-    <section class="review-section">
-      <h2>{{ 'Why You Should Play' if review.whyYouShouldPlay else 'Why You Should Watch' }}</h2>
-      <ol class="review-number-list">
-        {% for item in reasonsList %}
-        <li>{{ item }}</li>
-        {% endfor %}
-      </ol>
-    </section>
-    {% endif %}
-
-    {% if review.miniAnecdote %}
-    <section class="review-section">
-      <h2>Mini Anecdote</h2>
-      <p>{{ review.miniAnecdote }}</p>
-    </section>
-    {% endif %}
-
-    {% if review.practicalTips %}
-    <section class="review-section">
-      <h2>Practical Tips</h2>
-      <p>{{ review.practicalTips }}</p>
-    </section>
-    {% endif %}
-
-    {% if review.finalNudge %}
-    <section class="review-section">
-      <h2>Final Nudge</h2>
-      <p>{{ review.finalNudge }}</p>
-    </section>
-    {% endif %}
-
-    {% if review.content %}
-    <section class="review-section">
-      <p>{{ review.content }}</p>
-    </section>
-    {% endif %}
-  </div>
-
-  <div class="review-footer">
-    <div class="verdict-final verdict-{{ review.verdict | verdictClass }}">
-      <h3>Final Verdict</h3>
-      <p>
-        <strong class="verdict-action">{{ review.verdict }}</strong>
-        {% if review.verdict === 'Must Watch' %}
-          This is essential. Stop reading and go enjoy it.
-        {% elseif review.verdict === 'Worth Your Time' %}
-          If it matches your taste, it's worthwhile.
-        {% elseif review.verdict === 'Average' %}
-          Decent, but not a priority unless you're already curious.
-        {% else %}
-          Your time is better spent elsewhere.
+    <section id="panel-original" class="review-mode-panel is-active" role="tabpanel" aria-labelledby="tab-original">
+      <div class="review-content">
+        {% if review.hook %}
+        <section class="review-section">
+          <h2>Hook</h2>
+          <p>{{ review.hook }}</p>
+        </section>
         {% endif %}
-      </p>
-    </div>
 
-    {% if review.similarTitles and review.similarTitles.length > 0 %}
-    <div class="similar-titles">
-      <h3>Similar Titles</h3>
-      <ul>
-        {% for title in review.similarTitles %}
-        <li>{{ title }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-    {% endif %}
+        {% set gistText = review.playGist or review.quickGist %}
+        {% if gistText %}
+        <section class="review-section">
+          <h2>{{ 'Play Gist' if review.playGist else 'Quick Gist' }}</h2>
+          <p>{{ gistText }}</p>
+        </section>
+        {% endif %}
+
+        {% set standoutItems = review.whatStandsOut or review.whatStoodOut or review.whatHitMe %}
+        {% if standoutItems and standoutItems.length > 0 %}
+        <section class="review-section">
+          <h2>{{ 'What Stands Out' if review.whatStandsOut or review.whatStoodOut else 'What Hit Me' }}</h2>
+          <ul class="review-bullet-list">
+            {% for item in standoutItems %}
+            <li><strong>{{ item.label }}:</strong> {{ item.text }}</li>
+            {% endfor %}
+          </ul>
+        </section>
+        {% endif %}
+
+        {% if review.ratingsSnapshot and review.ratingsSnapshot.length > 0 %}
+        <section class="review-section">
+          <h2>Ratings Snapshot</h2>
+          <ul class="review-bullet-list">
+            {% for item in review.ratingsSnapshot %}
+            <li><strong>{{ item.label }}:</strong> {{ item.value }}</li>
+            {% endfor %}
+          </ul>
+          {% if review.ratingsSummary %}
+          <p>{{ review.ratingsSummary }}</p>
+          {% endif %}
+        </section>
+        {% endif %}
+
+        {% if review.criticsVoice %}
+        <section class="review-section">
+          <h2>Critics Voice</h2>
+          <p>{{ review.criticsVoice }}</p>
+        </section>
+        {% endif %}
+
+        {% if review.audienceVoice %}
+        <section class="review-section">
+          <h2>Audience Voice</h2>
+          <p>{{ review.audienceVoice }}</p>
+        </section>
+        {% endif %}
+
+        {% set reasonsList = review.whyYouShouldWatch or review.whyYouShouldPlay %}
+        {% if reasonsList and reasonsList.length > 0 %}
+        <section class="review-section">
+          <h2>{{ 'Why You Should Play' if review.whyYouShouldPlay else 'Why You Should Watch' }}</h2>
+          <ol class="review-number-list">
+            {% for item in reasonsList %}
+            <li>{{ item }}</li>
+            {% endfor %}
+          </ol>
+        </section>
+        {% endif %}
+
+        {% if review.miniAnecdote %}
+        <section class="review-section">
+          <h2>Mini Anecdote</h2>
+          <p>{{ review.miniAnecdote }}</p>
+        </section>
+        {% endif %}
+
+        {% if review.practicalTips %}
+        <section class="review-section">
+          <h2>Practical Tips</h2>
+          <p>{{ review.practicalTips }}</p>
+        </section>
+        {% endif %}
+
+        {% if review.finalNudge %}
+        <section class="review-section">
+          <h2>Final Nudge</h2>
+          <p>{{ review.finalNudge }}</p>
+        </section>
+        {% endif %}
+
+        {% if review.content %}
+        <section class="review-section">
+          <p>{{ review.content }}</p>
+        </section>
+        {% endif %}
+      </div>
+
+      <div class="review-footer">
+        <div class="verdict-final verdict-{{ review.verdict | verdictClass }}">
+          <h3>Final Verdict</h3>
+          <p>
+            <strong class="verdict-action">{{ review.verdict }}</strong>
+            {% if review.verdict === 'Must Watch' %}
+              This is essential. Stop reading and go enjoy it.
+            {% elseif review.verdict === 'Worth Your Time' %}
+              If it matches your taste, it's worthwhile.
+            {% elseif review.verdict === 'Average' %}
+              Decent, but not a priority unless you're already curious.
+            {% else %}
+              Your time is better spent elsewhere.
+            {% endif %}
+          </p>
+        </div>
+
+        {% if review.similarTitles and review.similarTitles.length > 0 %}
+        <div class="similar-titles">
+          <h3>Similar Titles</h3>
+          <ul>
+            {% for title in review.similarTitles %}
+            <li>{{ title }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+
+      <section class="public-comments">
+        <div class="section-head">
+          <h2>Comments</h2>
+          <p>Visible to everyone, even visitors without accounts.</p>
+        </div>
+        <form id="review-comment-form" class="stack-form">
+          <label for="review-comment-input">Add your comment</label>
+          <textarea id="review-comment-input" rows="4" maxlength="1200" placeholder="Share your thoughts on this review..." required></textarea>
+          <button type="submit" class="btn-primary">Post Comment</button>
+          <p id="review-comment-status" class="interaction-status" aria-live="polite"></p>
+        </form>
+        <div id="review-comments-list" class="comment-list"></div>
+      </section>
+    </section>
+
+    <section id="panel-community" class="review-mode-panel" role="tabpanel" aria-labelledby="tab-community" hidden>
+      <section class="community-post-editor">
+        <div class="section-head">
+          <h2>Community Post</h2>
+          <p>One post per user per title. You can edit or delete your own post anytime.</p>
+        </div>
+        <form id="community-post-form" class="stack-form">
+          <label for="community-post-input">Your community take</label>
+          <textarea id="community-post-input" rows="7" maxlength="3000" placeholder="Share your experience, feelings, or your own mini review..." required></textarea>
+          <div class="inline-actions">
+            <button type="submit" class="btn-primary">Publish / Update</button>
+            <button type="button" id="community-post-delete-btn" class="btn-secondary">Delete My Post</button>
+          </div>
+          <p id="community-post-status" class="interaction-status" aria-live="polite"></p>
+        </form>
+      </section>
+      <section class="community-feed">
+        <div class="section-head">
+          <h2>Community Feed</h2>
+          <p>Public discussions from everyone who watched or played this title.</p>
+        </div>
+        <div id="community-posts-list" class="community-list"></div>
+      </section>
+    </section>
   </div>
 
   <div class="review-nav">
-    <a href="{{ '/reviews/' | url }}" class="btn-secondary">â† Back to Reviews</a>
+    <a href="{{ '/reviews/' | url }}" class="btn-secondary">Back to Reviews</a>
   </div>
 </article>
 

@@ -24,6 +24,15 @@ authView: signup
       <input id="signup-email" name="email" type="email" autocomplete="email" required>
       <label for="signup-password">Password</label>
       <input id="signup-password" name="password" type="password" autocomplete="new-password" required minlength="8">
+      <label class="auth-checkbox">
+        <input id="signup-consent" name="consent" type="checkbox" required>
+        <span>
+          I confirm I am 13+ and agree to the
+          <a href="{{ '/terms/' | url }}">Terms</a>,
+          <a href="{{ '/privacy/' | url }}">Privacy Policy</a>,
+          and <a href="{{ '/guidelines/' | url }}">Community Guidelines</a>.
+        </span>
+      </label>
       <button type="submit" class="btn-primary">Sign Up</button>
     </form>
   </section>
