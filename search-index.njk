@@ -1,0 +1,16 @@
+---
+permalink: /search-index.json
+eleventyExcludeFromCollections: true
+---
+[
+{% for review in reviews %}
+  {
+    "title": {{ review.title | dump }},
+    "slug": {{ review.slug | dump }},
+    "type": {{ review.type | dump }},
+    "creator": {{ review.creator | dump }},
+    "verdict": {{ review.verdict | dump }},
+    "year": {{ review.releaseYear | dump }}
+  }{% if not loop.last %},{% endif %}
+{% endfor %}
+]

@@ -102,6 +102,13 @@ function validateReview(entry, issues, warnings, slugSet, titleSet) {
     fail(`${where} poster_path must be absolute http(s) URL or root-relative path`, issues);
   }
 
+  if (
+    data.trailer_url &&
+    (typeof data.trailer_url !== "string" || !/^https?:\/\//.test(data.trailer_url))
+  ) {
+    fail(`${where} trailer_url must be an absolute http(s) URL when provided`, issues);
+  }
+
   if (data.ageRating && typeof data.ageRating !== "string") {
     fail(`${where} ageRating must be a string when provided`, issues);
   }

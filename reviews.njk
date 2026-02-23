@@ -6,12 +6,17 @@ description: Browse all movie and game reviews on Whyyoushould. Filter by type a
 
 <div style="margin-bottom: 3rem;">
   <h1>All Reviews</h1>
-  <p style="color: var(--text-secondary); font-size: 1.125rem;">{{ reviews.length }} definitive recommendations</p>
+  <p id="reviews-summary" style="color: var(--text-secondary); font-size: 1.125rem;">{{ reviews.length }} definitive recommendations</p>
+  <p id="reviews-search-feedback" style="color: var(--text-tertiary); font-size: 0.95rem; margin-bottom: 0;" hidden></p>
 </div>
 
 <div class="reviews-grid">
   {% for review in reviews %}
-  <a href="{{ ('/reviews/' ~ review.slug ~ '/') | url }}" class="review-card">
+  <a
+    href="{{ ('/reviews/' ~ review.slug ~ '/') | url }}"
+    class="review-card searchable-review-card"
+    data-search="{{ (review.title ~ ' ' ~ review.creator ~ ' ' ~ review.type ~ ' ' ~ review.verdict ~ ' ' ~ (review.genre | join(' ')) ~ ' ' ~ review.releaseYear) | lower }}"
+  >
     <div class="review-card-header">
       <div>
         <h3 class="review-card-title">{{ review.title }}</h3>

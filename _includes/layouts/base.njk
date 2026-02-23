@@ -25,17 +25,75 @@
   <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='50' y='65' font-size='90' font-weight='900' text-anchor='middle' fill='%233b82f6'>W</text></svg>">
 </head>
-<body data-auth-view="{{ authView or '' }}">
+  <body data-auth-view="{{ authView or '' }}">
   <header class="header">
     <div class="container">
-      <a href="{{ '/' | url }}" class="logo">WYS</a>
-      <nav class="nav">
+      <div class="header-main">
+        <a href="{{ '/' | url }}" class="logo">WYS</a>
+
+        <form class="site-search desktop-search" data-site-search>
+          <label class="sr-only" for="desktop-search-input">Search reviews</label>
+          <div class="site-search-input-wrap">
+            <span class="site-search-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M10.5 3.5a7 7 0 015.57 11.24l4.6 4.59-1.41 1.42-4.6-4.6A7 7 0 1110.5 3.5zm0 2a5 5 0 100 10 5 5 0 000-10z"></path>
+              </svg>
+            </span>
+            <input id="desktop-search-input" type="search" name="q" placeholder="Search titles, creators..." autocomplete="off">
+          </div>
+          <div class="site-search-results" data-search-results hidden></div>
+        </form>
+
+        <nav class="nav desktop-nav">
         <a href="{{ '/reviews/' | url }}" class="nav-link">Reviews</a>
         <a href="{{ '/movies/' | url }}" class="nav-link">Movies</a>
         <a href="{{ '/tvshows/' | url }}" class="nav-link">TV Shows</a>
         <a href="{{ '/games/' | url }}" class="nav-link">Games</a>
         <a href="{{ '/about/' | url }}" class="nav-link">About</a>
         <a href="{{ '/account/' | url }}" class="nav-link" id="nav-auth-link">Account</a>
+        </nav>
+
+        <div class="mobile-actions">
+          <button type="button" class="mobile-icon-btn" id="mobile-search-toggle" aria-label="Open search" aria-expanded="false">
+            <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+              <path d="M10.5 3.5a7 7 0 015.57 11.24l4.6 4.59-1.41 1.42-4.6-4.6A7 7 0 1110.5 3.5zm0 2a5 5 0 100 10 5 5 0 000-10z"></path>
+            </svg>
+          </button>
+          <a href="{{ '/account/' | url }}" class="mobile-icon-btn" aria-label="Account">
+            <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+              <path d="M12 12a4.25 4.25 0 100-8.5A4.25 4.25 0 0012 12zm0 2c-4.14 0-7.5 2.69-7.5 6a1 1 0 102 0c0-2.06 2.47-4 5.5-4s5.5 1.94 5.5 4a1 1 0 102 0c0-3.31-3.36-6-7.5-6z"></path>
+            </svg>
+          </a>
+          <button type="button" class="mobile-icon-btn" id="mobile-menu-toggle" aria-label="Open menu" aria-expanded="false">
+            <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+              <path d="M4 6.5h16v2H4v-2zm0 4.5h16v2H4v-2zm0 4.5h16v2H4v-2z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-search-panel" id="mobile-search-panel" hidden>
+        <form class="site-search mobile-search" data-site-search>
+          <label class="sr-only" for="mobile-search-input">Search reviews</label>
+          <div class="site-search-input-wrap">
+            <span class="site-search-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M10.5 3.5a7 7 0 015.57 11.24l4.6 4.59-1.41 1.42-4.6-4.6A7 7 0 1110.5 3.5zm0 2a5 5 0 100 10 5 5 0 000-10z"></path>
+              </svg>
+            </span>
+            <input id="mobile-search-input" type="search" name="q" placeholder="Search titles, creators..." autocomplete="off">
+          </div>
+          <div class="site-search-results" data-search-results hidden></div>
+        </form>
+      </div>
+
+      <nav class="mobile-menu" id="mobile-menu" hidden>
+        <a href="{{ '/reviews/' | url }}" class="nav-link">Reviews</a>
+        <a href="{{ '/movies/' | url }}" class="nav-link">Movies</a>
+        <a href="{{ '/tvshows/' | url }}" class="nav-link">TV Shows</a>
+        <a href="{{ '/games/' | url }}" class="nav-link">Games</a>
+        <a href="{{ '/about/' | url }}" class="nav-link">About</a>
+        <a href="{{ '/account/' | url }}" class="nav-link">Account</a>
       </nav>
     </div>
   </header>
@@ -70,5 +128,6 @@
   {% if reviewPage %}
   <script defer src="{{ '/js/review-community.js' | url }}"></script>
   {% endif %}
+  <script defer src="{{ '/js/site-nav.js' | url }}"></script>
 </body>
 </html>

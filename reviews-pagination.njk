@@ -101,6 +101,50 @@ reviewPage: true
         <p>{{ review.official_description }}</p>
       </div>
       {% endif %}
+
+      {% set trailerKind = 'gameplay trailer' if review.type === 'game' else 'official trailer' %}
+      <section class="review-trailer-card" aria-label="Trailer">
+        <div class="review-trailer-head">
+          <h2>Watch Trailer</h2>
+          <p>
+            {% if review.trailerUrl %}
+            Preview the {{ trailerKind }} for {{ review.title }}.
+            {% else %}
+            We could not auto-find a trailer link yet, but you can jump to search.
+            {% endif %}
+          </p>
+        </div>
+
+        {% if review.trailerEmbedUrl %}
+        <div class="review-trailer-media">
+          <iframe
+            src="{{ review.trailerEmbedUrl }}"
+            title="Trailer for {{ review.title }}"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+        {% elseif review.trailerVideoUrl %}
+        <div class="review-trailer-media">
+          <video controls preload="metadata" poster="{{ review.card_image or review.poster_path }}">
+            <source src="{{ review.trailerVideoUrl }}">
+            Your browser does not support the trailer video.
+          </video>
+        </div>
+        {% else %}
+        <div class="review-trailer-empty">
+          <p>No embedded trailer is available yet for this title.</p>
+        </div>
+        {% endif %}
+
+        <div class="review-trailer-actions">
+          {% if review.trailerUrl %}
+          <a href="{{ review.trailerUrl }}" class="btn-secondary" target="_blank" rel="noopener noreferrer">Open Trailer</a>
+          {% endif %}
+          <a href="{{ review.trailerSearchUrl }}" class="btn-secondary" target="_blank" rel="noopener noreferrer">Search on YouTube</a>
+        </div>
+      </section>
     </div>
   </div>
 

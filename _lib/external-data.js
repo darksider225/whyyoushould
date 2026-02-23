@@ -10,8 +10,9 @@ require("dotenv").config();
 
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
 const RAWG_API_KEY = process.env.RAWG_API_KEY;
+const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const REFRESH = process.env.REFRESH_EXTERNAL_DATA === "true";
-const CACHE_SCHEMA_VERSION = 5;
+const CACHE_SCHEMA_VERSION = 8;
 
 const CACHE_DIR = path.join(__dirname, "../_data/.cache");
 const CACHE_FILE = path.join(CACHE_DIR, "external-data.json");
@@ -35,6 +36,87 @@ function loadCache() {
 
 function saveCache(data) {
   fs.writeFileSync(CACHE_FILE, JSON.stringify(data, null, 2));
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function fetchJsonWithRetry(url, { label = "request", attempts = 3, backoffMs = 350 } = {}) {
+  let lastError;
+
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`${label} failed with status ${response.status}`);
+      }
+      return await response.json();
+    } catch (err) {
+      lastError = err;
+      if (attempt < attempts) {
+        await sleep(backoffMs * attempt);
+      }
+    }
+  }
+
+  throw lastError || new Error(`${label} failed`);
+}
+
+async function fetchYouTubeApiTrailer(title, year, type) {
+  if (!YOUTUBE_API_KEY) return null;
+
+  const query = [
+    title,
+    year,
+    type === "game" ? "official gameplay trailer" : "official trailer",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const url =
+    "https://www.googleapis.com/youtube/v3/search?" +
+    `part=snippet&type=video&videoEmbeddable=true&maxResults=10&safeSearch=strict` +
+    `&q=${encodeURIComponent(query)}&key=${encodeURIComponent(YOUTUBE_API_KEY)}`;
+
+  try {
+    const data = await fetchJsonWithRetry(url, {
+      label: `YouTube Data API search (${title})`,
+      attempts: 3,
+    });
+    const items = Array.isArray(data?.items) ? data.items : [];
+    if (items.length === 0) return null;
+
+    const normalizedTitle = normalizeTitle(title);
+    const scoreItem = (item) => {
+      const snippet = item?.snippet || {};
+      const rawName = `${snippet.title || ""} ${snippet.description || ""}`;
+      const videoTitle = normalizeTitle(rawName);
+      let score = 0;
+
+      if (videoTitle.includes(normalizedTitle)) score += 60;
+      const yearStr = String(year || "");
+      if (yearStr && rawName.includes(yearStr)) score += 20;
+      if (/official/i.test(rawName)) score += 15;
+      if (/trailer|gameplay|launch/i.test(rawName)) score += 10;
+      if (/reaction|breakdown|explained|fan made|recap/i.test(rawName)) score -= 40;
+
+      return score;
+    };
+
+    const best = items.sort((a, b) => scoreItem(b) - scoreItem(a))[0];
+    const videoId = best?.id?.videoId;
+    if (!videoId) return null;
+
+    return {
+      trailer_url: `https://www.youtube.com/watch?v=${videoId}`,
+      trailer_site: "youtube-api",
+      trailer_label: best?.snippet?.title || (type === "game" ? "Gameplay Trailer" : "Official Trailer"),
+    };
+  } catch (err) {
+    console.warn(`YouTube API trailer fetch error for "${title}":`, err.message);
+    return null;
+  }
 }
 
 function normalizeTitle(value) {
@@ -179,7 +261,7 @@ function stripCacheMeta(record) {
 
 function mergeExternalWithLocalPriority(review, external) {
   const merged = { ...review, ...external };
-  const localPriorityKeys = ["card_image", "poster_path", "official_description"];
+  const localPriorityKeys = ["card_image", "poster_path", "official_description", "trailer_url"];
   for (const key of localPriorityKeys) {
     if (review[key]) {
       merged[key] = review[key];
@@ -197,9 +279,10 @@ async function fetchTMDBMovie(title, year) {
   try {
     const query = encodeURIComponent(cleanSearchTitle(title));
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${query}&year=${year}&include_adult=false&page=1`;
-
-    const response = await fetch(url);
-    const data = await response.json();
+    const data = await fetchJsonWithRetry(url, {
+      label: `TMDB movie search (${title})`,
+      attempts: 4,
+    });
 
     const movie = pickBestCandidate(data.results || [], {
       title,
@@ -214,7 +297,7 @@ async function fetchTMDBMovie(title, year) {
       return null;
     }
 
-    return {
+    const result = {
       tmdb_id: movie.id,
       poster_path: movie.poster_path
         ? `https://image.tmdb.org/t/p/w342${movie.poster_path}`
@@ -228,6 +311,11 @@ async function fetchTMDBMovie(title, year) {
       tmdb_rating: movie.vote_average,
       tmdb_url: `https://www.themoviedb.org/movie/${movie.id}`,
     };
+
+    const trailer = await fetchYouTubeApiTrailer(title, year, "movie");
+    if (trailer) Object.assign(result, trailer);
+
+    return result;
   } catch (err) {
     console.warn(`TMDB fetch error for \"${title}\":`, err.message);
     return null;
@@ -244,9 +332,10 @@ async function fetchTMDBTVShow(title, year) {
     const cleanTitle = cleanSearchTitle(title);
     const query = encodeURIComponent(cleanTitle);
     const url = `https://api.themoviedb.org/3/search/tv?api_key=${TMDB_API_KEY}&query=${query}&include_adult=false&page=1`;
-
-    const response = await fetch(url);
-    const data = await response.json();
+    const data = await fetchJsonWithRetry(url, {
+      label: `TMDB TV search (${title})`,
+      attempts: 4,
+    });
 
     const show = pickBestCandidate(data.results || [], {
       title,
@@ -261,7 +350,7 @@ async function fetchTMDBTVShow(title, year) {
       return null;
     }
 
-    return {
+    const result = {
       tmdb_id: show.id,
       poster_path: show.poster_path
         ? `https://image.tmdb.org/t/p/w342${show.poster_path}`
@@ -275,6 +364,11 @@ async function fetchTMDBTVShow(title, year) {
       tmdb_rating: show.vote_average,
       tmdb_url: `https://www.themoviedb.org/tv/${show.id}`,
     };
+
+    const trailer = await fetchYouTubeApiTrailer(title, year, "tv");
+    if (trailer) Object.assign(result, trailer);
+
+    return result;
   } catch (err) {
     console.warn(`TMDB fetch error for \"${title}\":`, err.message);
     return null;
@@ -290,9 +384,10 @@ async function fetchRAWGGame(title, year) {
   try {
     const query = encodeURIComponent(cleanSearchTitle(title));
     const url = `https://api.rawg.io/api/games?key=${RAWG_API_KEY}&search=${query}&search_precise=true&page_size=20`;
-
-    const response = await fetch(url);
-    const data = await response.json();
+    const data = await fetchJsonWithRetry(url, {
+      label: `RAWG search (${title})`,
+      attempts: 4,
+    });
 
     const canonicalCandidates = (data.results || []).filter(
       (item) => !isLikelySupplementalGameEntry(item)
@@ -311,13 +406,24 @@ async function fetchRAWGGame(title, year) {
       return null;
     }
 
+    const detailUrl = `https://api.rawg.io/api/games/${game.id}?key=${RAWG_API_KEY}`;
+    const detail = await fetchJsonWithRetry(detailUrl, {
+      label: `RAWG game detail (${title})`,
+      attempts: 4,
+    });
+
+    const youtubeApiTrailer = await fetchYouTubeApiTrailer(title, year, "game");
+
     return {
       rawg_id: game.id,
-      poster_path: game.background_image || null,
-      card_image: game.background_image || null,
-      official_description: game.description || null,
-      metacritic_score: game.metacritic || null,
+      poster_path: detail?.background_image || game.background_image || null,
+      card_image: detail?.background_image || game.background_image || null,
+      official_description: detail?.description_raw || detail?.description || null,
+      metacritic_score: detail?.metacritic || game.metacritic || null,
       rawg_url: game.slug ? `https://rawg.io/games/${game.slug}` : null,
+      trailer_url: youtubeApiTrailer?.trailer_url || null,
+      trailer_site: youtubeApiTrailer?.trailer_site || null,
+      trailer_label: youtubeApiTrailer?.trailer_label || null,
     };
   } catch (err) {
     console.warn(`RAWG fetch error for \"${title}\":`, err.message);

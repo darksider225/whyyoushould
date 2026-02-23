@@ -41,11 +41,60 @@ function hasRequiredFields(review) {
 }
 
 function applyRatingVerdictRule(review) {
+  const trailerUrl = typeof review.trailer_url === "string" ? review.trailer_url.trim() : "";
+
   return {
     ...review,
     verdict: verdictFromRating(review.rating, review.type),
     ageRating: review.ageRating || defaultAgeRating(review.type),
+    trailerUrl,
+    trailerEmbedUrl: toYouTubeEmbedUrl(trailerUrl),
+    trailerVideoUrl: toDirectVideoUrl(trailerUrl),
+    trailerSearchUrl: buildTrailerSearchUrl(review),
   };
+}
+
+function buildTrailerSearchUrl(review) {
+  const kind = review?.type === "game" ? "game trailer" : "official trailer";
+  const query = [review?.title, review?.releaseYear, kind].filter(Boolean).join(" ");
+  return `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
+}
+
+function toDirectVideoUrl(url) {
+  if (typeof url !== "string" || !url) return "";
+  if (!/^https?:\/\//i.test(url)) return "";
+  const noQuery = url.split("?")[0].toLowerCase();
+  if (noQuery.endsWith(".mp4") || noQuery.endsWith(".webm") || noQuery.endsWith(".ogg")) {
+    return url;
+  }
+  return "";
+}
+
+function toYouTubeEmbedUrl(url) {
+  if (typeof url !== "string" || !url) return "";
+
+  try {
+    const parsed = new URL(url);
+    const host = parsed.hostname.toLowerCase();
+    let videoId = "";
+
+    if (host === "youtu.be") {
+      videoId = parsed.pathname.slice(1);
+    } else if (host.endsWith("youtube.com")) {
+      if (parsed.pathname === "/watch") {
+        videoId = parsed.searchParams.get("v") || "";
+      } else if (parsed.pathname.startsWith("/embed/")) {
+        videoId = parsed.pathname.split("/")[2] || "";
+      } else if (parsed.pathname.startsWith("/shorts/")) {
+        videoId = parsed.pathname.split("/")[2] || "";
+      }
+    }
+
+    if (!videoId) return "";
+    return `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`;
+  } catch (_err) {
+    return "";
+  }
 }
 
 function sortByReviewDateDesc(reviews) {
@@ -70,9 +119,9 @@ module.exports = async function () {
   try {
     const enriched = await enrichAllReviews(reviewsRaw);
     console.log("\nReviews enriched with external data\n");
-    return enriched;
+    return sortByReviewDateDesc(enriched.map(applyRatingVerdictRule));
   } catch (err) {
     console.warn("Error enriching reviews, using raw data:", err.message);
-    return reviewsRaw;
+    return sortByReviewDateDesc(reviewsRaw.map(applyRatingVerdictRule));
   }
 };
