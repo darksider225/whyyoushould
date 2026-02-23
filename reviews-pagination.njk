@@ -103,7 +103,7 @@ reviewPage: true
       {% endif %}
 
       {% set trailerKind = 'gameplay trailer' if review.type === 'game' else 'official trailer' %}
-      <section class="review-trailer-card" aria-label="Trailer">
+      <section class="review-trailer-card" aria-label="Trailer" data-trailer-candidate-ids="{{ review.trailerCandidateIdsCsv }}">
         <div class="review-trailer-head">
           <h2>Watch Trailer</h2>
           <p>
@@ -118,6 +118,7 @@ reviewPage: true
         {% if review.trailerEmbedUrl %}
         <div class="review-trailer-media">
           <iframe
+            id="review-trailer-iframe"
             src="{{ review.trailerEmbedUrl }}"
             title="Trailer for {{ review.title }}"
             loading="lazy"
@@ -140,10 +141,11 @@ reviewPage: true
 
         <div class="review-trailer-actions">
           {% if review.trailerUrl %}
-          <a href="{{ review.trailerUrl }}" class="btn-secondary" target="_blank" rel="noopener noreferrer">Open Trailer</a>
+          <a id="open-trailer-link" href="{{ review.trailerUrl }}" class="btn-secondary" target="_blank" rel="noopener noreferrer">Open Trailer</a>
           {% endif %}
           <a href="{{ review.trailerSearchUrl }}" class="btn-secondary" target="_blank" rel="noopener noreferrer">Search on YouTube</a>
         </div>
+        <p id="review-trailer-status" class="interaction-status review-trailer-status" aria-live="polite"></p>
       </section>
     </div>
   </div>

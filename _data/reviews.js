@@ -42,12 +42,28 @@ function hasRequiredFields(review) {
 
 function applyRatingVerdictRule(review) {
   const trailerUrl = typeof review.trailer_url === "string" ? review.trailer_url.trim() : "";
+  const trailerCandidates = Array.isArray(review.trailer_candidates)
+    ? review.trailer_candidates
+        .map((item) => (typeof item === "string" ? item.trim() : ""))
+        .filter(Boolean)
+    : [];
+  const trailerCandidateIds = trailerCandidates
+    .map((url) => toYouTubeVideoId(url))
+    .filter(Boolean);
+
+  const primaryTrailerId = toYouTubeVideoId(trailerUrl);
+  const mergedTrailerIds = Array.from(
+    new Set([primaryTrailerId, ...trailerCandidateIds].filter(Boolean))
+  );
 
   return {
     ...review,
     verdict: verdictFromRating(review.rating, review.type),
     ageRating: review.ageRating || defaultAgeRating(review.type),
     trailerUrl,
+    trailerCandidates,
+    trailerCandidateIds: mergedTrailerIds,
+    trailerCandidateIdsCsv: mergedTrailerIds.join(","),
     trailerEmbedUrl: toYouTubeEmbedUrl(trailerUrl),
     trailerVideoUrl: toDirectVideoUrl(trailerUrl),
     trailerSearchUrl: buildTrailerSearchUrl(review),
@@ -92,6 +108,25 @@ function toYouTubeEmbedUrl(url) {
 
     if (!videoId) return "";
     return `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`;
+  } catch (_err) {
+    return "";
+  }
+}
+
+function toYouTubeVideoId(url) {
+  if (typeof url !== "string" || !url) return "";
+  try {
+    const parsed = new URL(url);
+    const host = parsed.hostname.toLowerCase();
+    if (host === "youtu.be") {
+      return parsed.pathname.slice(1);
+    }
+    if (host.endsWith("youtube.com")) {
+      if (parsed.pathname === "/watch") return parsed.searchParams.get("v") || "";
+      if (parsed.pathname.startsWith("/embed/")) return parsed.pathname.split("/")[2] || "";
+      if (parsed.pathname.startsWith("/shorts/")) return parsed.pathname.split("/")[2] || "";
+    }
+    return "";
   } catch (_err) {
     return "";
   }

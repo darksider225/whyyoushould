@@ -81,6 +81,136 @@
     }
   }
 
+  function parseVideoIdList(csv) {
+    if (!csv) return [];
+    return Array.from(
+      new Set(
+        String(csv)
+          .split(",")
+          .map((part) => part.trim())
+          .filter((id) => /^[A-Za-z0-9_-]{11}$/.test(id))
+      )
+    );
+  }
+
+  function getYouTubeVideoIdFromUrl(url) {
+    if (!url) return "";
+    try {
+      const parsed = new URL(url, window.location.origin);
+      const host = parsed.hostname.toLowerCase();
+      if (host === "youtu.be") return parsed.pathname.slice(1);
+      if (host.endsWith("youtube.com")) {
+        if (parsed.pathname === "/watch") return parsed.searchParams.get("v") || "";
+        if (parsed.pathname.startsWith("/embed/")) return parsed.pathname.split("/")[2] || "";
+        if (parsed.pathname.startsWith("/shorts/")) return parsed.pathname.split("/")[2] || "";
+      }
+      return "";
+    } catch (_err) {
+      return "";
+    }
+  }
+
+  function buildYouTubeEmbedUrl(videoId) {
+    const url = new URL(`https://www.youtube.com/embed/${videoId}`);
+    url.searchParams.set("rel", "0");
+    url.searchParams.set("modestbranding", "1");
+    url.searchParams.set("enablejsapi", "1");
+    url.searchParams.set("playsinline", "1");
+    return url.toString();
+  }
+
+  let youtubeIframeApiPromise = null;
+  function loadYouTubeIframeApi() {
+    if (window.YT?.Player) return Promise.resolve(window.YT);
+    if (youtubeIframeApiPromise) return youtubeIframeApiPromise;
+
+    youtubeIframeApiPromise = new Promise((resolve) => {
+      const previousReady = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = function () {
+        if (typeof previousReady === "function") {
+          previousReady();
+        }
+        resolve(window.YT || null);
+      };
+
+      const existing = document.querySelector('script[src="https://www.youtube.com/iframe_api"]');
+      if (existing) return;
+
+      const script = document.createElement("script");
+      script.src = "https://www.youtube.com/iframe_api";
+      script.async = true;
+      script.onerror = () => resolve(null);
+      document.head.appendChild(script);
+    });
+
+    return youtubeIframeApiPromise;
+  }
+
+  async function initTrailerFallback() {
+    const trailerCard = document.querySelector(".review-trailer-card[data-trailer-candidate-ids]");
+    const iframe = document.getElementById("review-trailer-iframe");
+    if (!trailerCard || !iframe) return;
+
+    const openLink = document.getElementById("open-trailer-link");
+    const status = document.getElementById("review-trailer-status");
+    const csvIds = trailerCard.dataset.trailerCandidateIds || "";
+    const embedId = getYouTubeVideoIdFromUrl(iframe.getAttribute("src") || "");
+    const candidateIds = parseVideoIdList([embedId, csvIds].filter(Boolean).join(","));
+    if (candidateIds.length === 0) return;
+
+    let activeIndex = 0;
+    let hasSwitched = false;
+
+    const setStatus = (message) => {
+      if (!status) return;
+      status.textContent = message || "";
+      status.classList.remove("status-info");
+      if (message) status.classList.add("status-info");
+    };
+
+    const setOpenLink = (videoId) => {
+      if (!openLink || !videoId) return;
+      openLink.href = `https://www.youtube.com/watch?v=${videoId}`;
+    };
+
+    const yt = await loadYouTubeIframeApi();
+    if (!yt?.Player || candidateIds.length < 2) {
+      setOpenLink(candidateIds[0]);
+      return;
+    }
+
+    iframe.src = buildYouTubeEmbedUrl(candidateIds[activeIndex]);
+    setOpenLink(candidateIds[activeIndex]);
+
+    const restrictedErrors = new Set([100, 101, 150]);
+
+    const player = new yt.Player("review-trailer-iframe", {
+      events: {
+        onReady: () => {
+          setOpenLink(candidateIds[activeIndex]);
+        },
+        onError: (event) => {
+          if (!restrictedErrors.has(Number(event?.data))) return;
+
+          const nextIndex = activeIndex + 1;
+          if (nextIndex >= candidateIds.length) {
+            setStatus("This trailer is unavailable in your country. Use Search on YouTube for alternatives.");
+            return;
+          }
+
+          activeIndex = nextIndex;
+          const nextId = candidateIds[activeIndex];
+          setOpenLink(nextId);
+          player.loadVideoById(nextId);
+          if (!hasSwitched) {
+            hasSwitched = true;
+            setStatus("Switched to an alternate trailer available in your region.");
+          }
+        },
+      },
+    });
+  }
+
   function normalizeRatingValue(value) {
     const n = Number(value);
     if (!Number.isFinite(n)) return null;
@@ -130,6 +260,10 @@
     if (!userId) return "User";
     if (currentUser && currentUser.id === userId) return "You";
     return `User ${String(userId).slice(0, 6)}`;
+  }
+
+  if (reviewRoot) {
+    initTrailerFallback();
   }
 
   if (!supabaseUrl || !supabaseAnonKey || !window.supabase) {

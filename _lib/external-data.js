@@ -11,8 +11,9 @@ require("dotenv").config();
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
 const RAWG_API_KEY = process.env.RAWG_API_KEY;
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
+const YOUTUBE_REGION_CODE = (process.env.YOUTUBE_REGION_CODE || "US").toUpperCase();
 const REFRESH = process.env.REFRESH_EXTERNAL_DATA === "true";
-const CACHE_SCHEMA_VERSION = 8;
+const CACHE_SCHEMA_VERSION = 9;
 
 const CACHE_DIR = path.join(__dirname, "../_data/.cache");
 const CACHE_FILE = path.join(CACHE_DIR, "external-data.json");
@@ -76,7 +77,8 @@ async function fetchYouTubeApiTrailer(title, year, type) {
 
   const url =
     "https://www.googleapis.com/youtube/v3/search?" +
-    `part=snippet&type=video&videoEmbeddable=true&maxResults=10&safeSearch=strict` +
+    `part=snippet&type=video&videoEmbeddable=true&maxResults=12&safeSearch=strict` +
+    `&regionCode=${encodeURIComponent(YOUTUBE_REGION_CODE)}` +
     `&q=${encodeURIComponent(query)}&key=${encodeURIComponent(YOUTUBE_API_KEY)}`;
 
   try {
@@ -86,6 +88,23 @@ async function fetchYouTubeApiTrailer(title, year, type) {
     });
     const items = Array.isArray(data?.items) ? data.items : [];
     if (items.length === 0) return null;
+
+    const ids = items
+      .map((item) => item?.id?.videoId)
+      .filter((id) => typeof id === "string" && id);
+    if (ids.length === 0) return null;
+
+    const detailsUrl =
+      "https://www.googleapis.com/youtube/v3/videos?" +
+      `part=status,contentDetails&id=${encodeURIComponent(ids.join(","))}` +
+      `&key=${encodeURIComponent(YOUTUBE_API_KEY)}`;
+    const detailsData = await fetchJsonWithRetry(detailsUrl, {
+      label: `YouTube Data API video details (${title})`,
+      attempts: 3,
+    });
+    const detailMap = new Map(
+      (Array.isArray(detailsData?.items) ? detailsData.items : []).map((item) => [item.id, item])
+    );
 
     const normalizedTitle = normalizeTitle(title);
     const scoreItem = (item) => {
@@ -104,14 +123,49 @@ async function fetchYouTubeApiTrailer(title, year, type) {
       return score;
     };
 
-    const best = items.sort((a, b) => scoreItem(b) - scoreItem(a))[0];
-    const videoId = best?.id?.videoId;
-    if (!videoId) return null;
+    const isPlayableInRegion = (videoId) => {
+      const d = detailMap.get(videoId);
+      if (!d?.status) return false;
+      if (d.status.privacyStatus !== "public") return false;
+      if (d.status.embeddable !== true) return false;
+      const restriction = d.contentDetails?.regionRestriction;
+      if (restriction?.blocked && Array.isArray(restriction.blocked)) {
+        if (restriction.blocked.includes(YOUTUBE_REGION_CODE)) return false;
+      }
+      if (restriction?.allowed && Array.isArray(restriction.allowed)) {
+        if (!restriction.allowed.includes(YOUTUBE_REGION_CODE)) return false;
+      }
+      return true;
+    };
+
+    const candidates = items
+      .map((item) => {
+        const videoId = item?.id?.videoId;
+        if (!videoId) return null;
+        return {
+          item,
+          videoId,
+          score: scoreItem(item),
+          playable: isPlayableInRegion(videoId),
+        };
+      })
+      .filter(Boolean)
+      .sort((a, b) => {
+        if (a.playable !== b.playable) return a.playable ? -1 : 1;
+        return b.score - a.score;
+      });
+
+    const best = candidates[0];
+    if (!best?.videoId) return null;
 
     return {
-      trailer_url: `https://www.youtube.com/watch?v=${videoId}`,
+      trailer_url: `https://www.youtube.com/watch?v=${best.videoId}`,
+      trailer_candidates: candidates
+        .slice(0, 6)
+        .map((entry) => `https://www.youtube.com/watch?v=${entry.videoId}`),
       trailer_site: "youtube-api",
-      trailer_label: best?.snippet?.title || (type === "game" ? "Gameplay Trailer" : "Official Trailer"),
+      trailer_label:
+        best?.item?.snippet?.title || (type === "game" ? "Gameplay Trailer" : "Official Trailer"),
     };
   } catch (err) {
     console.warn(`YouTube API trailer fetch error for "${title}":`, err.message);
@@ -422,6 +476,7 @@ async function fetchRAWGGame(title, year) {
       metacritic_score: detail?.metacritic || game.metacritic || null,
       rawg_url: game.slug ? `https://rawg.io/games/${game.slug}` : null,
       trailer_url: youtubeApiTrailer?.trailer_url || null,
+      trailer_candidates: youtubeApiTrailer?.trailer_candidates || [],
       trailer_site: youtubeApiTrailer?.trailer_site || null,
       trailer_label: youtubeApiTrailer?.trailer_label || null,
     };
