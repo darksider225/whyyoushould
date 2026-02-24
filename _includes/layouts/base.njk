@@ -49,9 +49,16 @@
         <a href="{{ '/movies/' | url }}" class="nav-link">Movies</a>
         <a href="{{ '/tvshows/' | url }}" class="nav-link">TV Shows</a>
         <a href="{{ '/games/' | url }}" class="nav-link">Games</a>
-        <a href="{{ '/about/' | url }}" class="nav-link">About</a>
-        <a href="{{ '/auth/login/' | url }}" class="nav-link" id="nav-auth-link">Sign In</a>
         </nav>
+
+        <div class="header-right desktop-header-right">
+          <a href="{{ '/auth/login/' | url }}" class="nav-link nav-auth-main" id="nav-auth-link">Sign In</a>
+          <button type="button" class="desktop-menu-btn" id="desktop-menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="desktop-menu">
+            <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+              <path d="M4 6.5h16v2H4v-2zm0 4.5h16v2H4v-2zm0 4.5h16v2H4v-2z"></path>
+            </svg>
+          </button>
+        </div>
 
         <div class="mobile-actions">
           <button type="button" class="mobile-icon-btn" id="mobile-search-toggle" aria-label="Open search" aria-expanded="false">
@@ -71,6 +78,19 @@
           </button>
         </div>
       </div>
+
+      <nav class="desktop-menu" id="desktop-menu" hidden>
+        <a href="{{ '/reviews/' | url }}" class="nav-link">Reviews</a>
+        <a href="{{ '/movies/' | url }}" class="nav-link">Movies</a>
+        <a href="{{ '/tvshows/' | url }}" class="nav-link">TV Shows</a>
+        <a href="{{ '/games/' | url }}" class="nav-link">Games</a>
+        <a href="{{ '/must/' | url }}" class="nav-link">Must</a>
+        <a href="{{ '/worth/' | url }}" class="nav-link">Worth</a>
+        <a href="{{ '/average/' | url }}" class="nav-link">Average</a>
+        <a href="{{ '/skip/' | url }}" class="nav-link">Skip</a>
+        <a href="{{ '/about/' | url }}" class="nav-link">About</a>
+        <a href="{{ '/auth/login/' | url }}" class="nav-link" id="nav-auth-link-menu">Sign In</a>
+      </nav>
 
       <div class="mobile-search-panel" id="mobile-search-panel" hidden>
         <form class="site-search mobile-search" data-site-search>
@@ -92,8 +112,12 @@
         <a href="{{ '/movies/' | url }}" class="nav-link">Movies</a>
         <a href="{{ '/tvshows/' | url }}" class="nav-link">TV Shows</a>
         <a href="{{ '/games/' | url }}" class="nav-link">Games</a>
+        <a href="{{ '/must/' | url }}" class="nav-link">Must</a>
+        <a href="{{ '/worth/' | url }}" class="nav-link">Worth</a>
+        <a href="{{ '/average/' | url }}" class="nav-link">Average</a>
+        <a href="{{ '/skip/' | url }}" class="nav-link">Skip</a>
         <a href="{{ '/about/' | url }}" class="nav-link">About</a>
-        <a href="{{ '/auth/login/' | url }}" class="nav-link">Sign In</a>
+        <a href="{{ '/auth/login/' | url }}" class="nav-link" id="nav-auth-link-mobile">Sign In</a>
       </nav>
     </div>
   </header>

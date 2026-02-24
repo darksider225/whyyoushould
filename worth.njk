@@ -9,7 +9,7 @@ description: Strong recommendations that are worth your time on Whyyoushould.
   <p style="color: var(--text-secondary); font-size: 1.125rem;">Good titles that are genuinely worth it</p>
 </div>
 
-<div class="reviews-grid">
+<div class="reviews-grid reviews-grid-mobile-two">
   {% for review in reviews %}
   {% if (review.verdict | verdictClass) === "worth" %}
   <a href="{{ ('/reviews/' ~ review.slug ~ '/') | url }}" class="review-card">

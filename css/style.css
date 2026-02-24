@@ -152,7 +152,7 @@ a:hover {
 /* Header */
 .header {
   border-bottom: 1px solid var(--border);
-  padding: 1.5rem var(--spacing);
+  padding: 1rem 0;
   position: sticky;
   top: 0;
   background-color: rgba(10, 10, 10, 0.95);
@@ -164,13 +164,14 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  position: relative;
 }
 
 .header-main {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.15rem;
 }
 
 .logo {
@@ -203,8 +204,9 @@ a:hover {
 }
 
 .desktop-search {
-  flex: 1;
-  max-width: 460px;
+  flex: 1 1 520px;
+  max-width: none;
+  min-width: 280px;
 }
 
 .site-search-input-wrap {
@@ -295,7 +297,8 @@ a:hover {
 
 .mobile-actions,
 .mobile-search-panel,
-.mobile-menu {
+.mobile-menu,
+.desktop-menu {
   display: none;
 }
 
@@ -329,7 +332,46 @@ a:hover {
 
 .nav {
   display: flex;
-  gap: 2rem;
+  gap: 1.35rem;
+}
+
+.desktop-nav {
+  flex: 0 0 auto;
+}
+
+.desktop-header-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.nav-auth-main {
+  white-space: nowrap;
+}
+
+.desktop-menu-btn {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  background: #101218;
+  color: var(--text-secondary);
+  padding: 0;
+  cursor: pointer;
+}
+
+.desktop-menu-btn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.desktop-menu-btn svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  fill: currentColor;
 }
 
 .nav-link {
@@ -351,10 +393,45 @@ a:hover {
 }
 
 .mobile-menu {
-  width: 100%;
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  left: var(--spacing);
+  right: var(--spacing);
   border: 1px solid var(--border);
   background: #101218;
   padding: 0.5rem;
+  z-index: 130;
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.42);
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+}
+
+.desktop-menu {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  right: var(--spacing);
+  width: min(420px, 100%);
+  border: 1px solid var(--border);
+  background: #101218;
+  padding: 0.5rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem;
+  z-index: 130;
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.42);
+}
+
+.desktop-menu.is-open {
+  display: grid;
+}
+
+.desktop-menu .nav-link {
+  display: block;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid #202330;
+}
+
+.desktop-menu .nav-link:hover {
+  border-color: var(--accent);
 }
 
 .mobile-menu .nav-link {
@@ -1452,7 +1529,7 @@ a:hover {
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  touch-action: pan-x;
+  touch-action: auto;
 }
 
 .carousel-track::-webkit-scrollbar {
@@ -1930,14 +2007,12 @@ a:hover {
   }
 
   .carousel-item {
-    flex: 0 0 82vw;
-    min-width: 82vw;
+    flex: 0 0 46vw;
+    min-width: 46vw;
   }
 
   .carousel-nav {
-    width: 32px;
-    height: 32px;
-    font-size: 1.25rem;
+    display: none;
   }
 
   .collection-grid {
@@ -2587,7 +2662,7 @@ a:hover {
   }
 
   .header {
-    padding: 0.85rem var(--spacing);
+    padding: 0.85rem 0;
   }
 
   .header .container {
@@ -2650,7 +2725,9 @@ a:hover {
   }
 
   .desktop-search,
-  .desktop-nav {
+  .desktop-nav,
+  .desktop-header-right,
+  .desktop-menu {
     display: none;
   }
 
@@ -2700,14 +2777,69 @@ a:hover {
     line-height: 1.35;
   }
 
+  .collection-card-creator {
+    font-size: 0.8rem;
+    margin-bottom: 0.35rem;
+  }
+
   .carousel-track {
     padding: 0.85rem;
     gap: 0.85rem;
   }
 
   .carousel-item {
-    flex: 0 0 86vw;
-    min-width: 86vw;
+    flex: 0 0 46vw;
+    min-width: 46vw;
+  }
+
+  .carousel-nav {
+    display: none;
+  }
+
+  .carousel-card {
+    padding: 0.55rem;
+    min-height: 320px;
+  }
+
+  .carousel-poster {
+    margin-bottom: 0.55rem;
+  }
+
+  .carousel-verdict {
+    padding: 0.32rem 0.5rem;
+    font-size: 0.62rem;
+    line-height: 1.1;
+  }
+
+  .carousel-info h3 {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+    line-height: 1.2;
+  }
+
+  .carousel-rating {
+    font-size: 0.95rem;
+    margin-bottom: 0.08rem;
+  }
+
+  .carousel-creator {
+    font-size: 0.75rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .carousel-highlight {
+    padding: 0.5rem 0.55rem;
+    font-size: 0.7rem;
+    line-height: 1.3;
+    min-height: 0;
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
+  }
+
+  .collection-card-rating {
+    font-size: 0.78rem;
   }
 
   .review-hero {
@@ -2765,7 +2897,56 @@ a:hover {
   }
 
   .collection-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .collection-card {
+    padding: 0.45rem;
+    min-height: 318px;
+  }
+
+  .collection-card-info {
+    gap: 0.3rem;
+  }
+
+  .collection-card-info h2 {
+    font-size: 0.9rem;
+    line-height: 1.2;
+    margin-bottom: 0.1rem;
+  }
+
+  .collection-card-creator {
+    font-size: 0.72rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .collection-card-meta {
+    font-size: 0.7rem;
+    gap: 0.35rem;
+  }
+
+  .collection-card-excerpt {
+    font-size: 0.7rem;
+    line-height: 1.28;
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
+  }
+
+  .carousel-rating {
+    font-size: 0.88rem;
+  }
+
+  .carousel-highlight {
+    font-size: 0.66rem;
+    line-height: 1.25;
+    min-height: 0;
+    display: block;
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+    overflow: visible;
   }
 
   .review-meta {
@@ -2780,5 +2961,449 @@ a:hover {
   .rating-choice {
     width: 100%;
     height: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews-grid-mobile-two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+  }
+
+  .reviews-grid-mobile-two .review-card {
+    padding: 0.6rem;
+    gap: 0.45rem;
+    min-height: 250px;
+  }
+
+  .reviews-grid-mobile-two .review-card-header {
+    gap: 0.45rem;
+  }
+
+  .reviews-grid-mobile-two .review-card-title {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+
+  .reviews-grid-mobile-two .verdict-badge {
+    padding: 0.28rem 0.45rem;
+    font-size: 0.56rem;
+    letter-spacing: 0.03em;
+  }
+
+  .reviews-grid-mobile-two .review-card-rating {
+    font-size: 1.15rem;
+    line-height: 1.1;
+  }
+
+  .reviews-grid-mobile-two .review-card-why {
+    font-size: 0.8rem;
+    line-height: 1.35;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+  }
+
+  .reviews-grid-mobile-two .review-card-meta {
+    gap: 0.45rem;
+    padding-top: 0.55rem;
+    font-size: 0.72rem;
+  }
+
+  .reviews-grid-mobile-two .review-card-meta strong {
+    font-size: 0.62rem;
+    letter-spacing: 0.03em;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviews-grid-mobile-two {
+    gap: 0.65rem;
+  }
+
+  .reviews-grid-mobile-two .review-card {
+    padding: 0.5rem;
+    min-height: 230px;
+  }
+
+  .reviews-grid-mobile-two .review-card-title {
+    font-size: 0.9rem;
+  }
+
+  .reviews-grid-mobile-two .verdict-badge {
+    padding: 0.24rem 0.38rem;
+    font-size: 0.5rem;
+  }
+
+  .reviews-grid-mobile-two .review-card-rating {
+    font-size: 1rem;
+  }
+
+  .reviews-grid-mobile-two .review-card-why {
+    font-size: 0.74rem;
+    line-height: 1.3;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  .reviews-grid-mobile-two .review-card-meta {
+    font-size: 0.68rem;
+  }
+
+  .reviews-grid-mobile-two .review-card-meta strong {
+    font-size: 0.58rem;
+  }
+}
+
+/* Mobile compact pass */
+@media (max-width: 768px) {
+  .main {
+    padding: 1.25rem var(--spacing) 2rem;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+  }
+
+  h3 {
+    font-size: 1.05rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  .hero {
+    margin-bottom: 2.1rem;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtext {
+    font-size: 0.88rem;
+  }
+
+  .verdict-legend {
+    padding: 0.85rem;
+    gap: 0.65rem;
+    margin-bottom: 2rem;
+  }
+
+  .legend-text p {
+    font-size: 0.8rem;
+  }
+
+  .featured-content {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .featured-excerpt {
+    font-size: 0.95rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.62rem 0.95rem;
+    font-size: 0.9rem;
+  }
+
+  .review-meta {
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .meta-value {
+    font-size: 0.92rem;
+  }
+
+  .official-description {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .review-trailer-card {
+    padding: 0.8rem;
+  }
+
+  .review-mode-tab {
+    padding: 0.55rem 0.7rem;
+    font-size: 0.88rem;
+  }
+
+  .stack-form {
+    padding: 0.8rem;
+  }
+
+  .comment-item,
+  .community-post {
+    padding: 0.75rem;
+  }
+
+  .favorite-item {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 1rem var(--spacing) 1.6rem;
+  }
+
+  h1 {
+    font-size: 1.65rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  h3 {
+    font-size: 0.95rem;
+  }
+
+  .header {
+    padding: 0.65rem 0;
+  }
+
+  .logo {
+    font-size: 1.05rem;
+  }
+
+  .mobile-icon-btn {
+    width: 35px;
+    height: 35px;
+  }
+
+  .verdict-badge {
+    font-size: 0.56rem;
+    padding: 0.3rem 0.55rem;
+  }
+
+  .featured-label {
+    font-size: 0.64rem;
+  }
+
+  .featured-excerpt {
+    font-size: 0.88rem;
+  }
+
+  .featured-meta {
+    font-size: 0.78rem;
+  }
+
+  .review-page-tools {
+    top: 4.35rem;
+  }
+
+  .favorite-pin-btn {
+    width: 42px;
+    height: 42px;
+  }
+
+  .review-verdict-tagline {
+    font-size: 1rem;
+  }
+
+  .review-verdict-box {
+    padding: 1rem;
+  }
+
+  .verdict-rating {
+    font-size: 2rem;
+    margin-top: 0.55rem;
+  }
+
+  .rating-max {
+    font-size: 1.1rem;
+  }
+
+  .meta-label {
+    font-size: 0.66rem;
+  }
+
+  .meta-value {
+    font-size: 0.84rem;
+  }
+
+  .description-intro {
+    font-size: 0.72rem;
+  }
+
+  .official-description p {
+    font-size: 0.84rem;
+  }
+
+  .review-trailer-head h2 {
+    font-size: 0.88rem;
+  }
+
+  .review-trailer-head p {
+    font-size: 0.82rem;
+  }
+
+  .review-trailer-empty p {
+    font-size: 0.82rem;
+  }
+
+  .review-actions-panel,
+  .audience-score-box,
+  .audience-rating-panel {
+    padding: 0.3rem;
+  }
+
+  .audience-score-label {
+    font-size: 0.72rem;
+  }
+
+  .audience-score-value strong {
+    font-size: 1.5rem;
+  }
+
+  .audience-score-value span,
+  .audience-score-meta,
+  .audience-rating-hint {
+    font-size: 0.72rem;
+  }
+
+  .audience-rating-panel h3 {
+    font-size: 0.86rem;
+  }
+
+  .rating-choice {
+    height: 42px;
+    font-size: 0.86rem;
+  }
+
+  .interaction-status {
+    font-size: 0.82rem;
+  }
+
+  .section-head p,
+  .muted-text {
+    font-size: 0.8rem;
+  }
+}
+
+/* Final mobile typography normalization */
+@media (max-width: 768px) {
+  body {
+    font-size: 0.95rem;
+  }
+
+  .review-title {
+    font-size: 2rem;
+  }
+
+  .review-content {
+    font-size: 0.98rem;
+    line-height: 1.55;
+    margin-bottom: 1.8rem;
+  }
+
+  .review-section h2 {
+    font-size: 0.96rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .review-section p,
+  .review-bullet-list li,
+  .review-number-list li {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .review-footer p,
+  .verdict-final p,
+  .similar-titles li {
+    font-size: 0.88rem;
+  }
+
+  .public-comments p,
+  .community-feed p,
+  .community-post p,
+  .comment-item p {
+    font-size: 0.86rem;
+  }
+
+  .auth-header p,
+  .auth-status,
+  .auth-page-links a,
+  .auth-checkbox,
+  .auth-form label {
+    font-size: 0.82rem;
+  }
+
+  .legal-page p {
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .legal-page h2 {
+    font-size: 0.96rem;
+  }
+
+  .footer-tagline,
+  .footer-credit,
+  .footer-legal a {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 0.9rem;
+  }
+
+  .review-title {
+    font-size: 1.7rem;
+  }
+
+  .review-content {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .review-section h2 {
+    font-size: 0.9rem;
+  }
+
+  .review-section p,
+  .review-bullet-list li,
+  .review-number-list li {
+    font-size: 0.84rem;
+  }
+
+  .review-footer p,
+  .verdict-final p,
+  .similar-titles li {
+    font-size: 0.82rem;
+  }
+
+  .public-comments p,
+  .community-feed p,
+  .community-post p,
+  .comment-item p {
+    font-size: 0.8rem;
+  }
+
+  .legal-page p {
+    font-size: 0.82rem;
+  }
+
+  .footer-tagline,
+  .footer-credit,
+  .footer-legal a {
+    font-size: 0.76rem;
   }
 }

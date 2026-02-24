@@ -120,6 +120,8 @@
     const menuToggle = document.getElementById("mobile-menu-toggle");
     const searchPanel = document.getElementById("mobile-search-panel");
     const mobileMenu = document.getElementById("mobile-menu");
+    const desktopMenuToggle = document.getElementById("desktop-menu-toggle");
+    const desktopMenu = document.getElementById("desktop-menu");
 
     if (searchToggle && searchPanel) {
       searchToggle.addEventListener("click", () => {
@@ -140,6 +142,15 @@
         mobileMenu.classList.toggle("is-open", next);
         mobileMenu.hidden = !next;
         menuToggle.setAttribute("aria-expanded", String(next));
+      });
+    }
+
+    if (desktopMenuToggle && desktopMenu) {
+      desktopMenuToggle.addEventListener("click", () => {
+        const next = !desktopMenu.classList.contains("is-open");
+        desktopMenu.classList.toggle("is-open", next);
+        desktopMenu.hidden = !next;
+        desktopMenuToggle.setAttribute("aria-expanded", String(next));
       });
     }
   }
@@ -182,6 +193,18 @@
   }
 
   document.addEventListener("click", (event) => {
+    const desktopMenu = document.getElementById("desktop-menu");
+    const desktopMenuToggle = document.getElementById("desktop-menu-toggle");
+    if (desktopMenu && desktopMenuToggle) {
+      const clickInsideDesktopMenu =
+        desktopMenu.contains(event.target) || desktopMenuToggle.contains(event.target);
+      if (!clickInsideDesktopMenu) {
+        desktopMenu.classList.remove("is-open");
+        desktopMenu.hidden = true;
+        desktopMenuToggle.setAttribute("aria-expanded", "false");
+      }
+    }
+
     document.querySelectorAll("[data-site-search]").forEach((form) => {
       if (form.contains(event.target)) return;
       const resultsContainer = form.querySelector("[data-search-results]");

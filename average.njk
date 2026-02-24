@@ -9,7 +9,7 @@ description: Average recommendations on Whyyoushould.
   <p style="color: var(--text-secondary); font-size: 1.125rem;">Fine, but not priority picks</p>
 </div>
 
-<div class="reviews-grid">
+<div class="reviews-grid reviews-grid-mobile-two">
   {% for review in reviews %}
   {% if (review.verdict | verdictClass) === "average" %}
   <a href="{{ ('/reviews/' ~ review.slug ~ '/') | url }}" class="review-card">

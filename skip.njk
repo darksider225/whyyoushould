@@ -9,7 +9,7 @@ description: Skip-level recommendations on Whyyoushould.
   <p style="color: var(--text-secondary); font-size: 1.125rem;">Not recommended right now</p>
 </div>
 
-<div class="reviews-grid">
+<div class="reviews-grid reviews-grid-mobile-two">
   {% for review in reviews %}
   {% if (review.verdict | verdictClass) === "skip" %}
   <a href="{{ ('/reviews/' ~ review.slug ~ '/') | url }}" class="review-card">

@@ -11,7 +11,7 @@ description: Top-tier recommendations. Must Watch and Must Play titles on Whyyou
   </p>
 </div>
 
-<div class="reviews-grid">
+<div class="reviews-grid reviews-grid-mobile-two">
   {% for review in reviews %}
   {% if (review.verdict | verdictClass) === "must" %}
   <a href="{{ ('/reviews/' ~ review.slug ~ '/') | url }}" class="review-card">

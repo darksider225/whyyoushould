@@ -31,15 +31,25 @@
   }
 
   function setNav(user) {
-    const link = document.getElementById("nav-auth-link");
-    if (!link) return;
+    const links = [
+      document.getElementById("nav-auth-link"),
+      document.getElementById("nav-auth-link-menu"),
+      document.getElementById("nav-auth-link-mobile"),
+    ].filter(Boolean);
+    if (links.length === 0) return;
+
     if (user) {
-      link.textContent = "Account";
-      link.href = withBase("/account/");
-    } else {
+      links.forEach((link) => {
+        link.textContent = "Account";
+        link.href = withBase("/account/");
+      });
+      return;
+    }
+
+    links.forEach((link) => {
       link.textContent = "Sign In";
       link.href = withBase("/auth/login/");
-    }
+    });
   }
 
   if (!authView) return;

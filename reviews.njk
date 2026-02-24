@@ -10,7 +10,7 @@ description: Browse all movie and game reviews on Whyyoushould. Filter by type a
   <p id="reviews-search-feedback" style="color: var(--text-tertiary); font-size: 0.95rem; margin-bottom: 0;" hidden></p>
 </div>
 
-<div class="reviews-grid">
+<div class="reviews-grid reviews-grid-mobile-two">
   {% for review in reviews %}
   <a
     href="{{ ('/reviews/' ~ review.slug ~ '/') | url }}"
